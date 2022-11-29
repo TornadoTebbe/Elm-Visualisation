@@ -12,61 +12,62 @@ import Debug exposing (log)
 import Http
 
 
-type Status
-    = Success
+main : Program () Model Msg
+main =
+    Browser.element
+        { init = init
+        , update = update
+        , subscriptions = subscriptions
+        , view = view
+        }
+
+
+type Model
+    = Success String
     | Loading
     | Failure
 
 
-type alias Model =
-    { status : Status
-    , data : List Student_Data
-    }
+daten : List String
+daten = [ "Student_Behaviour"]
 
 
-type Msg
-    = GotText (Result Http.Error String)
 
 --hochladen der Daten aus dem Github
 init : () -> ( Model, Cmd Msg )
 init _ =
-    let
-        data =
-            [ "Student_Behaviour"]
-        cmds =
-            List.map
-                (\x ->
-                    Http.get
-                        { url = "https://raw.githubusercontent.com/TornadoTebbe/ElmTest2/main/Daten/Student_Behaviour.csv"
-                        , expect = Http.expectString GotText
-                        }
-                )
-                data
-    in
-    ( { status = Loading, data = "" }
-    , Cmd.batch cmds
-    )
+  ( Loading 
+  , daten 
+      |> List.map
+          (\d ->
+              Http.get
+              { url = "../Daten/" ++ d ++ ".csv"
+              , expect = Http.expectString GotText
+              }
+          )
+      |> Cmd.batch
+  )
 
 
+-- UPDATE
+type Msg
+  = GotText (Result Http.Error String)
 
 
-
-
-
-update : Msg -> Model -> ( Model, Cmd Msg )
+update : Msg -> Model -> (Model, Cmd Msg)
 update msg model =
-    case msg of
-        GotText result ->
-            case result of
-                Ok fullText ->
-                    ( { model | status = Success, data = model.data ++ fullText }, Cmd.none )
+  case msg of
+    GotText result ->
+      case result of
+        Ok fullText ->
+          (Success fullText, Cmd.none)
 
-                Err _ ->
-                    ( { model | status = Failure }, Cmd.none )
+        Err _ ->
+          (Failure, Cmd.none)
 
 
 subscriptions : Model -> Sub Msg
-subscriptions _ =
+subscriptions model =
     Sub.none
 
 
@@ -80,21 +81,14 @@ view model =
             text "Loading..."
 
         Success fullText ->
-            pre[] [ text (String.fromInt (list.length(datListe [fullText])))]
+            pre[] [ text fullText]
         
     
 
 
 
 
-main : Program () Model Msg
-main =
-    Browser.element
-        { init = init
-        , update = update
-        , subscriptions = subscriptions
-        , view = view
-        }
+
 
 
 
