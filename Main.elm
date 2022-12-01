@@ -22,8 +22,31 @@ main =
         }
 
 
+type alias Student_Data =
+    {   certification : String
+    ,   gender : String
+    ,   department : String
+    ,   height : Float
+    ,   weight : Float
+    ,   tenthMark  : Float
+    ,   twelthMark  : Float
+    ,   collegeMark : Float
+    ,   hobbies : String
+    ,   dailyStudyingTime : String
+    ,   preferStudyTime : String
+    ,   salaryExpectation : Int
+    ,   satisfyDegree : String --Bool
+    ,   willignessDegree: String
+    ,   socialMedia : String
+    ,   travellingTime : String
+    ,   stressLevel : String
+    ,   financialStatus : String
+    ,   partTimeJob : String --Bool
+    }
+
+
 type Model
-    = Success (List String)
+    = Success String
     | Loading
     | Failure
 
@@ -36,17 +59,11 @@ daten = [ "Student_Behaviour"]
 --hochladen der Daten aus dem Github
 init : () -> ( Model, Cmd Msg )
 init _ =
-  ( Loading 
-  , daten 
-      |> List.map
-          (\d ->
-              Http.get
-              { url = "../Daten/" ++ d ++ ".csv"
-              , expect = Http.expectString GotText
-              }
-          )
-      |> Cmd.batch
-  )
+    (Loading , 
+    Http.get
+    { url = "https://raw.githubusercontent.com/TornadoTebbe/ElmTest/main/Daten/Student_Behaviour.csv"
+    , expect = Http.expectString GotText
+    })
 
 
 -- UPDATE
@@ -57,7 +74,7 @@ type Msg
 
 --Decodierung der Daten:
 
-csvString_to_data : String -> List ( String, Maybe Float )
+csvString_to_data : String -> List Student_Data
 csvString_to_data csvRaw =
     Csv.parse csvRaw
         |> Csv.Decode.decodeCsv decodeCsvStudentdata
@@ -65,21 +82,11 @@ csvString_to_data csvRaw =
         |> Maybe.withDefault []
 
 
-decodeCsvStudentdata : Csv.Decode.Decoder (( String, Maybe Float ) -> a) a 
+decodeCsvStudentdata : Csv.Decode.Decoder (Student_Data -> a ) a 
 decodeCsvStudentdata =
-    Csv.Decode.map (\a b -> ( a, Just b ))
+    Csv.Decode.map Student_Data
         (Csv.Decode.field "Certification Course" Ok
-              |> Csv.Decode.andMap 
-                    (Csv.Decode.field "Gender" 
-                        (String.toFloat >> Result.fromMaybe "error parsing string")
-                    )
-              |> Csv.Decode.andMap
-                    (Csv.Decode.field "Department"
-                        (String.toFloat >> Result.fromMaybe "error parsing string")
-                    )
-        )
-
-              {--
+              |> Csv.Decode.andMap (Csv.Decode.field "Gender" Ok)
               |> Csv.Decode.andMap (Csv.Decode.field "Department" Ok)
               |> Csv.Decode.andMap (Csv.Decode.field "Height(CM)"(String.toFloat >> Result.fromMaybe "error parsing string"))
               |> Csv.Decode.andMap (Csv.Decode.field "Weight(KG)" (String.toFloat >> Result.fromMaybe "error parsing string"))
@@ -98,43 +105,27 @@ decodeCsvStudentdata =
               |> Csv.Decode.andMap (Csv.Decode.field "Financial Status" Ok)
               |> Csv.Decode.andMap (Csv.Decode.field "part-time job" Ok) --(String.tool >> Result.fromMaybe "error parsing string")) 
         )
---}
-
-transform : List ( String, Maybe Float ) -> List ( String, String )
-transform textKomplett =
-    List.map (\( a, b ) -> ( a, b |> Maybe.map String.fromFloat |> Maybe.withDefault "Nothing" )) textKomplett
 
 
-listStyle : List ( String, String ) -> Html msg
-listStyle liste =
-    Html.ul []
-        (List.map (\( a, b ) -> Html.li [] [ text <| a ++ ", " ++ b ]) liste)
+studentListe : List String -> List Student_Data
+studentListe student_liste =
+    List.map(\x -> csvString_to_data x) student_liste
+        |> List.concat
     
 
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
-    let
-        aktuelleListe =
-            case model of
-                Success list ->
-                    list
-
-                Failure ->
-                    []
-
-                Loading ->
-                    []
-    in
     case msg of
         GotText result ->
             case result of
                 Ok fullText ->
-                    ( Success <| aktuelleListe ++ [ fullText ], Cmd.none )
+                   (Success fullText, Cmd.none)
 
                 Err _ ->
-                    ( model, Cmd.none )
+                  {--( { model | status = Failure }, Cmd.none )--}  
+                  (Failure, Cmd.none)
 
 subscriptions : Model -> Sub Msg
 subscriptions model =
@@ -145,15 +136,14 @@ view : Model -> Html Msg
 view model =
     case model of
         Failure ->
-            text "I was unable to load your stock data."
+            text "I was unable to load your data."
 
         Loading ->
             text "Loading..."
 
-        Success list ->
-            Html.div [] <|
-                List.map (\fulltext -> pre [] [ listStyle <| transform <| csvString_to_data fulltext ]) list
-        
+        Success fullText ->
+            pre [] [ text (String.fromInt (List.length (studentListe [fullText])))]
+                       
 
 
 
