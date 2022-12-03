@@ -46,6 +46,23 @@ type alias XyData =
     }
 
 
+type Model
+  = Failure
+  | Loading
+  | Success 
+    {data: List Student_Data
+     , position: String
+     , x: AttributeType
+     , y: AttributeType}
+
+
+type AttributeType
+    = SalaryExp
+    | TenthMark
+    | TwelthMark
+    | CollegeMark
+
+
 w : Float
 w =
     900
@@ -232,3 +249,59 @@ point scaleX scaleY xyPoint =
             [ x 0, y -15, TypedSvg.Attributes.textAnchor AnchorMiddle ]
             [ TypedSvg.Core.text xyPoint.pointName ]
         ]
+
+
+andMap : Maybe a -> Maybe (a -> b) -> Maybe b
+andMap =
+  Maybe.map2 (|>)
+  
+map4 : (a -> b -> c -> d -> e) 
+  -> Maybe a
+  -> Maybe b
+  -> Maybe c
+  -> Maybe d
+  -> Maybe e
+  -> Maybe f
+  -> Maybe g
+  -> Maybe h
+  -> Maybe i
+ 
+map4 function maybe1 maybe2 maybe3 maybe4 =
+  Just function
+    |> andMap maybe1
+    |> andMap maybe2
+    |> andMap maybe3
+    |> andMap maybe4
+
+
+
+studentToPoint : Student_Data -> Maybe Point
+studentToPoint student =
+    map4
+        (\salaryExpectation tenthMark twelthMark collegeMark ->
+            Point
+                (student.gender ++ " (" ++ student.dailyStudyingTime") ")
+                (salaryExpectation)
+                (tenthMark)
+                (twelthMark)
+                (collegeMark)          
+        )
+
+        (Just student.salaryExpectation)
+        (Just student.tenthMark)
+        (Just student.twelthMark)
+        (Just student.collegeMark)
+
+
+filterReduceStudents : List Student_Data -> XyData
+filterReduceStudents newStudents = 
+    let 
+        filterStudents
+            List.filterMap studentToPoint newStudents
+    in
+    XyData "Salary Expectation" "Tenth Mark" filterStudents
+
+
+filterData : List Student_Data -> String -> List Student_Data
+filterData dataDone position =
+    List.filter (\c -> c.pos == position) dataDone
