@@ -90,13 +90,10 @@ init _ =
     { url = "https://raw.githubusercontent.com/TornadoTebbe/ElmTest/main/Daten/Student_Behaviour.csv"
     , expect = Http.expectString GotText
     })
-
-
+    
 -- UPDATE
 type Msg
   = GotText (Result Http.Error String)
-
-
 
 --Decodierung der Daten:
 
