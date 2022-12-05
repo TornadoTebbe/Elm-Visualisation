@@ -165,28 +165,7 @@ view model =
             text "Loading..."
 
         Success ->
-            div [style "background" "#80b3ff"] 
-                [ div[style "border-color" "black", style "border-width" "3px", style "border-style" "solid" ] 
-                     [ div [style "padding" "5px", style "font-size" "18px" ] 
-                           [strong[][text "Grafik auswählen: "], buttonPlot]
-                     , Html.br[][]
-                     , div[]
-                         
-                     , Html.br [][]]
-                
-                   
-                , div[ style "display" "flex", style "justify-content" "center", style "background" "#b3d1ff", style "height" "100vh" ][
-                      div [ style "width" "1200px", style "padding" "60px", style "background" "white", style "overflow-x" "auto", style "border-color" "black", style "border-width" "3px", style "border-style" "solid", style "border-top-style" "none" ] [
-          
-            let
-                data : List Student_Data
-                data = model.data
-            in
-            case model of 
-                Data.Scatterplot
-                    let 
-                        xyData : XyData
-                        xyData = XyData
+            
 
         
 
