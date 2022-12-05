@@ -6715,6 +6715,20 @@ var $author$project$Main$studentListe = function (student_liste) {
 };
 var $elm$virtual_dom$VirtualDom$text = _VirtualDom_text;
 var $elm$html$Html$text = $elm$virtual_dom$VirtualDom$text;
+var $author$project$Main$displaytext = function (str) {
+	var _var = $elm$core$String$fromInt(
+		$elm$core$List$length(
+			$author$project$Main$studentListe(
+				_List_fromArray(
+					[str]))));
+	return A2(
+		$elm$html$Html$pre,
+		_List_Nil,
+		_List_fromArray(
+			[
+				$elm$html$Html$text(_var)
+			]));
+};
 var $author$project$Main$view = function (model) {
 	switch (model.$) {
 		case 'Failure':
@@ -6723,18 +6737,7 @@ var $author$project$Main$view = function (model) {
 			return $elm$html$Html$text('Loading...');
 		default:
 			var fullText = model.a;
-			return A2(
-				$elm$html$Html$pre,
-				_List_Nil,
-				_List_fromArray(
-					[
-						$elm$html$Html$text(
-						$elm$core$String$fromInt(
-							$elm$core$List$length(
-								$author$project$Main$studentListe(
-									_List_fromArray(
-										[fullText])))))
-					]));
+			return $author$project$Main$displaytext(fullText);
 	}
 };
 var $author$project$Main$main = $elm$browser$Browser$element(

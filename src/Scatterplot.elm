@@ -261,10 +261,6 @@ map4 : (a -> b -> c -> d -> e)
   -> Maybe c
   -> Maybe d
   -> Maybe e
-  -> Maybe f
-  -> Maybe g
-  -> Maybe h
-  -> Maybe i
  
 map4 function maybe1 maybe2 maybe3 maybe4 =
   Just function

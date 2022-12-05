@@ -10,6 +10,7 @@ import Html.Events exposing (onClick, onInput)
 import String exposing (fromInt, toInt)
 import Debug exposing (log)
 import Http
+import TypedSvg.Attributes exposing (y)
 
 
 main : Program () Model Msg
@@ -21,10 +22,10 @@ main =
         , view = view
         }
 
-type LoadingState
+type Model
   = Failure
   | Loading
-  | Success 
+  | Success Configuration
 
 
 type alias Student_Data =
@@ -50,28 +51,9 @@ type alias Student_Data =
     }
 
 
-type alias Model =
-    { loadingState: LoadingState
-    , data: List Student_Data
-    , certification : String
-    ,  gender : String
-    ,  department : String
-    ,  height : Float
-    ,  weight : Float
-    ,  tenthMark  : Float
-    ,  twelthMark  : Float
-    ,  collegeMark : Float
-    ,  hobbies : String
-    ,  dailyStudyingTime : String
-    ,  preferStudyTime : String
-    ,  salaryExpectation : Int
-    ,  satisfyDegree : String --Bool
-    ,  willignessDegree: String
-    ,  socialMedia : String
-    ,  travellingTime : String
-    ,  stressLevel : String
-    ,  financialStatus : String
-    ,  partTimeJob : String --Bool
+type alias Configuration =
+    { data: List Student_Data
+    , description: String
     }
     
 
@@ -94,6 +76,7 @@ init _ =
 -- UPDATE
 type Msg
   = GotText (Result Http.Error String)
+ {-- | BiggestWin --}
 
 --Decodierung der Daten:
 
@@ -144,16 +127,33 @@ update msg model =
         GotText result ->
             case result of
                 Ok fullText ->
-                   (Success fullText, Cmd.none)
+                   (Success <| { data = csvString_to_data fullText, description = fullText }, Cmd.none)
 
                 Err _ ->
                   {--( { model | status = Failure }, Cmd.none )--}  
                   (Failure, Cmd.none)
 
+        {--BiggestWin ->
+          ( Success <| { m | description= "Whatever stuff"}, Cmd.none ) --}
+
 subscriptions : Model -> Sub Msg
 subscriptions model =
     Sub.none
 
+
+
+
+displaytext : Configuration -> Html Msg
+displaytext conf =
+    let
+        var = String.fromInt (List.length conf.data)
+    in
+         pre [] [ text (var)
+         , text (conf.description)
+         , div [] [Scatterplot conf.data] ]
+        --  , Html.button [ onClick BiggestWin ] [ text "Click me" ] ]
+    
+        
 
 view : Model -> Html Msg
 view model =
@@ -164,7 +164,9 @@ view model =
         Loading ->
             text "Loading..."
 
-        Success ->
+        Success fullText ->
+            displaytext fullText
+
             
 
         
