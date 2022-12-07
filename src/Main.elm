@@ -13,6 +13,7 @@ import Http
 import TypedSvg.Attributes exposing (y)
 
 
+
 main : Program () Model Msg
 main =
     Browser.element
@@ -25,9 +26,10 @@ main =
 type Model
   = Failure
   | Loading
-  | Success Configuration
-
-
+  | Success 
+        {data: List Student_Data
+     , position: String
+        }
 type alias Student_Data =
     {   certification : String
     ,   gender : String
@@ -56,6 +58,8 @@ type alias Configuration =
     , description: String
     }
     
+
+
 
 
 
@@ -149,8 +153,8 @@ displaytext conf =
         var = String.fromInt (List.length conf.data)
     in
          pre [] [ text (var)
-         , text (conf.description)
-         , div [] [Scatterplot conf.data] ]
+         , text (conf.description)]
+        --  , div [] [ScatterplotDaten conf.data] ]
         --  , Html.button [ onClick BiggestWin ] [ text "Click me" ] ]
     
         
