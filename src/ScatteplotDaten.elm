@@ -31,15 +31,12 @@ type Msg
     | ChangePos String
     | ChooseStudent1 String
     | ChooseStudent2 String
-    | ShowText (Svg Msg)
-    | DisableText
-    | Error String
-
+    
 
 
 
 type alias Point =
-    { pointName : String, x : Float, y : Float }
+    { pointName : String, tenthMark : Float, twelthMark : Float, collegeMark : Float}
 
 type alias XyData =
     { xDescription : String
@@ -53,8 +50,8 @@ type Model
   | Success 
         {data: List Student_Data
      , position: String
-     , x: tenthMark
-     , y: twelthMark
+     , x: StudentAttribute
+     , y: StudentAttribute
         }
 
 
@@ -178,29 +175,17 @@ defaultExtent =
 wideExtent : List Float -> ( Float, Float )
 wideExtent values =
     let
-        range =
-            Maybe.withDefault ( 0, 0 ) (Statistics.extent values)
+        closeExtent =
+            Statistics.extent values
+                |> Maybe.withDefault defaultExtent
 
-        minimum =
-            Tuple.first range
-
-        maximum =
-            Tuple.second range
-
-        extended =
-            (maximum - minimum) / toFloat (tickCount * 3)
-
-        upperBound =
-            maximum + extended
-
-        lowerBound =
-            if minimum - extended < 0 then
-                0
-
-            else
-                minimum - extended
+        extension =
+            (Tuple.second closeExtent - Tuple.first closeExtent) / toFloat (2 * tickCount)
     in
-    ( lowerBound, upperBound )
+    ( Tuple.first closeExtent - extension |> max 0
+    , Tuple.second closeExtent + extension
+    )
+
 
 
 
@@ -242,16 +227,6 @@ scatterplot model xValues yValues xBeschr yBeschr =
         punkte =
             List.map2 (\x y -> (x, y)) xValues yValues
 
-
-
-        xValues : List Float
-        xValues =
-            List.map .x xyData.data
-
-        yValues : List Float
-        yValues =
-            List.map .y xyData.data
-
         xScaleLocal : ContinuousScale Float
         xScaleLocal =
             xScale xValues
@@ -270,63 +245,68 @@ scatterplot model xValues yValues xBeschr yBeschr =
             , y = wideExtent yValues |> Tuple.second
             }
     in
-    svg [ viewBox 0 0 w h, TypedSvg.Attributes.width <| TypedSvg.Types.Percent 100, TypedSvg.Attributes.height <| TypedSvg.Types.Percent 100 ]
+        svg [ viewBox 0 0 w h, TypedSvg.Attributes.width <| TypedSvg.Types.Percent 100, TypedSvg.Attributes.height <| TypedSvg.Types.Percent 100 ]
         [ style [] [ TypedSvg.Core.text """
-            .point:hover circle { stroke: rgba(0, 0, 0,1.0); fill: rgb(0,0,0); }
+            .point circle { stroke: rgba(0, 0, 0,0.4); fill: rgba(255, 255, 255,0.3); }
+            .point text { display: none; }
+            .point:hover circle { stroke: rgba(0, 0, 0,1.0); fill: rgb(118, 214, 78); }
+            .point:hover text { display: inline; }
           """ ]
         , g
-            [ transform [ Translate (padding - 1) (padding - 1) ]
-            , class [ "axis" ]
+            [ transform [ Translate (padding - 1) ( padding - 1 ) ]
+            , class [ "point" ]
             , fontSize <| Px 10.0
             , fontFamily [ "sans-serif" ]
             ]
-            [ yAxis yValues
-            , text_ [ textAnchor AnchorMiddle, y (Scale.convert yScaleLocal labelPositions.y - 15), x 0 ] [ TypedSvg.Core.text xyData.yDescription ]
-            ]
-        , g
-            [ transform [ Translate (padding - 1) (padding - 1 + Tuple.first (Scale.range yScaleLocal)) ]
-            , class [ "axis" ]
-            , fontSize <| Px 10.0
-            , fontFamily [ "sans-serif" ]
-            ]
+            []
+
+        , g 
+            [ transform [ Translate (padding - 1) (h - padding) ] ]
             [ xAxis xValues
-            , text_ [ textAnchor AnchorMiddle, y 30, x (Scale.convert xScaleLocal labelPositions.x - 10) ] [ TypedSvg.Core.text xyData.xDescription ]
+             , text_
+                [ x (Scale.convert xScaleLocal labelPositions.x)
+                 , y 30                
+                ]
+                [ text xBeschr ]
             ]
-        , circlePlot xyData xScaleLocal yScaleLocal
+        , g 
+            [transform [ Translate (padding - 1) padding ] ]
+            [ yAxis yValues                             
+            , text_
+                [ x -40
+                , y ( Scale.convert yScaleLocal labelPositions.y - 15)  
+                ]
+                [ text yBeschr ]         
+            ]
+        , g 
+             [transform [ Translate padding padding ] ]
+                (List.map2 (pointCircle xScaleLocal yScaleLocal) model.data punkte)
+              
         ]
+
+
+        
         
 
-pointCircle : ContinuousScale Float -> ContinuousScale Float -> List (TypedSvg.Core.Attribute Msg) -> Point -> Svg Msg
-pointCircle scaleX scaleY circleAttributes xyPoint =
+pointCircle : ContinuousScale Float -> ContinuousScale Float  -> Point -> (Float, Float) -> Svg Msg
+pointCircle scaleX scaleY point xyPoint =
     g [ class [ "point" ] ]
         [ circle
-            ([ cx (Scale.convert scaleX xyPoint.x)
-             , cy (Scale.convert scaleY xyPoint.y)
-             , TypedSvg.Attributes.r (TypedSvg.Types.px 5)
-             
+            [ cx (Scale.convert scaleX (Tuple.first xyPoint))
+            , cy (Scale.convert scaleY (Tuple.second xyPoint))
+            , r radius
              ]
-                ++ circleAttributes
-            )
             []
-        ]
-
-
-
-circlePlot : XyData -> ContinuousScale Float -> ContinuousScale Float -> Svg Msg
-circlePlot data xScaleLocal yScaleLocal =
-    g []
-        [ g
-            [ transform [ Translate padding padding ] ]
-            (List.map
-                (pointCircle xScaleLocal
-                    yScaleLocal
-                    [ TypedSvg.Attributes.fill (TypedSvg.Types.Paint (Color.rgb 255 255 255))
-                    , TypedSvg.Attributes.stroke (TypedSvg.Types.Paint (Color.rgb255 0 0 0))
+            , text_
+                    [ x (Scale.convert scaleX (Tuple.first xyPoint))
+                    , y (Scale.convert scaleY (Tuple.second xyPoint) - (radius + 3))
+                    , textAnchor AnchorMiddle
                     ]
-                )
-                data.data
-            )
+                    [Html.text point.pointName]
         ]
+
+
+
 
 
 
@@ -415,14 +395,36 @@ update msg model =
         GotText result ->
             case result of
                 Ok fullText ->
-                   (Success <| { data = csvString_to_data fullText, description = fullText }, Cmd.none)
+                   (Success <| { data = studentListe [fullText], position = "Night", x = TenthMark, y = TwelthMark }, Cmd.none)
 
                 Err _ ->
-                  {--( { model | status = Failure }, Cmd.none )--}  
-                  (Failure, Cmd.none)
+                  (model, Cmd.none)
 
-        {--BiggestWin ->
-          ( Success <| { m | description= "Whatever stuff"}, Cmd.none ) --}
+        ChangePos newPos ->
+            case model of
+                Success a -> 
+                    (Success <| { data = a.data, position = newPos, x = a.x, y = a.y }, Cmd.none)
+
+                _ ->
+                    (model, Cmd.none)
+
+        ChooseStudent1 xNew ->
+            case model of
+                Success b -> 
+                    (Success <| { data = b.data, position = b.position, x = b.x, y = b.y }, Cmd.none)
+
+                _ ->
+                    (model, Cmd.none)
+
+
+        ChooseStudent2 yNew ->
+            case model of
+                Success c -> 
+                    (Success <| { data = c.data, position = c.position, x = c.x, y = c.y }, Cmd.none)
+
+                _ ->
+                    (model, Cmd.none)
+
 
 subscriptions : Model -> Sub Msg
 subscriptions model =
@@ -440,5 +442,23 @@ view model =
             text "Loading..."
 
         Success fullText ->
-            fullText
+            let
+                filterAttribute : List Student_Data -> StudentAttribute -> List Float
+                filterAttribute points attribut = 
+                    case attribut of
+                        TenthMark ->
+                            List.map .tenthMark points
+
+                        TwelthMark ->
+                            List.map .twelthMark points
+
+                        CollegeMark ->
+                            List.map .collegeMark points
+
+                xVal : List Float
+                xVal =
+                    attribut filData fullText.x
+
+            in
+            
 
