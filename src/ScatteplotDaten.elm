@@ -17,15 +17,26 @@ import Csv
 import Csv.Decode
 import Http
 import Main exposing (..)
+import List exposing (filterMap)
 
+
+type StudentAttribute
+    = TenthMark
+    | TwelthMark
+    | CollegeMark
+    -- | SalaryExpectation
 
 type Msg
     = GotText (Result Http.Error String)
-    -- | ChooseAttribute1 String
-    -- | ChooseAttribute2 String
-    -- | ShowText (Svg Msg)
-    -- | DisableText
-    -- | Error String
+    | ChangePos String
+    | ChooseStudent1 String
+    | ChooseStudent2 String
+    | ShowText (Svg Msg)
+    | DisableText
+    | Error String
+
+
+
 
 type alias Point =
     { pointName : String, x : Float, y : Float }
@@ -48,30 +59,87 @@ type Model
 
 
 
--- type StudentMark 
---     = TenthMark
---     | TwelthMark
---     | CollegeMark
 
 
--- get Attributes
+-- work with Attributes
 
-getAttributes : String -> Student_Data -> Float
-getAttributes str std =
-    case str of
-        "tenth Mark" ->
-                .tenthMark std
+stringToStudent : String -> StudentAttribute
+stringToStudent str =
 
-        "twelth Mark" ->
-                .twelthMark std
+        if str == "tenth Mark" then
+             TenthMark
 
-        _ -> 2.7
+        else if str == "twelth Mark" then
+             TwelthMark
+
+        else
+             CollegeMark
 
 
-studentFloat : List Float
-studentFloat =
-    List.map ( .tenthMark)
+studentToReverseString : StudentAttribute -> String
+studentToReverseString stringo =
+    case stringo of
+        TenthMark ->
+            "tenth Mark"
 
+        TwelthMark ->
+            "twelth Mark"
+
+        CollegeMark ->
+            "college Mark"
+
+
+
+studentToMaybePoint : Student_Data -> Maybe Point
+studentToMaybePoint student =
+    map4 
+        (\tenthMark twelthMark collegeMark ->
+         Point
+            (student.gender ++ "(" ++ student.preferStudyTime "," ++ "," student.dailyStudyingTime ++ ")")
+            (tenthMark)
+            (twelthMark)
+            (collegeMark) 
+        )
+        (Just student.tenthMark)
+        (Just student.twelthMark)
+        (Just student.collegeMark)
+
+
+-- filter and Reduce
+
+filterStudents : List Student_Data -> String -> List Student_Data
+filterStudents allData preferStudyTime =
+    List.filter (\x -> x.preferStudyTime == preferStudyTime) allData
+
+filterAndReduceStudents : List Student_Data -> XyData
+filterAndReduceStudents studentreduce =
+    let 
+        filterStudentitos =
+            List.filterMap studentToMaybePoint studentreduce
+
+    in 
+        XyData "Tenth Grade Mark" "Twelth Grade Mark" filterStudentitos
+
+
+--map 
+
+andMap : Maybe a -> Maybe (a -> b) -> Maybe b
+andMap =
+  Maybe.map2 (|>)
+  
+map4 : (a -> b -> c -> d -> e) 
+  -> Maybe a
+  -> Maybe b
+  -> Maybe c
+  -> Maybe d
+  -> Maybe e
+ 
+map4 function maybe1 maybe2 maybe3 maybe4 =
+  Just function
+    |> andMap maybe1
+    |> andMap maybe2
+    |> andMap maybe3
+    |> andMap maybe4
 
 -- Scatterplot
 
@@ -167,9 +235,15 @@ textSpawnEvent name xPos yPos =
 
 
 
-scatterplot : Model -> XyData -> Svg Msg
-scatterplot model xyData =
+scatterplot : XyData -> List Float -> List Float -> String -> String -> Svg Msg
+scatterplot model xValues yValues xBeschr yBeschr =
     let
+
+        punkte =
+            List.map2 (\x y -> (x, y)) xValues yValues
+
+
+
         xValues : List Float
         xValues =
             List.map .x xyData.data
@@ -367,3 +441,4 @@ view model =
 
         Success fullText ->
             fullText
+

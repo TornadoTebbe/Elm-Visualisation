@@ -11,6 +11,7 @@ import String exposing (fromInt, toInt)
 import Debug exposing (log)
 import Http
 import TypedSvg.Attributes exposing (y)
+import ScatteplotDaten exposing (StudentAttribute)
 
 
 
@@ -29,6 +30,8 @@ type Model
   | Success 
         {data: List Student_Data
      , position: String
+     , x : StudentAttribute
+     , y : StudentAttribute
         }
 type alias Student_Data =
     {   certification : String
@@ -153,7 +156,9 @@ displaytext conf =
         var = String.fromInt (List.length conf.data)
     in
          pre [] [ text (var)
-         , text (conf.description)]
+         , text (conf.description)
+         , div[][scatterplotDaten model]]
+         
         --  , div [] [ScatterplotDaten conf.data] ]
         --  , Html.button [ onClick BiggestWin ] [ text "Click me" ] ]
     

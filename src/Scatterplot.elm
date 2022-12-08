@@ -25,10 +25,7 @@ import Main exposing (Student_Data)
 --     | collegeMark
 
 
-type alias Model =
-    { studentTribute1 : StudentAttributes
-    , studentTribute2 : StudentAttributes
-    }
+
 
 type alias Point =
     { pointName : String, x : Float, y : Float }
