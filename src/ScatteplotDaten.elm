@@ -3,22 +3,49 @@ module ScatteplotDaten exposing (..)
 import Axis
 import Browser
 import Html exposing (..)
-import Html.Attributes
-import Html.Events
+import Html.Attributes exposing (value, href)
+import Html.Events exposing (onInput)
+import Shape exposing (..)
 import Scale exposing (ContinuousScale)
 import Statistics
-import TypedSvg exposing (circle, g, rect, style, svg, text_)
-import TypedSvg.Attributes exposing (class, color, fontFamily, fontSize, textAnchor, transform, viewBox)
-import TypedSvg.Attributes.InPx exposing (cx, cy, height, r, width, x, y)
+import TypedSvg exposing (circle, g, style, svg, text_)
+import TypedSvg.Attributes exposing (class, fontFamily, fontSize, textAnchor, transform, viewBox)
+import TypedSvg.Attributes.InPx exposing (cx, cy, r, x, y)
 import TypedSvg.Core exposing (Svg)
-import TypedSvg.Events
 import TypedSvg.Types exposing (AnchorAlignment(..), Length(..), Transform(..))
 import Csv
 import Csv.Decode
 import Http
-import Main exposing (..)
 import List exposing (filterMap)
+import Html.Events exposing (onInput)
+import TypedSvg.Attributes exposing (points)
+import Scatterplot exposing (scatterplot)
 
+
+
+
+
+type alias Student_Data =
+    {   certification : String
+    ,   gender : String
+    ,   department : String
+    ,   height : Float
+    ,   weight : Float
+    ,   tenthMark  : Float
+    ,   twelthMark  : Float
+    ,   collegeMark : Float
+    ,   hobbies : String
+    ,   dailyStudyingTime : String
+    ,   preferStudyTime : String
+    ,   salaryExpectation : Int
+    ,   satisfyDegree : String --Bool
+    ,   willignessDegree: String
+    ,   socialMedia : String
+    ,   travellingTime : String
+    ,   stressLevel : String
+    ,   financialStatus : String
+    ,   partTimeJob : String --Bool
+    }
 
 type StudentAttribute
     = TenthMark
@@ -28,9 +55,9 @@ type StudentAttribute
 
 type Msg
     = GotText (Result Http.Error String)
-    | ChangePos String
-    | ChooseStudent1 String
-    | ChooseStudent2 String
+    | ChangeStudTime String
+    | ChooseStudent1 StudentAttribute
+    | ChooseStudent2 StudentAttribute
     
 
 
@@ -49,7 +76,7 @@ type Model
   | Loading
   | Success 
         {data: List Student_Data
-     , position: String
+     , dailyStudyingTime: String
      , x: StudentAttribute
      , y: StudentAttribute
         }
@@ -89,13 +116,13 @@ studentToReverseString stringo =
 
 studentToMaybePoint : Student_Data -> Maybe Point
 studentToMaybePoint student =
-    map4 
+    map3 
         (\tenthMark twelthMark collegeMark ->
-         Point
-            (student.gender ++ "(" ++ student.preferStudyTime "," ++ "," student.dailyStudyingTime ++ ")")
-            (tenthMark)
-            (twelthMark)
-            (collegeMark) 
+            Point
+                (student.gender)
+                (tenthMark)
+                (twelthMark)
+                (collegeMark) 
         )
         (Just student.tenthMark)
         (Just student.twelthMark)
@@ -124,19 +151,18 @@ andMap : Maybe a -> Maybe (a -> b) -> Maybe b
 andMap =
   Maybe.map2 (|>)
   
-map4 : (a -> b -> c -> d -> e) 
+map3 : (a -> b -> c -> d) 
   -> Maybe a
   -> Maybe b
   -> Maybe c
   -> Maybe d
-  -> Maybe e
  
-map4 function maybe1 maybe2 maybe3 maybe4 =
+map3 function maybe1 maybe2 maybe3 =
   Just function
     |> andMap maybe1
     |> andMap maybe2
     |> andMap maybe3
-    |> andMap maybe4
+
 
 -- Scatterplot
 
@@ -207,16 +233,6 @@ xAxis values =
 yAxis : List Float -> Svg msg
 yAxis values =
     Axis.left [ Axis.tickCount tickCount ] (yScale values)
-
-
-textSpawnEvent : String -> Float -> Float -> Svg Msg
-textSpawnEvent name xPos yPos =
-    text_
-        [ x xPos
-        , y yPos
-        , textAnchor AnchorMiddle
-        ]
-        [ TypedSvg.Core.text name ]
 
 
 
@@ -354,6 +370,36 @@ pointCircle scaleX scaleY point xyPoint =
 
 
 
+changeTimelul : Html Msg
+changeTimelul =
+    Html.select
+        [onInput ChangeStudTime]
+        [Html.option [value "0 - 30 minute"] [Html.text "0 - 30 minutes"]
+        ,Html.option [value "30 - 60 minute"] [Html.text "30 - 60 minutes"]
+        ,Html.option [value "1 - 2 Hour"] [Html.text "1 - 2 hours"]
+        ,Html.option [value "2 - 3 hour"] [Html.text "2 - 3 hours"]
+        ,Html.option [value "3 - 4 hour"] [Html.text "3 - 4 hours"]
+        ,Html.option [value "More Than 4 hour"] [Html.text "More Than 4 hours"]
+        ]
+
+
+buttonX : Html Msg
+buttonX =
+    Html.select
+        [ onInput (\x -> stringToStudent x |> ChooseStudent1) ]
+        [Html.option [value "10th Mark"] [Html.text "10th Grade Mark"]
+        ,Html.option [value "12th Mark"] [Html.text "12th Grade Mark"]
+        ,Html.option [value "college mark"] [Html.text "College Mark"]  
+        ]
+
+buttonY : Html Msg
+buttonY =
+    Html.select
+        [ onInput (\y -> stringToStudent y |> ChooseStudent2) ]
+        [Html.option [value "10th Mark"] [Html.text "10th Grade Mark"]
+        ,Html.option [value "12th Mark"] [Html.text "12th Grade Mark"]
+        ,Html.option [value "college mark"] [Html.text "College Mark"]  
+        ]
 
 
 
@@ -395,15 +441,15 @@ update msg model =
         GotText result ->
             case result of
                 Ok fullText ->
-                   (Success <| { data = studentListe [fullText], position = "Night", x = TenthMark, y = TwelthMark }, Cmd.none)
+                   (Success <| { data = studentListe [fullText], dailyStudyingTime = "Test12", x = TenthMark, y = TwelthMark }, Cmd.none)
 
                 Err _ ->
                   (model, Cmd.none)
 
-        ChangePos newPos ->
+        ChangeStudTime newTime ->
             case model of
                 Success a -> 
-                    (Success <| { data = a.data, position = newPos, x = a.x, y = a.y }, Cmd.none)
+                    (Success <| { data = a.data, dailyStudyingTime = newTime, x = a.x, y = a.y }, Cmd.none)
 
                 _ ->
                     (model, Cmd.none)
@@ -411,7 +457,7 @@ update msg model =
         ChooseStudent1 xNew ->
             case model of
                 Success b -> 
-                    (Success <| { data = b.data, position = b.position, x = b.x, y = b.y }, Cmd.none)
+                    (Success <| { data = b.data, dailyStudyingTime = b.dailyStudyingTime, x = xNew, y = b.y }, Cmd.none)
 
                 _ ->
                     (model, Cmd.none)
@@ -420,7 +466,7 @@ update msg model =
         ChooseStudent2 yNew ->
             case model of
                 Success c -> 
-                    (Success <| { data = c.data, position = c.position, x = c.x, y = c.y }, Cmd.none)
+                    (Success <| { data = c.data, dailyStudyingTime = c.dailyStudyingTime, x = c.x, y = yNew }, Cmd.none)
 
                 _ ->
                     (model, Cmd.none)
@@ -457,8 +503,95 @@ view model =
 
                 xVal : List Float
                 xVal =
-                    attribut filData fullText.x
+                    filterAttribute filData fullText.x
+
+                yVal : List Float
+                yVal =
+                    filterAttribute filData fullText.y
+
+                filData =
+                    filterStudents fullText.data fullText.dailyStudyingTime
+
+                -- numStud =  brauchen für spätere Anzeige, wenn Listenlänge anzeigen.
+                --     List.length fullText.data
+                
+                -- numFilStud =
+                --     List.length filData
+
+                filRedNumStud =
+                    filterAndReduceStudents (filterStudents fullText.data fullText.dailyStudyingTime)
 
             in
+            Html.div [Html.Attributes.style "padding" "20px"] 
+                 [Html.p [Html.Attributes.style "fontSize" "16px"] []
+
+                , Html.h2 []
+                    [Html.text ("Scatterplot")]
+
+                , Html.p []
+                     [ Html.text ("Auswahl der täglichen Lernzeit: ")
+                     , Html.br [][]
+                     , changeTimelul                    
+                     ]
+
+                    , Html.h3 []
+                    [Html.text ("Scatterplot Lernzeit " ++ fullText.dailyStudyingTime ++ ":")]
+                , Html.p []
+                [ Html.text ("TestString44")]
+
+                 , Html.p []
+                [ Html.text ("TestString55")] 
+                
+
+                , Html.h4 []
+                    [ Html.text ("Auswahl X-Achse: ")
+                    , buttonX
+                    , Html.text ("  Auswahl Y-Achse: ")
+                    , buttonY ]
+        , scatterplot filRedNumStud xVal yVal (studentToReverseString fullText.x) (studentToReverseString fullText.y)
+        ] 
+
+
+
+
+csvString_to_data : String -> List Student_Data
+csvString_to_data csvRaw =
+    Csv.parse csvRaw
+        |> Csv.Decode.decodeCsv decodeCsvStudentdata
+        |> Result.toMaybe
+        |> Maybe.withDefault []
+
+
+decodeCsvStudentdata : Csv.Decode.Decoder (Student_Data -> a ) a 
+decodeCsvStudentdata =
+    Csv.Decode.map Student_Data
+        (Csv.Decode.field "Certification Course" Ok
+              |> Csv.Decode.andMap (Csv.Decode.field "Gender" Ok)
+              |> Csv.Decode.andMap (Csv.Decode.field "Department" Ok)
+              |> Csv.Decode.andMap (Csv.Decode.field "Height(CM)"(String.toFloat >> Result.fromMaybe "error parsing string"))
+              |> Csv.Decode.andMap (Csv.Decode.field "Weight(KG)" (String.toFloat >> Result.fromMaybe "error parsing string"))
+              |> Csv.Decode.andMap (Csv.Decode.field "10th Mark" (String.toFloat >> Result.fromMaybe "error parsing string"))
+              |> Csv.Decode.andMap (Csv.Decode.field "12th Mark" (String.toFloat >> Result.fromMaybe "error parsing string"))
+              |> Csv.Decode.andMap (Csv.Decode.field "college mark" (String.toFloat >> Result.fromMaybe "error parsing string"))
+              |> Csv.Decode.andMap (Csv.Decode.field "hobbies" Ok)
+              |> Csv.Decode.andMap (Csv.Decode.field "daily studing time" Ok)
+              |> Csv.Decode.andMap (Csv.Decode.field "prefer to study in" Ok)
+              |> Csv.Decode.andMap (Csv.Decode.field "salary expectation" (String.toInt >> Result.fromMaybe "error parsing string"))
+              |> Csv.Decode.andMap (Csv.Decode.field "Do you like your degree?" Ok) --(String.toBool >> Result.fromMaybe "error parsing string")) 
+              |> Csv.Decode.andMap (Csv.Decode.field "willingness to pursue a career based on their degree  " Ok)
+              |> Csv.Decode.andMap (Csv.Decode.field "social medai & video" Ok)
+              |> Csv.Decode.andMap (Csv.Decode.field "Travelling Time " Ok)
+              |> Csv.Decode.andMap (Csv.Decode.field "Stress Level " Ok)
+              |> Csv.Decode.andMap (Csv.Decode.field "Financial Status" Ok)
+              |> Csv.Decode.andMap (Csv.Decode.field "part-time job" Ok) --(String.tool >> Result.fromMaybe "error parsing string")) 
+        )
+
+
+studentListe : List String -> List Student_Data
+studentListe student_liste =
+    List.map(\x -> csvString_to_data x) student_liste
+        |> List.concat
+
+
             
 
