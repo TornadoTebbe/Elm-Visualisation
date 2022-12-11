@@ -1,4 +1,4 @@
-module ScatteplotDaten exposing (..)
+module ScatterplotDaten exposing (..)
 
 import Axis
 import Browser
@@ -131,8 +131,8 @@ studentToMaybePoint student =
 -- filter and Reduce
 
 filterStudents : List Student_Data -> String -> List Student_Data
-filterStudents allData preferStudyTime =
-    List.filter (\x -> x.preferStudyTime == preferStudyTime) allData
+filterStudents allData filterString =
+    List.filter (\x -> filterString == x.dailyStudyingTime) allData
 
 filterAndReduceStudents : List Student_Data -> XyData
 filterAndReduceStudents studentreduce =
@@ -441,7 +441,7 @@ update msg model =
         GotText result ->
             case result of
                 Ok fullText ->
-                   (Success <| { data = studentListe [fullText], dailyStudyingTime = "Test12", x = TenthMark, y = TwelthMark }, Cmd.none)
+                   (Success <| { data = studentListe [fullText], dailyStudyingTime = "0 - 30 minute", x = TenthMark, y = TwelthMark }, Cmd.none)
 
                 Err _ ->
                   (model, Cmd.none)
@@ -509,8 +509,9 @@ view model =
                 yVal =
                     filterAttribute filData fullText.y
 
+                filData :  List Student_Data
                 filData =
-                    filterStudents fullText.data fullText.dailyStudyingTime
+                    filterStudents fullText.data fullText.dailyStudyingTime 
 
                 -- numStud =  brauchen für spätere Anzeige, wenn Listenlänge anzeigen.
                 --     List.length fullText.data
@@ -518,6 +519,7 @@ view model =
                 -- numFilStud =
                 --     List.length filData
 
+                filRedNumStud : XyData
                 filRedNumStud =
                     filterAndReduceStudents (filterStudents fullText.data fullText.dailyStudyingTime)
 
@@ -537,7 +539,7 @@ view model =
                     , Html.h3 []
                     [Html.text ("Scatterplot Lernzeit " ++ fullText.dailyStudyingTime ++ ":")]
                 , Html.p []
-                [ Html.text ("TestString44")]
+                [ Html.text (String.fromInt (List.length xVal))] --hier ändern für big stonks male female
 
                  , Html.p []
                 [ Html.text ("TestString55")] 
