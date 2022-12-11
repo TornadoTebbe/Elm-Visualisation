@@ -19,7 +19,6 @@ import Http
 import List exposing (filterMap)
 import Html.Events exposing (onInput)
 import TypedSvg.Attributes exposing (points)
-import Scatterplot exposing (scatterplot)
 
 
 
@@ -381,6 +380,7 @@ changeTimelul =
         ,Html.option [value "3 - 4 hour"] [Html.text "3 - 4 hours"]
         ,Html.option [value "More Than 4 hour"] [Html.text "More Than 4 hours"]
         ]
+        
 
 
 buttonX : Html Msg
@@ -548,8 +548,8 @@ view model =
                     , buttonX
                     , Html.text ("  Auswahl Y-Achse: ")
                     , buttonY ]
-        , scatterplot filRedNumStud xVal yVal (studentToReverseString fullText.x) (studentToReverseString fullText.y)
-        ] 
+                , scatterplot filRedNumStud xVal yVal (studentToReverseString fullText.x) (studentToReverseString fullText.y)
+                ] 
 
 
 
