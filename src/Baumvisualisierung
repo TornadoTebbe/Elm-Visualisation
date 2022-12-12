@@ -4,8 +4,10 @@ import Browser
 import Color
 import Dict exposing (Dict)
 import Html exposing (Html)
-import Html.Attributes
 import Html.Events
+import Http
+import Json.Decode
+import Tree exposing (Tree)
 import TreeLayout
 import TypedSvg
 import TypedSvg.Attributes
@@ -16,20 +18,33 @@ import TypedSvg.Types
 -- type erstellen
 
 
+
 type alias Model =
-    { radius : Float
+    { wide : Float
+    , height : Float
+    , radius : Float
     , distance : Float
+    , tree : Tree String
     , error : String
     }
 
 
 type Msg
-    = ChangeRadius String
+    = ChangeWide String
+    | ChangeHeight String
     | ChangeDistance String
+    | GotStudent (Result Http.Error (Tree String))
     | Error String
 
 
+type alias Coordinate =
+    { x : Float
+    , y : Float
+    }
 
+
+
+treeDecoder : Json.Decode.Decoder (Tree String)
 treeDecoder =
     Json.Decode.map2
         (\name children ->
@@ -40,7 +55,7 @@ treeDecoder =
                 Just c ->
                     Tree.tree name c
         )
-        (Json.Decode.at [ "data", "id" ] Json.Decode.string)
+        (Json.Decode.at [ "name" ] Json.Decode.string)
         (Json.Decode.maybe <|
             Json.Decode.field "children" <|
                 Json.Decode.list <|
@@ -52,8 +67,153 @@ treeDecoder =
 init : () -> ( Model, Cmd Msg )
 init () =
     ( { wide = 55000, height = 1500, radius = 100, distance = 5, tree = Tree.singleton "", error = "Loading something....." }
-    , Http.get { url = "http://localhost:8000/data/world.json", expect = Http.expectJson GotFlare treeDecoder }
+    , Http.get { url = "https://github.com/TornadoTebbe/ElmTest2/blob/main/Daten/student.json", expect = Http.expectJson GotStudent treeDecoder }
     )
+
+
+
+update : Msg -> Model -> ( Model, Cmd Msg )
+update msg model =
+    case msg of
+        ChangeWide wide ->
+            case String.toFloat wide of
+                Just w ->
+                    ( { model | wide = w, error = "" }
+                    , Cmd.none
+                    )
+
+                Nothing ->
+                    update (Error "Wide must be a float!") model
+
+        ChangeHeight height ->
+            case String.toFloat height of
+                Just h ->
+                    ( { model | height = h, error = "" }
+                    , Cmd.none
+                    )
+
+                Nothing ->
+                    update (Error "Height must be a float!") model
+
+
+        ChangeDistance distance ->
+            case String.toFloat distance of
+                Just d ->
+                    ( { model | distance = d, error = "" }
+                    , Cmd.none
+                    )
+
+                Nothing ->
+                    update (Error "Distance must be a float!") model
+
+        GotStudent load ->
+            case load of
+                Ok newTree ->
+                    ( { model | tree = newTree }, Cmd.none )
+
+                Err error ->
+                    ( { model
+                        | tree = Tree.singleton ""
+                        , error =
+                            case error of
+                                Http.BadBody newErrorMsg ->
+                                    newErrorMsg
+
+                                _ ->
+                                    "Tree-Loading-Error"
+                      }
+                    , Cmd.none
+                    )
+
+        Error e ->
+            ( { model | error = e }
+            , Cmd.none
+            )
+
+
+
+
+drawCircle : String -> Float -> Float -> Float -> Svg Msg
+drawCircle name x y r =
+    TypedSvg.g []
+        [ TypedSvg.circle
+            [ TypedSvg.Attributes.fill (TypedSvg.Types.Paint (Color.rgb255 255 255 255))
+            , TypedSvg.Attributes.stroke (TypedSvg.Types.Paint (Color.rgb255 0 0 0))
+            , TypedSvg.Attributes.InPx.cx x
+            , TypedSvg.Attributes.InPx.cy y
+            , TypedSvg.Attributes.InPx.r r
+            ]
+            []
+        , TypedSvg.text_
+            [ TypedSvg.Attributes.InPx.x x
+            , TypedSvg.Attributes.InPx.y (y + 5.5)
+            , TypedSvg.Attributes.textAnchor TypedSvg.Types.AnchorMiddle
+            , TypedSvg.Attributes.fill (TypedSvg.Types.Paint (Color.rgb255 0 0 0))
+            ]
+            [ TypedSvg.Core.text name
+            ]
+        ]
+
+
+
+
+drawTreeLines : List ( String, Maybe String ) -> Dict String { x : Float, y : Float } -> List (Svg Msg)
+drawTreeLines data dict =
+    let
+        helper : String -> Bool -> Float
+        helper name isX =
+            case Dict.get name dict of
+                Just p ->
+                    if isX then
+                        p.x
+
+                    else
+                        p.y
+
+                Nothing ->
+                    0
+    in
+    List.map
+        (\( node, mParent ) ->
+            case mParent of
+                Just parent ->
+                    TypedSvg.line
+                        [ TypedSvg.Attributes.InPx.x1 (helper node True)
+                        , TypedSvg.Attributes.InPx.y1 (helper node False)
+                        , TypedSvg.Attributes.InPx.x2 (helper parent True)
+                        , TypedSvg.Attributes.InPx.y2 (helper parent False)
+                        , TypedSvg.Attributes.stroke (TypedSvg.Types.Paint (Color.rgb255 0 0 0))
+                        ]
+                        []
+
+                Nothing ->
+                    TypedSvg.g [] []
+        )
+        data
+
+
+
+
+drawTree : List ( String, Maybe String ) -> Dict String { x : Float, y : Float } -> Float -> Svg Msg
+drawTree data dict radius =
+    let
+        list =
+            Dict.toList dict
+    in
+    TypedSvg.g
+        []
+        (drawTreeLines data dict
+            ++ List.map
+                (\( name, { x, y } ) -> drawCircle name x y radius)
+                list
+        )
+
+
+
+
+
+
+
 
 
 view : Model -> Html Msg
