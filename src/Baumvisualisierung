@@ -12,3 +12,68 @@ import TypedSvg.Attributes
 import TypedSvg.Attributes.InPx
 import TypedSvg.Core exposing (Svg)
 import TypedSvg.Types
+
+-- type erstellen
+
+
+type alias Model =
+    { radius : Float
+    , distance : Float
+    , error : String
+    }
+
+
+type Msg
+    = ChangeRadius String
+    | ChangeDistance String
+    | Error String
+
+
+
+treeDecoder =
+    Json.Decode.map2
+        (\name children ->
+            case children of
+                Nothing ->
+                    Tree.tree name []
+
+                Just c ->
+                    Tree.tree name c
+        )
+        (Json.Decode.at [ "data", "id" ] Json.Decode.string)
+        (Json.Decode.maybe <|
+            Json.Decode.field "children" <|
+                Json.Decode.list <|
+                    Json.Decode.lazy
+                        (\_ -> treeDecoder)
+        )
+
+
+init : () -> ( Model, Cmd Msg )
+init () =
+    ( { wide = 55000, height = 1500, radius = 100, distance = 5, tree = Tree.singleton "", error = "Loading something....." }
+    , Http.get { url = "http://localhost:8000/data/world.json", expect = Http.expectJson GotFlare treeDecoder }
+    )
+
+
+view : Model -> Html Msg
+view model =
+    Html.div []
+        ([ Html.text model.error
+         , Html.text "Radius: "
+         , Html.input [ Html.Events.onInput ChangeRadius ] []
+         , Html.text "Distance: "
+         , Html.input [ Html.Events.onInput ChangeDistance ] []
+         ]
+            ++ treeView model
+        )
+
+
+main : Program () Model Msg
+main =
+    Browser.sandbox
+        { init = init
+        , view = view
+        , update = update
+        , subscriptions
+        }
