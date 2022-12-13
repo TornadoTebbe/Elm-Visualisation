@@ -1,4 +1,4 @@
-module Baumvisualisierug exposing (..)
+module Baumvisualisierung exposing (..)
 
 import Browser
 import Color
@@ -15,9 +15,6 @@ import TypedSvg.Attributes.InPx
 import TypedSvg.Core exposing (Svg)
 import TypedSvg.Types
 
--- type erstellen
-
-
 
 type alias Model =
     { wide : Float
@@ -32,17 +29,10 @@ type alias Model =
 type Msg
     = ChangeWide String
     | ChangeHeight String
+    | ChangeRadius String
     | ChangeDistance String
-    | GotStudent (Result Http.Error (Tree String))
+    | GotFlare (Result Http.Error (Tree String))
     | Error String
-
-
-type alias Coordinate =
-    { x : Float
-    , y : Float
-    }
-
-
 
 treeDecoder : Json.Decode.Decoder (Tree String)
 treeDecoder =
@@ -55,7 +45,7 @@ treeDecoder =
                 Just c ->
                     Tree.tree name c
         )
-        (Json.Decode.at [ "name" ] Json.Decode.string)
+        (Json.Decode.field "name" Json.Decode.string)
         (Json.Decode.maybe <|
             Json.Decode.field "children" <|
                 Json.Decode.list <|
@@ -64,12 +54,11 @@ treeDecoder =
         )
 
 
-init : () -> ( Model, Cmd Msg )
-init () =
-    ( { wide = 55000, height = 1500, radius = 100, distance = 5, tree = Tree.singleton "", error = "Loading something....." }
-    , Http.get { url = "https://github.com/TornadoTebbe/ElmTest2/blob/main/Daten/student.json", expect = Http.expectJson GotStudent treeDecoder }
+initialModel : () -> ( Model, Cmd Msg )
+initialModel () =
+    ( { wide = 3000, height = 2000, radius = 100, distance = 20, tree = Tree.singleton "", error = "shit...." }
+    , Http.get { url = "https://raw.githubusercontent.com/TornadoTebbe/Elm2/main/Daten/treeStudent.json?token=GHSAT0AAAAAAB3FJIF5QZNFNYSEBYM4RXX2Y4YQIMA", expect = Http.expectJson GotFlare treeDecoder }
     )
-
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
@@ -95,6 +84,15 @@ update msg model =
                 Nothing ->
                     update (Error "Height must be a float!") model
 
+        ChangeRadius radius ->
+            case String.toFloat radius of
+                Just r ->
+                    ( { model | radius = r, error = "" }
+                    , Cmd.none
+                    )
+
+                Nothing ->
+                    update (Error "Radius must be a float!") model
 
         ChangeDistance distance ->
             case String.toFloat distance of
@@ -106,7 +104,7 @@ update msg model =
                 Nothing ->
                     update (Error "Distance must be a float!") model
 
-        GotStudent load ->
+        GotFlare load ->
             case load of
                 Ok newTree ->
                     ( { model | tree = newTree }, Cmd.none )
@@ -131,13 +129,11 @@ update msg model =
             )
 
 
-
-
 drawCircle : String -> Float -> Float -> Float -> Svg Msg
 drawCircle name x y r =
     TypedSvg.g []
         [ TypedSvg.circle
-            [ TypedSvg.Attributes.fill (TypedSvg.Types.Paint (Color.rgb255 255 255 255))
+            [ TypedSvg.Attributes.fill (TypedSvg.Types.Paint (Color.rgb255 128 128 128))
             , TypedSvg.Attributes.stroke (TypedSvg.Types.Paint (Color.rgb255 0 0 0))
             , TypedSvg.Attributes.InPx.cx x
             , TypedSvg.Attributes.InPx.cy y
@@ -153,8 +149,6 @@ drawCircle name x y r =
             [ TypedSvg.Core.text name
             ]
         ]
-
-
 
 
 drawTreeLines : List ( String, Maybe String ) -> Dict String { x : Float, y : Float } -> List (Svg Msg)
@@ -192,8 +186,6 @@ drawTreeLines data dict =
         data
 
 
-
-
 drawTree : List ( String, Maybe String ) -> Dict String { x : Float, y : Float } -> Float -> Svg Msg
 drawTree data dict radius =
     let
@@ -209,31 +201,124 @@ drawTree data dict radius =
         )
 
 
+deleteDoublesInList : List ( String, Maybe String ) -> List ( String, Maybe String )
+deleteDoublesInList list =
+    let
+        deleteDoublesInListHelper : List ( String, Maybe String ) -> List ( String, Maybe String ) -> List ( String, Maybe String )
+        deleteDoublesInListHelper l res =
+            case List.head l of
+                Just ( headName, headTail ) ->
+                    deleteDoublesInListHelper (List.filter (\( x, _ ) -> x /= headName) l) (res ++ [ ( headName, headTail ) ])
+
+                Nothing ->
+                    res
+    in
+    deleteDoublesInListHelper list []
 
 
+transformTreeData : Tree String -> List ( String, Maybe String )
+transformTreeData tree =
+    let
+        transformTreeDataHelper : Tree String -> List ( String, Maybe String ) -> List ( String, Maybe String )
+        transformTreeDataHelper t l =
+            case Tree.children t of
+                head :: tail ->
+                    List.concat (List.map (\el -> transformTreeDataHelper el (l ++ [ ( Tree.label el, Just (Tree.label t) ) ])) ([ head ] ++ tail))
+
+                [] ->
+                    l
+    in
+    deleteDoublesInList ([ ( Tree.label tree, Nothing ) ] ++ transformTreeDataHelper tree [])
 
 
+treeView : Model -> List (Svg Msg)
+treeView model =
+    let
+        w =
+            model.wide
 
+        h =
+            model.height
+
+        padding =
+            50
+
+        treeData =
+            transformTreeData model.tree
+
+        treeTemp =
+            TreeLayout.treeLayout
+                (2 * model.radius + model.distance)
+                treeData
+
+        tree =
+            Dict.fromList (List.map (\( name, { x, y } ) -> ( name, { x = x + w / 2, y = (y - 1) * (2 * model.radius + model.distance) } )) (Dict.toList treeTemp))
+    in
+    [ TypedSvg.svg [ TypedSvg.Attributes.viewBox 0 -100 (w + padding) (h + padding), TypedSvg.Attributes.width <| TypedSvg.Types.Percent 100, TypedSvg.Attributes.height <| TypedSvg.Types.Percent 100 ]
+        [ TypedSvg.g [ TypedSvg.Attributes.transform [ TypedSvg.Types.Translate padding padding ] ]
+            [ drawTree treeData tree model.radius ]
+        ]
+    ]
+
+
+zoomedTreeView : Model -> List (Svg Msg)
+zoomedTreeView model =
+    let
+        w =
+            model.wide
+
+        h =
+            model.height
+
+        padding =
+            50
+
+        treeData =
+            transformTreeData model.tree
+
+        treeTemp =
+            TreeLayout.treeLayout
+                (2 * model.radius + model.distance)
+                treeData
+
+        tree =
+            Dict.fromList (List.map (\( name, { x, y } ) -> ( name, { x = x + w / 2, y = (y - 1) * (2 * model.radius + model.distance) } )) (Dict.toList treeTemp))
+    in
+    [ TypedSvg.svg
+        [ TypedSvg.Attributes.viewBox 0 -100 (w + padding) (h + padding)
+        , TypedSvg.Attributes.width <| TypedSvg.Types.Percent 2000
+        , TypedSvg.Attributes.height <| TypedSvg.Types.Percent 2000
+        ]
+        [ TypedSvg.g [ TypedSvg.Attributes.transform [ TypedSvg.Types.Translate padding padding ] ]
+            [ drawTree treeData tree model.radius ]
+        ]
+    ]
 
 
 view : Model -> Html Msg
 view model =
     Html.div []
         ([ Html.text model.error
+         , Html.text "Breite: "
+         , Html.input [ Html.Events.onInput ChangeWide ] []
+         , Html.text "Höhe: "
+         , Html.input [ Html.Events.onInput ChangeHeight ] []
          , Html.text "Radius: "
          , Html.input [ Html.Events.onInput ChangeRadius ] []
-         , Html.text "Distance: "
+         , Html.text "Abstand: "
          , Html.input [ Html.Events.onInput ChangeDistance ] []
          ]
             ++ treeView model
+            ++ [ Html.text "Hier drunter befindet sich der Graph herangezoomed (Evtl. muss nach rechts gescrolled werden)." ]
+            ++ zoomedTreeView model
         )
 
 
 main : Program () Model Msg
 main =
-    Browser.sandbox
-        { init = init
+    Browser.element
+        { init = initialModel
         , view = view
         , update = update
-        , subscriptions
+        , subscriptions = \model -> Sub.none
         }
