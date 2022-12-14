@@ -19,6 +19,7 @@ import TypedSvg.Types exposing (AnchorAlignment(..), Length(..), Opacity(..), Pa
 import Http
 import Csv.Decode exposing (..)
 import Csv exposing (..)
+import ScatterplotDaten exposing (StudentAttribute(..))
 
 
 
@@ -51,7 +52,7 @@ type Msg
     | ChoosePos1 (Student_Data -> Float -> String)
     | ChoosePos2 (Student_Data -> Float -> String)
     | ChoosePos3 (Student_Data -> Float -> String)
-    | ChoosePos4 (Student_Data -> Float -> String)
+    | ChoosePos4 (Student_Data -> String -> String)
 
 
 type Model 
@@ -63,7 +64,7 @@ type Model
         , wert1 : Student_Data -> Float
         , wert2 : Student_Data -> Float
         , wert3 : Student_Data -> Float
-        , wert4 : Student_Data -> Float
+        , wert4 : Student_Data -> String
         , wertName1 : String
         , wertName2 : String
         , wertName3 : String
@@ -338,24 +339,94 @@ changeTimelul =
 
 
 
-
-update : Msg -> Model -> Model
+update : Msg -> Model -> ( Model, Cmd Msg)
 update msg model =
     case msg of
         GotText result ->
             case result of
                 Ok fullText ->
-                    ( Success <| {data = studentListe [fullText], socialMedia = "0 minute", wert1 = .})
+                    ( Success <| {data = studentListe [fullText], studTime = "0 - 30 minute", wert1 = .tenthMark, wert2 = .twelthMark, wert3 = .collegeMark, wert4 = .willignessDegree,
+                    wertName1 = "Tenth Mark", wertName2 = "Twelth Mark", wertName3 = "College Mark", wertName4 = "Willingness to pursie Degree"} , Cmd.none)
+
+                Err _ ->
+                    (model, Cmd.none)
+
+        ChangeStudTime studTimeNew ->
+            case model of
+                Success first ->
+                    ( Success <| {data = first.data , studTime = studTimeNew, wert1 = first.wert1, wert2 = first.wert2, wert3 = first.wert3, wert4 = first.wert4,
+                    wertName1 = first.wertName1, wertName2 = first.wertName2, wertName3 = first.wertName3, wertName4 = first.wertName4} , Cmd.none)
 
 
+                _ ->
+                    (model, Cmd.none)
 
 
+        ChoosePos1 (wert1New, wertName1New) ->
+            case model of
+                Success sec ->
+                    ( Success <| {data = sec.data , studTime = sec.studTime, wert1 = wert1New, wert2 = sec.wert2, wert3 = sec.wert3, wert4 = sec.wert4,
+                    wertName1 = wertName1New, wertName2 = sec.wertName2, wertName3 = sec.wertName3, wertName4 = sec.wertName4} , Cmd.none)
 
-        TauschA ->
-            { model | accessWerte2 = List.Extra.swapAt 0 1 model.accessWerte2, wert1 = model.wert2, wert2 = model.wert1 }
 
-        TauschB ->
-            { model | accessWerte2 = List.Extra.swapAt 1 2 model.accessWerte2, wert2 = model.wert3, wert3 = model.wert2 }
+                _ ->
+                    (model, Cmd.none)
 
-        TauschC ->
-            { model | accessWerte2 = List.Extra.swapAt 2 3 model.accessWerte2, wert3 = model.wert4, wert4 = model.wert3 }
+        ChoosePos2 (wert2New, wertName2New) ->
+            case model of
+                Success third ->
+                    ( Success <| {data = third.data , studTime = third.studTime, wert1 = third.wert1, wert2 = wert2New, wert3 = third.wert3, wert4 = third.wert4,
+                    wertName1 = third.wertName1, wertName2 = wertName2New, wertName3 = third.wertName3, wertName4 = third.wertName4} , Cmd.none)
+
+
+                _ ->
+                    (model, Cmd.none)
+
+        ChoosePos3 (wert3New, wertName3New) ->
+            case model of
+                Success fourth ->
+                    ( Success <| {data = fourth.data , studTime = fourth.studTime, wert1 = fourth.wert1, wert2 = fourth.wert2, wert3 = wert3New, wert4 = fourth.wert4,
+                    wertName1 = fourth.wertName1, wertName2 = fourth.wertName2, wertName3 = wertName3New, wertName4 = fourth.wertName4} , Cmd.none)
+
+
+                _ ->
+                    (model, Cmd.none)
+
+        ChoosePos4 (wert4New, wertName4New) ->
+            case model of
+                Success fifth ->
+                    ( Success <| {data = fifth.data , studTime = fifth.studTime, wert1 = fifth.wert1, wert2 = fifth.wert2, wert3 = fifth.wert3, wert4 = wert4New,
+                    wertName1 = fifth.wertName1, wertName2 = fifth.wertName2, wertName3 = fifth.wertName3, wertName4 = wertName4New} , Cmd.none)
+
+                _ ->
+                    (model, Cmd.none)
+            
+
+--einfügen der Viewfunktion, anfängliche Übernahme aus dem Scatterplot
+
+view : Model -> Html Msg
+view model =
+    case model of
+        Failure ->
+            text "I was unable to load your data."
+
+        Loading ->
+            text "Loading..."
+
+        Success fullText ->
+            let
+
+                filData :  List Student_Data
+                filData =
+                    filterStudents fullText.data fullText.dailyStudyingTime 
+
+
+                multiDimensionaleDaten =
+                    MultiDimData (List.map Tuple.first (my_access_function model))
+                        [ List.map
+                            (\data ->
+                                List.map (\access -> Tuple.second access data) (my_access_function model)
+                                    |> List.map toFloat
+                                    |> MultiDimPoint data.vehicleName
+                            )
+                            filteredCars
