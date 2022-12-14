@@ -58,17 +58,17 @@ type alias Model
     = Failure
     | Loading
     | Success 
-    {data: List Student_Data
-    , studTime: String
-    , wert1 : Student_Data -> Float
-    , wert2 : Student_Data -> Float
-    , wert3 : Student_Data -> Float
-    , wert4 : Student_Data -> Float
-    , wertName1 : String
-    , wertName2 : String
-    , wertName3 : String
-    , wertName4 : String
-    }
+        {data: List Student_Data
+        , studTime: String
+        , wert1 : Student_Data -> Float
+        , wert2 : Student_Data -> Float
+        , wert3 : Student_Data -> Float
+        , wert4 : Student_Data -> Float
+        , wertName1 : String
+        , wertName2 : String
+        , wertName3 : String
+        , wertName4 : String
+        }
 
 
 type alias MultiDimPoint =
@@ -140,7 +140,7 @@ studentListe student_liste =
 
 getCSV : (Result Http.Error String -> Msg) -> Cmd Msg
 getCSV msg =
-    daten 
+    data 
     |> List.map 
       (\d ->
       Http.get
@@ -153,3 +153,159 @@ getCSV msg =
 
 data: List String
 data = ["Student_Behaviour.csv"]
+
+
+-- vornehmen der Einstellungen
+
+
+padding : Float
+padding =
+    50
+
+
+radius : Float
+radius =
+    5.0
+
+
+tickCount : Int
+tickCount =
+    5
+
+
+defaultExtent : ( number, number1 )
+defaultExtent =
+    ( 0, 100 )
+
+
+wideExtent : List Float -> ( Float, Float )
+wideExtent values =
+    let
+        closeExtent =
+            Statistics.extent values
+                |> Maybe.withDefault defaultExtent
+
+        extension =
+            (Tuple.second closeExtent - Tuple.first closeExtent) / toFloat (2 * tickCount)
+    in
+    ( Tuple.first closeExtent - extension 
+    , Tuple.second closeExtent + extension
+    )
+
+
+-- Daten filtern
+
+filterStudents : List Student_Data -> String -> List Student_Data
+filterStudents allData filterString =
+    List.filter (\x -> filterString == x.dailyStudyingTime) allData
+
+
+
+--parallelplot
+
+scatterplot : Float -> Float -> MultiDimData -> Svg msg
+scatterplot w ar model =
+    let
+        h : Float
+        h =
+            w / ar
+
+        xScale =
+            Scale.linear ( 0, w ) ( 1, List.length model.dimDescription |> toFloat )
+
+        transformListe : List (List Float)
+        transformListe =
+            model.data
+                |> List.concat
+                |> List.map .value
+                |> List.Extra.transpose
+
+        wideExtentListe : List ( Float, Float )
+        wideExtentListe =
+            transformListe |> List.map wideExtent
+
+        scaleListe =
+            List.map (Scale.linear ( h, 0 )) wideExtentListe
+
+        axisListe =
+            List.map (Axis.left [ Axis.tickCount tickCount ]) scaleListe
+    in
+    svg
+        [ viewBox 0 0 (w + 2 * padding) (h + 2 * padding)
+        , TypedSvg.Attributes.width <| TypedSvg.Types.Percent 100
+        , TypedSvg.Attributes.height <| TypedSvg.Types.Percent 100
+        ]
+    <|
+        [ TypedSvg.style []
+            []
+        , TypedSvg.rect
+            [ TypedSvg.Attributes.x1 <| TypedSvg.Types.Px 1
+            , TypedSvg.Attributes.y1 <| TypedSvg.Types.Px 1
+            , TypedSvg.Attributes.width <| TypedSvg.Types.Px (w + 2 * padding - 1)
+            , TypedSvg.Attributes.height <| TypedSvg.Types.Px (h + 2 * padding - 1)
+            , TypedSvg.Attributes.fill <| Paint <| Color.white
+            , stroke <| Paint <| Color.grey
+            , strokeWidth <| Px 0.5
+            ]
+            []
+        , g [ TypedSvg.Attributes.class [ "paralleleAchse" ] ]
+            [ g [ transform [ Translate (padding - 1) padding ] ] <|
+                List.indexedMap
+                    (\index axis ->
+                        g
+                            [ stroke <| Paint <| Color.black
+                            , strokeWidth <| Px 0.1
+                            , transform
+                                [ Translate (Scale.convert xScale (toFloat index + 1)) 0
+                                ]
+                            ]
+                            [ axis ]
+                    )
+                    axisListe
+            , g [ transform [ Translate (padding - 1) 0 ] ] <|
+                List.indexedMap
+                    (\index beschreibung ->
+                        text_
+                            [ fontFamily [ "sans-serif" ]
+                            , fontSize (Px 10)
+                            , fill <| Paint <| Color.red
+                            , x <| Scale.convert xScale (toFloat index + 1)
+                            , y <| padding * 7 / 8
+                            , textAnchor AnchorMiddle
+                            ]
+                            [ TypedSvg.Core.text beschreibung ]
+                    )
+                    model.dimDescription
+            ]
+        ]
+            ++ (let
+                    punkt p socialMedia dailyStudyingTime twelthMark collegeMark =
+                        let
+                            graphenlinie : Path.Path
+                            graphenlinie =
+                                List.map3
+                                    (\description s px ->
+                                        Just
+                                            ( Scale.convert xScale <| toFloat description
+                                            , Scale.convert s px
+                                            )
+                                    )
+                                    (List.range 1 (List.length model.dimDescription))
+                                    scaleListe
+                                    p
+                                    |> Shape.line Shape.linearCurve
+                        in
+                        Path.element graphenlinie
+                            [ stroke <| Paint <| Color.black
+                            , opacity (Opacity 1)
+                            , strokeWidth <| Px 0.7
+                            , fill PaintNone
+                            ]
+                in
+                model.data
+                    |> List.map
+                        (\datensatz ->
+                            g [ transform [ Translate (padding - 1) padding ] ]
+                                (List.map (.value >> punkt) datensatz)
+                        )
+               )
