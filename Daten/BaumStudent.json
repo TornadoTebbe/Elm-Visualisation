@@ -38,7 +38,7 @@
             "name": "Daily studying time: 30-60 Minutes",
             "children": [
                 {
-                      "name": "Male",
+                      "name": "Male3-6",
                       "children" : [
                             {
                                   "name": "Best college Mark: 92"
@@ -52,7 +52,7 @@
                       ]
                 },
                 {
-                      "name": "Female",
+                      "name": "Female3-6",
                       "children": [
                             {
                                   "name": "Best college Mark: 90"
