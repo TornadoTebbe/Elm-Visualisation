@@ -66,8 +66,8 @@
                       ]
                 }
             ]
-        },
-        {
+          },
+          {
             "name": "Daily studying time: 1-2 Hours",
             "children": [
                 {
@@ -99,8 +99,8 @@
                       ]
                 }
             ]
-        },
-        {
+          },
+          {
             "name": "Daily studying time: 2-3 Hours",
             "children": [
                 {
@@ -132,8 +132,8 @@
                       ]
                 }
             ]
-        },
-        {
+          },
+          {
             "name": "Daily studying time: 3-4 Hours",
             "children": [
                 {
@@ -165,8 +165,8 @@
                       ]
                 }
             ]
-        },
-        {
+          },
+          {
             "name": "Daily studying time: More Than 4 Hours",
             "children": [
                 {
@@ -198,7 +198,7 @@
                       ]
                 }
             ]
-        }
+          }  
 
       ]
   }

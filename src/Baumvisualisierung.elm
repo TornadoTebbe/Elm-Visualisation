@@ -57,7 +57,7 @@ treeDecoder =
 initialModel : () -> ( Model, Cmd Msg )
 initialModel () =
     ( { wide = 3000, height = 2000, radius = 100, distance = 20, tree = Tree.singleton "", error = "shit...." }
-    , Http.get { url = "https://raw.githubusercontent.com/TornadoTebbe/Elm2/main/Daten/treeStudent.json?token=GHSAT0AAAAAAB3FJIF5QZNFNYSEBYM4RXX2Y4YQIMA", expect = Http.expectJson GotFlare treeDecoder }
+    , Http.get { url = "https://raw.githubusercontent.com/TornadoTebbe/ElmTest2/main/Daten/BaumStudent.json?token=GHSAT0AAAAAAB3NMVWFIXS72TCH7BD6IDSMY4ZY4UQ", expect = Http.expectJson GotFlare treeDecoder }
     )
 
 
@@ -261,38 +261,6 @@ treeView model =
     ]
 
 
-zoomedTreeView : Model -> List (Svg Msg)
-zoomedTreeView model =
-    let
-        w =
-            model.wide
-
-        h =
-            model.height
-
-        padding =
-            50
-
-        treeData =
-            transformTreeData model.tree
-
-        treeTemp =
-            TreeLayout.treeLayout
-                (2 * model.radius + model.distance)
-                treeData
-
-        tree =
-            Dict.fromList (List.map (\( name, { x, y } ) -> ( name, { x = x + w / 2, y = (y - 1) * (2 * model.radius + model.distance) } )) (Dict.toList treeTemp))
-    in
-    [ TypedSvg.svg
-        [ TypedSvg.Attributes.viewBox 0 -100 (w + padding) (h + padding)
-        , TypedSvg.Attributes.width <| TypedSvg.Types.Percent 2000
-        , TypedSvg.Attributes.height <| TypedSvg.Types.Percent 2000
-        ]
-        [ TypedSvg.g [ TypedSvg.Attributes.transform [ TypedSvg.Types.Translate padding padding ] ]
-            [ drawTree treeData tree model.radius ]
-        ]
-    ]
 
 
 view : Model -> Html Msg
@@ -309,8 +277,6 @@ view model =
          , Html.input [ Html.Events.onInput ChangeDistance ] []
          ]
             ++ treeView model
-            ++ [ Html.text "Hier drunter befindet sich der Graph herangezoomed (Evtl. muss nach rechts gescrolled werden)." ]
-            ++ zoomedTreeView model
         )
 
 
