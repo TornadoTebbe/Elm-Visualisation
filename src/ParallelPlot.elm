@@ -72,7 +72,7 @@ type Model
 
 
 type alias MultiDimPoint =
-    { pointSocMed : String, pointStudTime: String, pointTwelth: Float, pointCollege: Float, value : List Float }
+    { pointGender : String, pointHobbies: String, pointStress: String, value : List Float }
 
 type alias MultiDimData =
     { dimDescription : List String
@@ -140,7 +140,7 @@ studentListe student_liste =
 
 getCSV : (Result Http.Error String -> Msg) -> Cmd Msg
 getCSV msg =
-    data 
+    datenStudis 
     |> List.map 
       (\d ->
       Http.get
@@ -151,8 +151,8 @@ getCSV msg =
     |> Cmd.batch
 
 
-data: List String
-data = ["Student_Behaviour.csv"]
+datenStudis: List String
+datenStudis = ["Student_Behaviour.csv"]
 
 
 -- vornehmen der Einstellungen
@@ -279,7 +279,7 @@ scatterplot w ar model =
             ]
         ]
             ++ (let
-                    punkt p socialMedia dailyStudyingTime twelthMark collegeMark beschreibung=
+                    punkt p gender hobbies stressLevel beschreibung=
                         let
                             graphenlinie : Path.Path
                             graphenlinie =
@@ -309,14 +309,53 @@ scatterplot w ar model =
                                 , y -20
                                 , TypedSvg.Attributes.textAnchor AnchorMiddle
                                 ]
-                                [ TypedSvg.Core.text (socialMedia ++ " (" ++ dailyStudyingTime ++ ", " ++ (String.fromFloat twelthMark) ++ ", " ++ ", " 
-                                ++ (String.fromFloat collegeMark) ++ ")" (String.concat <|(List.map2(\a b -> ", " ++ a ++ ": " ++ (String.fromFloat b) ++ " ") beschreibung p)))]
+                                [ TypedSvg.Core.text (gender ++ ", " ++ hobbies ++ " (Stress level: " ++ stressLevel ++ ")" 
+                               ++ (String.concat <|(List.map2(\a b -> ", " ++ a ++ ": " ++ (String.fromFloat b) ++ " ") beschreibung p)))]
                         ]
                 in
                 model.data
                     |> List.map
                         (\datensatz ->
                             g [ transform [ Translate (padding - 1) padding ] ]
-                                (List.map (\x -> punkt x.value x.pointSocMed x.pointStudTime x.pointTwelth x.pointCollege model.dimDescription) datensatz)
+                                (List.map (\x -> punkt x.value x.pointGender x.pointHobbies x.pointStress model.dimDescription) datensatz)
                         )
                )
+
+
+-- Übernahme des Button aus dem Scatterplot
+
+changeTimelul : Html Msg
+changeTimelul =
+    Html.select
+        [onInput ChangeStudTime]
+        [Html.option [value "0 - 30 minute"] [Html.text "0 - 30 minutes"]
+        ,Html.option [value "30 - 60 minute"] [Html.text "30 - 60 minutes"]
+        ,Html.option [value "1 - 2 Hour"] [Html.text "1 - 2 hours"]
+        ,Html.option [value "2 - 3 hour"] [Html.text "2 - 3 hours"]
+        ,Html.option [value "3 - 4 hour"] [Html.text "3 - 4 hours"]
+        ,Html.option [value "More Than 4 hour"] [Html.text "More Than 4 hours"]
+        ]
+
+
+
+
+update : Msg -> Model -> Model
+update msg model =
+    case msg of
+        GotText result ->
+            case result of
+                Ok fullText ->
+                    ( Success <| {data = studentListe [fullText], socialMedia = "0 minute", wert1 = .})
+
+
+
+
+
+        TauschA ->
+            { model | accessWerte2 = List.Extra.swapAt 0 1 model.accessWerte2, wert1 = model.wert2, wert2 = model.wert1 }
+
+        TauschB ->
+            { model | accessWerte2 = List.Extra.swapAt 1 2 model.accessWerte2, wert2 = model.wert3, wert3 = model.wert2 }
+
+        TauschC ->
+            { model | accessWerte2 = List.Extra.swapAt 2 3 model.accessWerte2, wert3 = model.wert4, wert4 = model.wert3 }
