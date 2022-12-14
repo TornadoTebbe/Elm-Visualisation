@@ -1,8 +1,204 @@
 {
-      "name" : "Student",
-      "children" : [
+      "name": "Student",
+      "children": [
           {
-              "name" : "Male"
-          }
+              "name": "Daily studying time: 0-30 Minutes",
+              "children": [
+                  {
+                        "name": "Male",
+                        "children" : [
+                              {
+                                    "name": "Best college Mark: 97"
+                              },
+                              {
+                                    "name": "Worst college Mark: 30"
+                              },
+                              {
+                                    "name": "Average college Mark: 64"
+                              }
+                        ]
+                  },
+                  {
+                        "name": "Female",
+                        "children": [
+                              {
+                                    "name": "Best college Mark: 90"
+                              },
+                              {
+                                    "name": "Worst college Mark: 65"
+                              },
+                              {
+                                    "name": "Average college Mark: 79"
+                              }
+                        ]
+                  }
+              ]
+          },
+          {
+            "name": "Daily studying time: 30-60 Minutes",
+            "children": [
+                {
+                      "name": "Male",
+                      "children" : [
+                            {
+                                  "name": "Best college Mark: 92"
+                            },
+                            {
+                                  "name": "Worst college Mark: 30"
+                            },
+                            {
+                                  "name": "Average college Mark: 68"
+                            }
+                      ]
+                },
+                {
+                      "name": "Female",
+                      "children": [
+                            {
+                                  "name": "Best college Mark: 90"
+                            },
+                            {
+                                  "name": "Worst college Mark: 60"
+                            },
+                            {
+                                  "name": "Average college Mark: 75"
+                            }
+                      ]
+                }
+            ]
+        },
+        {
+            "name": "Daily studying time: 1-2 Hours",
+            "children": [
+                {
+                      "name": "Male",
+                      "children" : [
+                            {
+                                  "name": "Best college Mark: 90"
+                            },
+                            {
+                                  "name": "Worst college Mark: 50"
+                            },
+                            {
+                                  "name": "Average college Mark: 67"
+                            }
+                      ]
+                },
+                {
+                      "name": "Female",
+                      "children": [
+                            {
+                                  "name": "Best college Mark: 100"
+                            },
+                            {
+                                  "name": "Worst college Mark: 58"
+                            },
+                            {
+                                  "name": "Average college Mark: 78"
+                            }
+                      ]
+                }
+            ]
+        },
+        {
+            "name": "Daily studying time: 2-3 Hours",
+            "children": [
+                {
+                      "name": "Male",
+                      "children" : [
+                            {
+                                  "name": "Best college Mark: 80"
+                            },
+                            {
+                                  "name": "Worst college Mark: 60"
+                            },
+                            {
+                                  "name": "Average college Mark: 69"
+                            }
+                      ]
+                },
+                {
+                      "name": "Female",
+                      "children": [
+                            {
+                                  "name": "Best college Mark: 95"
+                            },
+                            {
+                                  "name": "Worst college Mark: 65"
+                            },
+                            {
+                                  "name": "Average college Mark: 81"
+                            }
+                      ]
+                }
+            ]
+        },
+        {
+            "name": "Daily studying time: 3-4 Hours",
+            "children": [
+                {
+                      "name": "Male",
+                      "children" : [
+                            {
+                                  "name": "Best college Mark: 95"
+                            },
+                            {
+                                  "name": "Worst college Mark: 35"
+                            },
+                            {
+                                  "name": "Average college Mark: 73"
+                            }
+                      ]
+                },
+                {
+                      "name": "Female",
+                      "children": [
+                            {
+                                  "name": "Best college Mark: 100"
+                            },
+                            {
+                                  "name": "Worst college Mark: 50"
+                            },
+                            {
+                                  "name": "Average college Mark: 76"
+                            }
+                      ]
+                }
+            ]
+        },
+        {
+            "name": "Daily studying time: More Than 4 Hours",
+            "children": [
+                {
+                      "name": "Male",
+                      "children" : [
+                            {
+                                  "name": "Best college Mark: 90"
+                            },
+                            {
+                                  "name": "Worst college Mark: 60"
+                            },
+                            {
+                                  "name": "Average college Mark: 77"
+                            }
+                      ]
+                },
+                {
+                      "name": "Female",
+                      "children": [
+                            {
+                                  "name": "Best college Mark: 70"
+                            },
+                            {
+                                  "name": "Worst college Mark: 12"
+                            },
+                            {
+                                  "name": "Average college Mark: 41"
+                            }
+                      ]
+                }
+            ]
+        }
+
       ]
   }
