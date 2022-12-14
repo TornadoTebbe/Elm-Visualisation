@@ -49,10 +49,10 @@ type alias Student_Data =
 type Msg
     = GotText (Result Http.Error String)
     | ChangeStudTime String
-    | ChoosePos1 (Student_Data -> Float -> String)
-    | ChoosePos2 (Student_Data -> Float -> String)
-    | ChoosePos3 (Student_Data -> Float -> String)
-    | ChoosePos4 (Student_Data -> String -> String)
+    | ChoosePos1 (Student_Data -> Float, String)
+    | ChoosePos2 (Student_Data -> Float, String)
+    | ChoosePos3 (Student_Data -> Float, String)
+    | ChoosePos4 (Student_Data -> Float, String)
 
 
 type Model 
@@ -64,7 +64,7 @@ type Model
         , wert1 : Student_Data -> Float
         , wert2 : Student_Data -> Float
         , wert3 : Student_Data -> Float
-        , wert4 : Student_Data -> String
+        , wert4 : Student_Data -> Float
         , wertName1 : String
         , wertName2 : String
         , wertName3 : String
@@ -94,11 +94,13 @@ subscriptions model =
 
 
 
-init : () -> (Model, Cmd Msg)
+init : () -> ( Model, Cmd Msg )
 init _ =
-    ( Loading
-    , getCSV GotText
-    )
+    (Loading , 
+    Http.get
+    { url = "https://raw.githubusercontent.com/TornadoTebbe/ElmTest/main/Daten/Student_Behaviour.csv"
+    , expect = Http.expectString GotText
+    })
 
 
 csvString_to_data : String -> List Student_Data
@@ -139,17 +141,17 @@ studentListe student_liste =
     List.map(\x -> csvString_to_data x) student_liste
         |> List.concat
 
-getCSV : (Result Http.Error String -> Msg) -> Cmd Msg
-getCSV msg =
-    datenStudis 
-    |> List.map 
-      (\d ->
-      Http.get
-    { url = "https://raw.githubusercontent.com/TornadoTebbe/ElmTest/main/" ++ d
-    , expect = Http.expectString msg
-    }
-    )
-    |> Cmd.batch
+-- getCSV : (Result Http.Error String -> Msg) -> Cmd Msg
+-- getCSV msg =
+--     datenStudis 
+--     |> List.map 
+--       (\d ->
+--       Http.get
+--         { url = "https://raw.githubusercontent.com/TornadoTebbe/ElmTest/main/" ++ d
+--         , expect = Http.expectString msg
+--         }
+--     )
+--     |> Cmd.batch
 
 
 datenStudis: List String
@@ -238,7 +240,13 @@ scatterplot w ar model =
         ]
     <|
         [ TypedSvg.style []
-            []
+            [   TypedSvg.Core.text """"
+                .parallelpoint { stroke: Color.black;}
+                .parallelpoint:hover {stroke: rgb(98, 153, 12); stroke-width: 2;} 
+                .parallelpoint text { display: none; }
+                .parallelpoint:hover text { display: inline; stroke: rgb(0, 0, 0); stroke-width: 0.01; font-size: small; font-family: calibri}  
+                """
+            ]
         , TypedSvg.rect
             [ TypedSvg.Attributes.x1 <| TypedSvg.Types.Px 1
             , TypedSvg.Attributes.y1 <| TypedSvg.Types.Px 1
@@ -345,8 +353,8 @@ update msg model =
         GotText result ->
             case result of
                 Ok fullText ->
-                    ( Success <| {data = studentListe [fullText], studTime = "0 - 30 minute", wert1 = .tenthMark, wert2 = .twelthMark, wert3 = .collegeMark, wert4 = .willignessDegree,
-                    wertName1 = "Tenth Mark", wertName2 = "Twelth Mark", wertName3 = "College Mark", wertName4 = "Willingness to pursie Degree"} , Cmd.none)
+                    ( Success <| {data = studentListe [fullText], studTime = "0 - 30 minute", wert1 = .tenthMark, wert2 = .twelthMark, wert3 = .collegeMark, wert4 = .weight,
+                    wertName1 = "Tenth Mark", wertName2 = "Twelth Mark", wertName3 = "College Mark", wertName4 = "Weight of Student "} , Cmd.none)
 
                 Err _ ->
                     (model, Cmd.none)
@@ -418,15 +426,58 @@ view model =
 
                 filData :  List Student_Data
                 filData =
-                    filterStudents fullText.data fullText.dailyStudyingTime 
+                    filterStudents fullText.data fullText.studTime
 
 
-                multiDimensionaleDaten =
-                    MultiDimData (List.map Tuple.first (my_access_function model))
+                multiDimensionaleDaten : List Student_Data -> (Student_Data -> Float) -> (Student_Data -> Float) -> (Student_Data -> Float) -> (Student_Data -> Float) -> (Student_Data -> String) -> (Student_Data -> String) -> (Student_Data -> String) -> String -> String -> String -> String -> MultiDimData
+                multiDimensionaleDaten student_liste a b c d e f g h i j k =
+                    MultiDimData [h, i, j, k]
                         [ List.map
-                            (\data ->
-                                List.map (\access -> Tuple.second access data) (my_access_function model)
-                                    |> List.map toFloat
-                                    |> MultiDimPoint data.vehicleName
+                            (\x ->
+                                [ (a x), (b x), (c x), (d x)]
+                                    |> MultiDimPoint (e x) (f x) (g x)
                             )
-                            filteredCars
+                            student_liste
+
+
+                                ]
+
+
+                multiDimData =
+                    multiDimensionaleDaten filData fullText.wert1 fullText.wert2 fullText.wert3 fullText.wert4 .gender .hobbies .stressLevel fullText.wertName1 fullText.wertName2 fullText.wertName3 fullText.wertName4
+
+                numberStudents: Int
+                numberStudents =
+                    List.length fullText.data
+
+                numberStudentsFiltered: Int
+                numberStudentsFiltered =
+                    List.length filData
+
+
+            in
+            Html.div []
+                [ Html.h1 [] [ Html.text ("Multidimensionale Daten für " ++ fullText.studTime)   ]
+                , ul []
+                    [ li [] [ Html.text <| "Ausgewählte tägliche Lernzeit: " ++ fullText.studTime ]
+                    , li []
+                        [ Html.text <|
+                            "Studenten insgesamt: "
+                                ++ String.fromInt numberStudents
+                        ]
+                    , li []
+                        [ Html.text <|
+                            "Gefilterte Studenten insgesamt: "
+                            ++ String.fromInt numberStudentsFiltered
+                        ]
+                    -- , ul []
+                    --     [ Html.button [ onClick TauschA ] [ Html.text <| "Tausche " ++ model.wert1 ++ " und " ++ model.wert2 ]
+                    --     , Html.button [ onClick TauschB ] [ Html.text <| "Tausche " ++ model.wert2 ++ " und " ++ model.wert3 ]
+                    --     , Html.button [ onClick TauschC ] [ Html.text <| "Tausche " ++ model.wert3 ++ " und " ++ model.wert4 ]
+                    --     ]
+                    , scatterplot 600 2 multiDimData
+                    ]
+                ]
+
+
+                
