@@ -38,7 +38,7 @@
             "name": "Daily studying time: 30-60 Minutes",
             "children": [
                 {
-                      "name": "Male3-6",
+                      "name": "Male 3-6",
                       "children" : [
                             {
                                   "name": "Best college Mark: 92"
@@ -52,7 +52,7 @@
                       ]
                 },
                 {
-                      "name": "Female3-6",
+                      "name": "Female 3-6",
                       "children": [
                             {
                                   "name": "Best college Mark: 90"
@@ -71,7 +71,7 @@
             "name": "Daily studying time: 1-2 Hours",
             "children": [
                 {
-                      "name": "Male",
+                      "name": "Male 1-2",
                       "children" : [
                             {
                                   "name": "Best college Mark: 90"
@@ -85,7 +85,7 @@
                       ]
                 },
                 {
-                      "name": "Female",
+                      "name": "Female 1-2",
                       "children": [
                             {
                                   "name": "Best college Mark: 100"
@@ -104,7 +104,7 @@
             "name": "Daily studying time: 2-3 Hours",
             "children": [
                 {
-                      "name": "Male",
+                      "name": "Male 2-3",
                       "children" : [
                             {
                                   "name": "Best college Mark: 80"
@@ -118,7 +118,7 @@
                       ]
                 },
                 {
-                      "name": "Female",
+                      "name": "Female 2-3",
                       "children": [
                             {
                                   "name": "Best college Mark: 95"
@@ -137,7 +137,7 @@
             "name": "Daily studying time: 3-4 Hours",
             "children": [
                 {
-                      "name": "Male",
+                      "name": "Male 3-4",
                       "children" : [
                             {
                                   "name": "Best college Mark: 95"
@@ -151,7 +151,7 @@
                       ]
                 },
                 {
-                      "name": "Female",
+                      "name": "Female 3-4",
                       "children": [
                             {
                                   "name": "Best college Mark: 100"
@@ -170,7 +170,7 @@
             "name": "Daily studying time: More Than 4 Hours",
             "children": [
                 {
-                      "name": "Male",
+                      "name": "Male 4",
                       "children" : [
                             {
                                   "name": "Best college Mark: 90"
@@ -184,7 +184,7 @@
                       ]
                 },
                 {
-                      "name": "Female",
+                      "name": "Female 4",
                       "children": [
                             {
                                   "name": "Best college Mark: 70"
