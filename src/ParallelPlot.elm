@@ -318,7 +318,7 @@ scatterplot w ar model =
                                 , y -20
                                 , TypedSvg.Attributes.textAnchor AnchorMiddle
                                 ]
-                                [ TypedSvg.Core.text (gender ++ ", " ++ hobbies ++ " (Stress level: " ++ stressLevel ++ ")" 
+                                [ TypedSvg.Core.text (gender ++ ", Hobbie: " ++ hobbies ++ " (Stress level: " ++ stressLevel ++ ")" 
                                ++ (String.concat <|(List.map2(\a b -> ", " ++ a ++ ": " ++ (String.fromFloat b) ++ " ") beschreibung p)))]
                         ]
                 in
@@ -460,6 +460,7 @@ view model =
                 [ Html.h1 [] [ Html.text ("Multidimensionale Daten für " ++ fullText.studTime)   ]
                 , ul []
                     [ li [] [ Html.text <| "Ausgewählte tägliche Lernzeit: " ++ fullText.studTime ]
+                    , changeTimelul
                     , li []
                         [ Html.text <|
                             "Studenten insgesamt: "
