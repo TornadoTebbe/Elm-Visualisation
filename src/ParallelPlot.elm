@@ -54,7 +54,7 @@ type Msg
     | ChoosePos4 (Student_Data -> Float -> String)
 
 
-type alias Model
+type Model 
     = Failure
     | Loading
     | Success 
@@ -72,7 +72,7 @@ type alias Model
 
 
 type alias MultiDimPoint =
-    { pointName : String, pointStudTime: String, value : List Float }
+    { pointSocMed : String, pointStudTime: String, pointTwelth: Float, pointCollege: Float, value : List Float }
 
 type alias MultiDimData =
     { dimDescription : List String
@@ -144,7 +144,7 @@ getCSV msg =
     |> List.map 
       (\d ->
       Http.get
-    { url = "https://raw.githubusercontent.com/TornadoTebbe/ElmTest/main/Daten/Student_Behaviour.csv"
+    { url = "https://raw.githubusercontent.com/TornadoTebbe/ElmTest/main/" ++ d
     , expect = Http.expectString msg
     }
     )
@@ -279,7 +279,7 @@ scatterplot w ar model =
             ]
         ]
             ++ (let
-                    punkt p socialMedia dailyStudyingTime twelthMark collegeMark =
+                    punkt p socialMedia dailyStudyingTime twelthMark collegeMark beschreibung=
                         let
                             graphenlinie : Path.Path
                             graphenlinie =
@@ -295,17 +295,28 @@ scatterplot w ar model =
                                     p
                                     |> Shape.line Shape.linearCurve
                         in
-                        Path.element graphenlinie
+
+                        g [class["parallelpoint"]][
+                            Path.element graphenlinie
                             [ stroke <| Paint <| Color.black
                             , opacity (Opacity 1)
                             , strokeWidth <| Px 0.7
                             , fill PaintNone
+                            , class ["parallelepoint"]
                             ]
+                            , text_
+                                [ x 300
+                                , y -20
+                                , TypedSvg.Attributes.textAnchor AnchorMiddle
+                                ]
+                                [ TypedSvg.Core.text (socialMedia ++ " (" ++ dailyStudyingTime ++ ", " ++ (String.fromFloat twelthMark) ++ ", " ++ ", " 
+                                ++ (String.fromFloat collegeMark) ++ ")" (String.concat <|(List.map2(\a b -> ", " ++ a ++ ": " ++ (String.fromFloat b) ++ " ") beschreibung p)))]
+                        ]
                 in
                 model.data
                     |> List.map
                         (\datensatz ->
                             g [ transform [ Translate (padding - 1) padding ] ]
-                                (List.map (.value >> punkt) datensatz)
+                                (List.map (\x -> punkt x.value x.pointSocMed x.pointStudTime x.pointTwelth x.pointCollege model.dimDescription) datensatz)
                         )
                )
