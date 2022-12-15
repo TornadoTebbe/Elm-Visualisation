@@ -49,6 +49,7 @@ type alias Student_Data =
 type Msg
     = GotText (Result Http.Error String)
     | ChangeStudTime String
+    -- | ChangeInsta String
     | ChoosePos1 (Student_Data -> Float, String)
     | ChoosePos2 (Student_Data -> Float, String)
     | ChoosePos3 (Student_Data -> Float, String)
@@ -61,6 +62,7 @@ type Model
     | Success 
         {data: List Student_Data
         , studTime: String
+        -- , socTime: String
         , wert1 : Student_Data -> Float
         , wert2 : Student_Data -> Float
         , wert3 : Student_Data -> Float
@@ -347,6 +349,21 @@ changeTimelul =
 
 
 
+-- changeSocial : Html Msg
+-- changeSocial =
+--     Html.select
+--         [onInput ChangeStudTime]
+--         [Html.option [value "0 Minute"] [Html.text "0 minutes"]
+--         ,Html.option [value "1 - 30 Minute"] [Html.text "30 - 60 minutes"]
+--         ,Html.option [value "30 - 60 minute"] [Html.text "30 - 60 minutes"]
+--         ,Html.option [value "1 - 1.30 hour"] [Html.text "1 - 1.30 hours"]
+--         ,Html.option [value "1.30 - 2 hour"] [Html.text "1.30 - 2 hours"]
+--         ,Html.option [value "More Than 2 hour"] [Html.text "More Than 2 hours"]
+--         ]
+
+
+
+
 update : Msg -> Model -> ( Model, Cmd Msg)
 update msg model =
     case msg of
@@ -368,6 +385,17 @@ update msg model =
 
                 _ ->
                     (model, Cmd.none)
+
+
+        -- ChangeInsta instaNew ->
+        --     case model of
+        --         Success first ->
+        --             ( Success <| {data = first.data , studTime = studTimeNew, wert1 = first.wert1, wert2 = first.wert2, wert3 = first.wert3, wert4 = first.wert4,
+        --             wertName1 = first.wertName1, wertName2 = first.wertName2, wertName3 = first.wertName3, wertName4 = first.wertName4} , Cmd.none)
+
+
+        --         _ ->
+        --             (model, Cmd.none)
 
 
         ChoosePos1 (wert1New, wertName1New) ->
@@ -426,7 +454,7 @@ view model =
 
                 filData :  List Student_Data
                 filData =
-                    filterStudents fullText.data fullText.studTime
+                    filterStudents fullText.data fullText.studTime 
 
 
                 multiDimensionaleDaten : List Student_Data -> (Student_Data -> Float) -> (Student_Data -> Float) -> (Student_Data -> Float) -> (Student_Data -> Float) -> (Student_Data -> String) -> (Student_Data -> String) -> (Student_Data -> String) -> String -> String -> String -> String -> MultiDimData
