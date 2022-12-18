@@ -27,13 +27,14 @@
 % Gliederung und Text:
 
 \section{Einleitung}
+\label{Einleitung}
 ......
 Viele verschiedene Faktoren haben einen Einfluss auf die Note der Studenten. Dies geht bereits damit los in welche Familie das Kind hineingeboren wird, welchen akademischen Standart die Eltern haben, welche finanziellen Mittel usw. Weiter spielt die Erziehung und der spätere soziale Umgang eine Rolle. \cite{Earthman}
 Diese Einflüsse sind schwer zu messen, vor allem schwer genau zu messen. Diese Faktoren sind kaum von alleine beeinflussbar, es lässt sich nicht bestimmen, in welche Familie ich geboren werde und welche Voraussetzungen ich also für später mit auf den Weg gegeben bekomme. Doch auf welche Faktoren kann der Student selber später Einfluss nehmen. Die Zeit, die täglich in oder eben nicht in die schulische Weiterbildung investiert wird, sollte in der Theorie so einen selbst beeinflussbaren Faktor darstellen. 
 In dieser Arbeit werden sich also folgende Fragen und folgende gestellt Zielstellungen gesetzt:
 
 \begin{itemize}
-\item Inwieweit spielt die eigene Zeitgestaltung eine Rolle bei der Note der Befragten
+\item Inwieweit spielt die eigene Zeitgestaltung eine Rolle bei den Noten der Studenten
 \item Wie können die verschiedenen Korrelationen übersichtlich veranschaulicht werden um dem Leser einen schnellen Überblick zu geben
 \item 
 \end{itemize}
@@ -72,25 +73,35 @@ In diesem Abschnitt geben sie einen kurzen Überblick über die Daten und verwen
 
 \section{Daten}
 
-Wie bereits in den Abschnitten vorher erwähnt, handelt es sich bei den vorliegenden Daten um den Datensatz \textit{Student Behaviour} von \textit{kaggle} . Die darin aufgeführten und gesammelten Daten geben nähere Auskunft über das Verhalten der Studenten und deren Noten. Die Verwendung des Datensatzes zu wissenschaftlichen Zwecken ist abzuraten, da der Verfasser angibt die Daten selber von Universitäten gesammelt zu haben und bis auf diesen Satz keine näheren Informationen zur Datenbeschaffung liefert. Seiner Meinung nach kann der Datensatz dazu genutzt werden das Verhalten der Studenten in Zukunft besser zu deuten.
-Er enthält Informationen von 235 Studenten in Form einer CSV-Datei. Diese CSV-Datei hat 19 Spalten mit den Informationen der Studenten über \textit{Certification} als Boolean, der ausgibt ob der Student einen certification Kurs besucht hat oder nicht, \textit{Gender} mit Boolean über das Geschlecht, \textit{Department}, welcher Student welchem Derpartment angehört, \textit{Height(CM)} und \textit{Weight(KG)} als Float, die Größe und Gewicht aufzeigen, \textit{10th Mark}, \textit{12th Mark} und \textit{College Mark}, die als Float die Note der Studenten zeigen, \textit{Hobbies}, sowie \textit{stress level} und \textit{financial status} als String, \textit{part-time job} und \textit{Do you like your degree} als Boolean, \textit{salary expectation} als integer, \textit{willingness to pursue a career based on their degree } als String in Form einer Prozentangabe (möglich sind hier nur die Angaben: 0,25,50,75 und 100 Prozent) und \textit{travelling time}, \textit{social media time} und \textit{daily studying time} als String in Form einer Klassenangabe (also z.B. 30-60 Minuten ist eine Angabe).
+Wie bereits in den Abschnitten vorher erwähnt, handelt es sich bei den vorliegenden Daten um den Datensatz \textit{Student Behaviour} von \textit{kaggle} . Die darin aufgeführten und gesammelten Daten geben nähere Auskunft über das Verhalten der Studenten und deren Noten. Die Verwendung des Datensatzes zu wissenschaftlichen Zwecken ist abzuraten, da der Verfasser angibt die Daten selber von Universitäten gesammelt zu haben und bis auf diesen Satz keine näheren Informationen zur Datenbeschaffung liefert. Seiner Meinung nach kann der Datensatz dazu genutzt werden das Verhalten der Studenten in Zukunft besser zu deuten.\\
+Im Datensatz auf \textit{kaggle} sind ein paar Rechtschreibfehler bei der Variablenbenennung enthalten, wie z.B. \glqq social medai time\grqq , diese werden daher der Leserlichkeit halber im Folgenden grammatikalisch korrekt geschrieben)
+\\
+Er enthält Informationen von 235 Studenten in Form einer CSV-Datei. Diese CSV-Datei hat 19 Spalten mit den Informationen der Studenten über \textit{Certification} als Boolean, der ausgibt ob der Student einen certification Kurs besucht hat oder nicht, \textit{Gender} mit Boolean über das Geschlecht, \textit{Department}, welcher Student welchem Derpartment angehört, \textit{Height(CM)} und \textit{Weight(KG)} als Float, die Größe und Gewicht aufzeigen, \textit{10th Mark}, \textit{12th Mark} und \textit{College Mark}, die als Float die Note der Studenten zeigen, \textit{Hobbies}, sowie \textit{stress level} und \textit{financial status} als String, \textit{part-time job} und \textit{Do you like your degree} als Boolean, \textit{salary expectation} als integer (in Elm allerdings als Float deklariert und verwendet, damit es passend visualisiert und gemapt werden kann), \textit{willingness to pursue a career based on their degree } als String in Form einer Prozentangabe (möglich sind hier nur die Angaben: 0,25,50,75 und 100 Prozent) und \textit{travelling time}, \textit{social media time} und \textit{daily studying time} als String in Form einer Klassenangabe (also z.B. 30-60 Minuten ist eine Angabe).
+
+Während sich grade die Noten, also 10th Mark, 12th Mark und College Mark sehr gut dazu eignen die Fragestellung zu beantworten und sich zusätzlich dazu noch gut visualisieren lassen, da sie als Float sich relativ einfach veranschaulichen lassen ist dies bei anderen Variablen weniger der Fall. Bei ein paar der Daten ist nichteinmal genau klar, was damit überhaupt ausgesagt werden soll, wie z.B. bei Certification Course. Was für ein Kurs ist das,  was zertifiziert man damit, bzw. welche Art von Zertifikation erwirbt man damit. Aufgrund des fehlenden Hintergrundwissen, welches leider im Datensatz nicht näher erläutet wird, kann bei diesen Visualisierungen nicht näher darauf eingegangen werden. Ähnlich verhält es sich bei Department. Auch hier fehlen die nötigen zusätzlichen Informationen, um diese Variable in geeigneter Weise einbauen zu können.
+Auch die meisten Boolean (part-time job, Do you like your degree,  werden bei den Visualisierungen nicht berücksichtigt (bis auf gender), da es sich, bei den hier verwendeten Darstellungen nicht anbietet boolsche Werte zu integrieren. Diese bieten schlichtweg zu wenige Möglichkeiten.
+Vielseitig genutzt wurde auch die daily studying time, die sich vor allem als \textit{drop-down} zur Sortierung der Noten eignete, sodass schnell ersichtlich wurde mit welcher Lernzeit welche Noten erreicht wurden. 
+Hier wurde also eine der oben gestellten Zielstellungen sinnvoll und gut umgesetzt.
+
+\subsection{Technische Bereitstellung der Daten}
+\label{Bereitstellung}
+
+Die Daten wurden als einzelne CSV-Datei in \textit{kaggle} bereitgestellt und auch also solche weiterverarbeitet. 
+Zudem wurden sie im eigenen Github hochgeladen und dort im Ordner Daten gespeichert. Mithilfe dieser Datei wurden der Scatterplot und der Paralleplot erstellt. zur Visualisierung des Baumdiagramms wurde zusätzlich eine json-Datei erstellt \textit{"json.Name"} und auch im Ordner Daten hinterlegt. Zusätzlich dazu finden sich im Github-Repository auch noch Python-Code, mit dessen Hilfe die Daten aufbereitet werden sollen, genaueres in \ref{Datenvorverarbeitung}
 
 
-
-
-
-
-
-
-\noindent
-Beschreiben Sie vorhandenen Daten. Gehen sie kritisch darauf ein, in wie weit sich die Daten für die Bearbeitung der Fragestellungen und dem Erreichen von Lösungen für die oben beschriebene Zielgruppen eignen. Haben sie die Daten sinnvoll mit weiteren Datenquellen ergänzt? Wenn ja, wie?
-Erklären sie die technische Bereitstellung der Daten.
-Wie sind die Daten zugänglich? Welche Formate werden genutzt. Gibt es Besonderheiten beim Lesen der Formate?
-Beschreiben sie die Datenvorverarbeitung.
-Welche Datenvorverarbeitungsschritte sind notwendig? Beschreiben Sie die einzelnen Schritte und begründen sie sie, z.B. warum werden manche Daten weggelassen, über welche Mengen werden Durchschnitte berechnet, warum sind die so berechneten Werte aussagekräftiger als andere Werte. Wenn möglich sollen sie die Datenvorverarbeitung in Elm programmieren, so dass ihre Anwendung auf eine Änderung der Rohdaten reagieren kan. 
+\subsection{Datenvorverarbeitung}\label{Datenvorverarbeitung}
+Im obigen Abschnitt wurde bereits kurz auf den Datensatz eingegangen und erklärt, dass es sich um eine einzelne CSV-Date handelte. Aufgrunddessen musste keinerlei größere Vorverabeitung an den Daten vorgenommen werden, zumindest für den Paralleplot und den Scatterplot. Für das Baumdiagramm wurde zuerst versucht mithilfe von Pyhtoncode die csv-Datei in eine json-Datei umzuwandeln. Leider gelang dies nicht, sodass die csv erst in eine Excel-Datei umgewandelt wurde. Anschließend wurde mithilfe der Excel-Datei manuell eine json-Datei erstellt um anhand dieser die Baumdarstellung zu visualisieren. In der json wurden dann nur die für das Baumdiagramm relevanten Daten übernommen. Aufgrund anfänglicher Überlegungen die verschieden klassierten \textit{Zeiten}, wie \textit{daily studying time}, \textit{social media time} und \textit{travelling time} in einzelne Klassen in Form von Integers festzuhalten, also \textit{daily studying time} von 0-30 Minuten wäre 1, 30-60 Minuten 2 usw. wurde die csv-Datei in R geladen um die Daten somit zu manipulieren. Aufgrund der späteren Nutzung der \textit{daily studying time} als Drop-down Tabelle wurde dieser Gedanke wieder verworfen.
+%Zusätzlich Ausfilterung der Daten von SalaryExpectation aufgrund von Ausreißer
+%Am Ende wurde dies aber dennoch erneut mit Pyhton gemacht allerdings mit den Daten \textit{social media time}, indem eine neue Spalte als daily studying class erstellt wurde und immer die Mitte der Zeit als Float erstellt wurde, sodass die Daten nun doch in den Parallelplot und den Scatterplot eingefügt wurden
+\\
 
 \section{Visualisierungen}
+In den nachfolgenden Abschnitten wird näher auf die oben genannten Zielstellungen eingegangen.
+%mentale Modelle??
 \subsection{Analyse der Anwendungsaufgaben}
+Wie bereits in \ref{Einleitung} erwähnt, sollen die folgenden Visualisierungen der Zielgruppe dabei helfen sich einen schnellen und übersichtlichen Eindruck über den Zusammenhang der unterschiedlichen Noten und der täglichen Lernzeit zu verschaffen. Zusätzlich zu den Noten und der Lernzeit wird außerdem immer noch das Geschlecht angegeben um dem Beobachter eine weiter Unterteilungsmöglichkeit mitzugeben. Dies geschieht bei den Plots mit Hovern und bei dem Baumdiagramm in Form einer Children-Aufteilung
+
 Analysieren sie die konkreten Anwendungsaufgaben, die die Lösung des Zielproblems durch die Anwender:innen bearbeitet werden müssen. 
 Welche sinnvollen mentale Modelle helfen den Personen bei der Bearbeitung. 
 %Welche Visualisierungen helfen den Personen, die die Software verwenden, sinnvolle mentale Modelle aufzubauen. 

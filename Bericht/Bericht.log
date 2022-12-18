@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.8.28) (preloaded format=pdflatex 2022.10.10)  18 DEC 2022 15:28
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.8.28) (preloaded format=pdflatex 2022.10.10)  18 DEC 2022 17:45
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -801,25 +801,30 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 28.
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 
-LaTeX Warning: Citation 'Earthman' on page 1 undefined on input line 31.
+LaTeX Warning: Citation 'Earthman' on page 1 undefined on input line 32.
 
 LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 3
-6.
+7.
 (C:\Users\Paul\AppData\Local\Programs\MiKTeX\tex/latex/lm\ts1lmr.fd
 File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 
-LaTeX Warning: Citation 'Munzner2008' on page 1 undefined on input line 44.
+LaTeX Warning: Citation 'Munzner2008' on page 1 undefined on input line 45.
 
 [1
 
 
 {C:/Users/Paul/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}] [2]
-[3] [4] [5]
+[3]
+Underfull \hbox (badness 10000) in paragraph at lines 94--98
 
-LaTeX Warning: Empty bibliography on input line 142.
+ []
 
-[6] (Bericht.aux)
+[4] [5] [6]
+
+LaTeX Warning: Empty bibliography on input line 153.
+
+[7] (Bericht.aux)
 
 LaTeX Warning: There were undefined references.
 
@@ -835,10 +840,10 @@ Package logreq Info: Writing requests to 'Bericht.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 20526 strings out of 475385
- 385438 string characters out of 2777378
- 1285703 words of memory out of 3000000
- 41653 multiletter control sequences out of 15000+600000
+ 20538 strings out of 475385
+ 385600 string characters out of 2777378
+ 1285851 words of memory out of 3000000
+ 41662 multiletter control sequences out of 15000+600000
  513053 words of font info for 57 fonts, out of 8000000 for 9000
  1143 hyphenation exceptions out of 8191
  108i,7n,106p,10631b,2367s stack positions out of 10000i,1000n,20000p,200000b,80000s
@@ -850,9 +855,9 @@ s/Paul/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx12.pfb><C:/Users
 aul/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr12.pfb><C:/Users/Pau
 l/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri10.pfb><C:/Users/Paul
 /AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmssbx10.pfb>
-Output written on Bericht.pdf (6 pages, 194622 bytes).
+Output written on Bericht.pdf (7 pages, 200112 bytes).
 PDF statistics:
- 155 PDF objects out of 1000 (max. 8388607)
- 28 named destinations out of 1000 (max. 500000)
- 161 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 172 PDF objects out of 1000 (max. 8388607)
+ 31 named destinations out of 1000 (max. 500000)
+ 177 words of extra memory for PDF output out of 10000 (max. 10000000)
 

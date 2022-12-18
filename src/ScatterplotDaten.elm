@@ -76,6 +76,7 @@ type Model
   | Success 
         {data: List Student_Data
      , dailyStudyingTime: String
+    -- , salaryExpectation: Int
      , x: StudentAttribute
      , y: StudentAttribute
         }
@@ -141,6 +142,11 @@ studentToMaybePoint student =
 filterStudents : List Student_Data -> String -> List Student_Data
 filterStudents allData filterString =
     List.filter (\x -> filterString == x.dailyStudyingTime) allData
+
+
+filterSalary : List Student_Data -> Int -> List Student_Data
+filterSalary allData filterInt =
+    List.filter (\y -> y.salaryExpectation < 200000) allData
 
 filterAndReduceStudents : List Student_Data -> XyData
 filterAndReduceStudents studentreduce =
@@ -328,56 +334,8 @@ pointCircle scaleX scaleY point xyPoint =
                     , y (Scale.convert scaleY (Tuple.second xyPoint) - (radius + 3))
                     , textAnchor AnchorMiddle
                     ]
-                    [Html.text point.pointName]
+                    [Html.text point.pointName ]
         ]
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 changeTimelul : Html Msg
@@ -524,6 +482,11 @@ view model =
                 yVal : List Float
                 yVal =
                     filterAttribute filData fullText.y
+
+                -- filData2: List Student_Data
+                -- filData2 =
+                --     filterSalary fullText.data
+                -- integrieren der Filterfunktion für unter 50k?
 
                 filData :  List Student_Data
                 filData =
