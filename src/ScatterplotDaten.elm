@@ -36,7 +36,7 @@ type alias Student_Data =
     ,   hobbies : String
     ,   dailyStudyingTime : String
     ,   preferStudyTime : String
-    ,   salaryExpectation : Int
+    ,   salaryExpectation : Float
     ,   satisfyDegree : String --Bool
     ,   willignessDegree: String
     ,   socialMedia : String
@@ -50,7 +50,7 @@ type StudentAttribute
     = TenthMark
     | TwelthMark
     | CollegeMark
-    -- | SalaryExpectation
+    | SalaryExpectation
 
 type Msg
     = GotText (Result Http.Error String)
@@ -62,7 +62,7 @@ type Msg
 
 
 type alias Point =
-    { pointName : String, tenthMark : Float, twelthMark : Float, collegeMark : Float}
+    { pointName : String, tenthMark : Float, twelthMark : Float, collegeMark : Float, salaryExpectation : Float}
 
 type alias XyData =
     { xDescription : String
@@ -95,6 +95,9 @@ stringToStudent str =
         else if str == "12th Mark" then
              TwelthMark
 
+        else if str == "salary expectation" then
+             SalaryExpectation
+
         else
              CollegeMark
 
@@ -111,20 +114,25 @@ studentToReverseString stringo =
         CollegeMark ->
             "college Mark"
 
+        SalaryExpectation ->
+            "salary expectation"
+
 
 
 studentToMaybePoint : Student_Data -> Maybe Point
 studentToMaybePoint student =
-    map3 
-        (\tenthMark twelthMark collegeMark ->
+    map4 
+        (\tenthMark twelthMark collegeMark salaryExpectation->
             Point
                 (student.gender)
                 (tenthMark)
                 (twelthMark)
+                (salaryExpectation)
                 (collegeMark) 
         )
         (Just student.tenthMark)
         (Just student.twelthMark)
+        (Just student.salaryExpectation)
         (Just student.collegeMark)
 
 
@@ -150,17 +158,20 @@ andMap : Maybe a -> Maybe (a -> b) -> Maybe b
 andMap =
   Maybe.map2 (|>)
   
-map3 : (a -> b -> c -> d) 
+map4 : (a -> b -> c -> d -> e)  
   -> Maybe a
   -> Maybe b
   -> Maybe c
   -> Maybe d
+  -> Maybe e
  
-map3 function maybe1 maybe2 maybe3 =
+map4 function maybe1 maybe2 maybe3 maybe4 =
   Just function
     |> andMap maybe1
     |> andMap maybe2
     |> andMap maybe3
+    |> andMap maybe4
+
 
 
 -- Scatterplot
@@ -373,12 +384,12 @@ changeTimelul : Html Msg
 changeTimelul =
     Html.select
         [onInput ChangeStudTime]
-        [Html.option [value "0 - 30 minute"] [Html.text "0 - 30 minutes"]
-        ,Html.option [value "30 - 60 minute"] [Html.text "30 - 60 minutes"]
-        ,Html.option [value "1 - 2 Hour"] [Html.text "1 - 2 hours"]
-        ,Html.option [value "2 - 3 hour"] [Html.text "2 - 3 hours"]
-        ,Html.option [value "3 - 4 hour"] [Html.text "3 - 4 hours"]
-        ,Html.option [value "More Than 4 hour"] [Html.text "More Than 4 hours"]
+        [Html.option [value "0 - 30 minute"] [Html.text "0 - 30 Minuten"]
+        ,Html.option [value "30 - 60 minute"] [Html.text "30 - 60 Minuten"]
+        ,Html.option [value "1 - 2 Hour"] [Html.text "1 - 2 Stunden"]
+        ,Html.option [value "2 - 3 hour"] [Html.text "2 - 3 Stunden"]
+        ,Html.option [value "3 - 4 hour"] [Html.text "3 - 4 Stunden"]
+        ,Html.option [value "More Than 4 hour"] [Html.text "Mehr als 4 Stunden"]
         ]
         
 
@@ -390,6 +401,7 @@ buttonX =
         [Html.option [value "10th Mark"] [Html.text "10th Grade Mark"]
         ,Html.option [value "12th Mark"] [Html.text "12th Grade Mark"]
         ,Html.option [value "college mark"] [Html.text "College Mark"]  
+        ,Html.option [value "salary expectation"] [Html.text "Salary Expectation"]
         ]
 
 buttonY : Html Msg
@@ -399,6 +411,7 @@ buttonY =
         [Html.option [value "10th Mark"] [Html.text "10th Grade Mark"]
         ,Html.option [value "12th Mark"] [Html.text "12th Grade Mark"]
         ,Html.option [value "college mark"] [Html.text "College Mark"]  
+        ,Html.option [value "salary expectation"] [Html.text "Salary Expectation"]
         ]
 
 
@@ -498,6 +511,9 @@ view model =
                         TwelthMark ->
                             List.map .twelthMark points
 
+                        SalaryExpectation ->
+                            List.map .salaryExpectation points
+
                         CollegeMark ->
                             List.map .collegeMark points
 
@@ -578,7 +594,7 @@ decodeCsvStudentdata =
               |> Csv.Decode.andMap (Csv.Decode.field "hobbies" Ok)
               |> Csv.Decode.andMap (Csv.Decode.field "daily studing time" Ok)
               |> Csv.Decode.andMap (Csv.Decode.field "prefer to study in" Ok)
-              |> Csv.Decode.andMap (Csv.Decode.field "salary expectation" (String.toInt >> Result.fromMaybe "error parsing string"))
+              |> Csv.Decode.andMap (Csv.Decode.field "salary expectation" (String.toFloat >> Result.fromMaybe "error parsing string"))
               |> Csv.Decode.andMap (Csv.Decode.field "Do you like your degree?" Ok) --(String.toBool >> Result.fromMaybe "error parsing string")) 
               |> Csv.Decode.andMap (Csv.Decode.field "willingness to pursue a career based on their degree  " Ok)
               |> Csv.Decode.andMap (Csv.Decode.field "social medai & video" Ok)
