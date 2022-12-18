@@ -89,10 +89,10 @@ type Model
 stringToStudent : String -> StudentAttribute
 stringToStudent str =
 
-        if str == "tenth Mark" then
+        if str == "10th Mark" then
              TenthMark
 
-        else if str == "twelth Mark" then
+        else if str == "12th Mark" then
              TwelthMark
 
         else
@@ -103,10 +103,10 @@ studentToReverseString : StudentAttribute -> String
 studentToReverseString stringo =
     case stringo of
         TenthMark ->
-            "tenth Mark"
+            "10th Mark"
 
         TwelthMark ->
-            "twelth Mark"
+            "12th Mark"
 
         CollegeMark ->
             "college Mark"
@@ -141,7 +141,7 @@ filterAndReduceStudents studentreduce =
             List.filterMap studentToMaybePoint studentreduce
 
     in 
-        XyData "Tenth Grade Mark" "Twelth Grade Mark" filterStudentitos
+        XyData "10th Mark" "12th Mark" filterStudentitos
 
 
 --map 
