@@ -139,15 +139,15 @@ Die eben beschriebenen Präsentationen und Begründungen sollen für jede der dr
 
 
 \subsubsection{Visualisierung Eins}
-Wie bereits in \ref{Anforderungen} erwähnt wurde sich als erste Visualisierung für den Scatterplot entschieden, abgebildet in Abb.1.
+Wie bereits in \ref{Anforderungen} erwähnt wurde sich als erste Visualisierung für den Scatterplot entschieden, abgebildet in Abbildung \ref{Scatter}.
 
 
 
 \begin{figure}[h]
 \begin{center}
-\includegraphics[scale=0.35]{Scatterplot.png}
-\caption{Scatterplot}
-\label{Scatter}
+	\includegraphics[scale=0.35]{Scatterplot.png}
+	\caption{Scatterplot}
+	\label{Scatter}
 \end{center}
 \end{figure}
 
@@ -155,7 +155,7 @@ Wie bereits in \ref{Anforderungen} erwähnt wurde sich als erste Visualisierung 
 
 Warum sich für den Scatterplot entschieden wurde, wurde bereits in \ref{Anforderungen} erläutert, zur genaueren Definition des Scatterplots und wie die \textit{Student Behaviour}-Daten darin dargestellt wurden wird in den folgenden Abschnitten näher darauf eingegangen.
 \pagebreak
-Der Scatterplot an sich besitzt zwei Achsen, die X-Achse und die Y-Achse. Deren Größe kann entweder manuell bestimmt werden oder hat vier weitere Möglichkeiten gleiche Daten verschieden darzustellen(\cite{Hinneburg})\\
+Der Scatterplot an sich besitzt zwei Achsen, die X-Achse und die Y-Achse. Deren Größe kann entweder manuell bestimmt werden oder hat vier weitere Möglichkeiten gleiche Daten verschieden darzustellen(\cite{Hinneburg2022})\\
 \begin{itemize}
 \item  X- und Y-Achse haben einen gleich großen Wertebereich
 \item Nur die Y-Achse hat einen großen Wertebereich
@@ -163,8 +163,7 @@ Der Scatterplot an sich besitzt zwei Achsen, die X-Achse und die Y-Achse. Deren 
 \item Der Wertebereich in X und Y wird durch die Daten bestimmt
 \end{itemize}
 
-Die manuelle Einstellung der Achsen wäre sehr großer Aufwand und auch durchaus ungeeignet, weswegen sich hier für eine dynamische Option entschieden wurde.Die beiden Achsen wurden dem Wertebereich angepasst und können so auch flexibel mit den unterschiedlichen reingeparsten Daten interagieren und sich verändern. In \autoref{fig:Scatter} %fiiiiiiiiiiiiiiiiiiix
-enthält in diesem Beispiel die X-Achse als Werte die Daten von College Mark und die Y-Achse die Werte der Daten von 12th Mark.
+Die manuelle Einstellung der Achsen wäre sehr großer Aufwand und auch durchaus ungeeignet, weswegen sich hier für eine dynamische Option entschieden wurde.Die beiden Achsen wurden dem Wertebereich angepasst und können so auch flexibel mit den unterschiedlichen reingeparsten Daten interagieren und sich verändern. In Abbildung \ref{Scatter} enthält in diesem Beispiel die X-Achse als Werte die Daten von College Mark und die Y-Achse die Werte der Daten von 12th Mark.
 Zusätzlich zu den dargestellten Achsen und deren Beschriftung enthält ein Scatterplot Punkte, die die verschiedenen zu untersuchenden Individuen und ihre Werte abbilden sollen (in diesem speziellen Fall die Studenten.\\
 Aus dem Scatterplot kann also anhand der zwei beschrifteten Achsen und den Punkten auf einen Blick erkannt werden, wie die Notenverteilung bei den unterschiedlich ausgewählten Lernzeiten aussieht.\\
 
@@ -172,20 +171,55 @@ Aus dem Scatterplot kann also anhand der zwei beschrifteten Achsen und den Punkt
 
 \begin{figure}[h]
 \begin{center}
-\includegraphics[scale=0.75]{ScatterDrop.png}
-\caption{Ausgewählte Drop-Down-Funktionen und Head}
-\label{Scatter}
+	\includegraphics[scale=0.75]{ScatterDrop.png}
+	\caption{Ausgewählte Drop-Down-Funktionen und Head}
+	\label{ScatterDrop}
 \end{center}
 \end{figure}
 
-Zu sehen ist, dass die Lernzeit 0-30 Minuten ausgewählt wurde und zusätzlich dazu die bereits erwähnten Achsen. So ist es dem LEser überlassen sich die verschiedenen WErte und differenten Korrelationen der Daten ausgeben zu lassen. Dies stellte eine der Anforderungen an die Visualisierung dar und wurde zusätzlich mit der einfachen Handhabung, gegeben durch die Drop-Downs in die Tat umgesetzt. Es lässt sich so sehr leicht auf einen Blick erkenne, in welchem Notenbereich sich Studenten bewegen, die 0-30 Minuten lernen. Zusätzlich dazu wird die Relation zwischen der Note im College und der Note aus der 12.Klasse abgebildet. \\
+Zu sehen in Abbildung \ref{ScatterDrop} ist, dass die Lernzeit 0-30 Minuten ausgewählt wurde und zusätzlich dazu die bereits erwähnten Achsen. So ist es dem LEser überlassen sich die verschiedenen WErte und differenten Korrelationen der Daten ausgeben zu lassen. Dies stellte eine der Anforderungen an die Visualisierung dar und wurde zusätzlich mit der einfachen Handhabung, gegeben durch die Drop-Downs in die Tat umgesetzt. Es lässt sich so sehr leicht auf einen Blick erkenne, in welchem Notenbereich sich Studenten bewegen, die 0-30 Minuten lernen. Zusätzlich dazu wird die Relation zwischen der Note im College und der Note aus der 12.Klasse abgebildet. \\
 Dem Leser werden außerdem zwei zusätzliche Informationen geliefert, einmal wieviele Studenten es insgesamt gibt und außerdem wieviele Studenten von dieser Gesamtanzahl grade ausgewählt sind. Also wieviele Studenten von 235 0-30 Minuten lernen, in dem Fall 46. \\
 So kann sich der Leser ein besseres Bild dazu machen, wie sich die Lernzeit grobt verteilt.\\
 Außerdem wird dem Betrachter die Hover-Funktion bereitgestellt, dass bedeutet, dass wenn er über die einzelnen Punkte mit der Maus rüber fährt, leuchtet der Punkt grün auf und gibt ihm das Geschlecht mittig über dem Punkt aus.\\
 
-Eine weiter ähnliche Visualisierungstechnik ist der QQ-Plot, dieser Teil die Datenwerte in verschiede Quantile ein. Hier werden die Verteilunen verglichen, Hinneburg beschreibt es als \glqq Verschiebungen zwischen zwei Verteilungen werden effizient durch Vergleich der Quantile gefunden\grqq \\
-\cite{Hinneburg}. Da bei der zugrundeliegenden Arbeit allerdings nicht die Quantile veranschaulicht werden sollen, sondern vielmehr die einzelnen Noten der Studenten interessant sind, macht ein Scatterplot deutlich mehr Sinn.
+\noindent Eine weiter ähnliche Visualisierungstechnik ist der QQ-Plot, dieser Teil die Datenwerte in verschiede Quantile ein. Hier werden die Verteilunen verglichen, Hinneburg beschreibt es als \glqq Verschiebungen zwischen zwei Verteilungen werden effizient durch Vergleich der Quantile gefunden\grqq \\
+\cite{Hinneburg2022}. Da bei der zugrundeliegenden Arbeit allerdings nicht die Quantile veranschaulicht werden sollen, sondern vielmehr die einzelnen Noten der Studenten interessant sind, macht ein Scatterplot deutlich mehr Sinn.
+
 \subsubsection{Visualisierung Zwei}
+Die zweite Visualisierung wurde in Form eines Parallelplots dargestellt. Dieser hat, wie bereits in \ref{Anforderungen} gegenüber des Scatterplots den Vorteil, dass hier mehrere Daten auf einmal, sogenannte mehrdimensionale Daten dargestellt werden können.\\ Es können also von einem Studenten unter der Auswahl einer Lernzeitklasse alle Noten auf einmal darstellen. Hierzu werden die verschiedenen Attribute (Noten) vertikal nebeneinander aufgelistet und mithilfe einer Linie verbunden. Diese Linie übernimmt quasi die Aufgabe des Punkts aus dem Scatterplot und veranschaulicht so einzelne Studenten, siehe \ref{Parallel}. Hierbei wurde sich wieder für die Noten 10.Klasse, 12.Klasse \& College Mark zusätzlich zu \textit{Salary expectation} entschieden. So kann die mögliche Korrelation zwischen den einzelnen Noten und der Lernzeit und der Korrelation der einzelnen Noten untereinander gut veranschaulicht werden.\\
+
+
+
+\begin{figure}[h]
+\begin{center}
+	\includegraphics[scale=0.35]{ParallelPlot.png}
+	\caption{Parallelplot}
+	\label{Parallel}
+\end{center}
+\end{figure}
+
+\noindent Der Leser erhält außerdem wieder als Kopf über der Visualisierung die Auswahl zwischen den einzelnen Lernzeiten per Drop-Down zu navigieren und erneut die Information, wie viele Studenten es insgesamt und wieviele Studenten es in der jeweils ausgewählten Zeitklasse gibt, siehe Abbildung \ref{ParallelDrop}. \pagebreak
+
+%eventuell erwähnen, dass die Zeitangabe im Header auch dynamisch?
+
+\begin{figure}[h]
+\begin{center}
+	\includegraphics[scale=1]{ParallelDrop.png}
+	\caption{Drop-Down Fenster und Head des Parallelplot}
+	\label{ParallelDrop}
+\end{center}
+\end{figure}
+
+
+\noindent Für den Leser ist so nun, wie in der Zielstellung in \ref{Einleitung} formulierten Anforderung auf einen Blick ersichtlich, wie sich die Verteilung der Noten gestaltet. Sollten sich sehr viele Linien im höheren Segment des Parallelplots ansiedeln, so ist klar, dass in der ausgewählten Lernklasse (in diesem Beispiel 0-30 Minuten)viele Studenten gute Noten in der Schule hatten und immer noch gute Noten im College haben, sowie eine hohe Erwartung an ihr späteres Gehalt haben. Genau das gleiche gilt selbstverständlich für den umgekehrten Fall.\\
+
+Dem Vorteil der mehrdimensionalen Datendarstellung des Parallelplots steht allerdings die Ünubersichtlichkeit des Gleichnamigen gegenüber. Wenn auch alle Daten auf einmal abgebildet werden können, so leidet darunter die exakte Differenzierung der unterschiedlichen Individuen. Beim Parallelplot ist es also durchaus schwierig die einzelnen Studenten voneinander zu differenzieren, da die Linien sich an den unterschiedlich Abschnitten schneiden und so nicht genau erkennbar ist, wo welche Linie weiterführt. %daher einführung hover Funktion!
+
+\noindent 
+
+
+
+
 
 \subsubsection{Visualisierung Drei}
 
