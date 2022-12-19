@@ -7,7 +7,7 @@ No;Male;BCA;170;54;40;65;30;Video Games;30 - 60 minute;Morning;50000;Yes;25%;1.3
 Yes;Female;BCA;139;33;90;75;70;Cinema;30 - 60 minute;Night;20000;Yes;50%;30 - 60 Minute;0 - 30 minutes;Bad;good;No;;;Durchschnitt m;64,34375;68,05;66,68571429;69;73,125;76,66666667;
 Yes;Male;BCA;165;50;70;63;3;Reading books;1 - 2 Hour;Morning;15000;Yes;75%;1 - 1.30 hour;1 - 1.30 hour;Good;good;No;;;Durchschnitt f;78,63636364;75,04761905;77,79166667;81,07142857;75,83333333;41;
 No;Male;BCA;152;43;61.6;61.67;75;Sports;1 - 2 Hour;Morning;25000;Yes;50%;1 - 1.30 hour;1 - 1.30 hour;Good;good;No;;;;;;;;;;
-No;Male;BCA;190;85;88.2;67.5;60;Video Games;0 - 30 minute;Morning;20000;Yes;75%;1.30 - 2 hour;1 - 1.30 hour;Bad;Bad;No;;;;;;;;;;
+No;Male;BCA;190;85;88.2;67.5;60;Video Games;0 - 30 minute;Morning;20000;Yes;75%;1.30 - 2 hour;1 - 1.30 hour;Bad;Bad;No;;;Median salary exp.;;20000;;Median = 20000;;;
 No;Male;BCA;150;84;60;65;70;Video Games;0 - 30 minute;Anytime;20000;Yes;75%;30 - 60 Minute;30 - 60 minutes;Good;good;No;;;;;;;;;;
 No;Male;BCA;99;50;75;70;60;Video Games;1 - 2 Hour;Morning;18000;Yes;75%;1 - 1.30 hour;0 - 30 minutes;Good;Bad;No;;;;;;;;;;
 No;Female;BCA;152;51;60;55;65;Cinema;2 - 3 hour;Night;20000;Yes;75%;1 - 1.30 hour;2 - 2.30 hour;Bad;Bad;No;;;;;;;;;;
