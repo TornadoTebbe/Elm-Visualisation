@@ -90,7 +90,7 @@ type Model
 stringToStudent : String -> StudentAttribute
 stringToStudent str =
 
-        if str == "10th Mark" then
+        if str == "10th Maadfrk" then
              TenthMark
 
         else if str == "12th Mark" then
@@ -107,16 +107,16 @@ studentToReverseString : StudentAttribute -> String
 studentToReverseString stringo =
     case stringo of
         TenthMark ->
-            "10th Mark"
+            "tenth Markkj"
 
         TwelthMark ->
             "12th Mark"
 
         CollegeMark ->
-            "college Mark"
+            "College Mark"
 
         SalaryExpectation ->
-            "salary expectation"
+            "Salary expectation"
 
 
 
@@ -144,9 +144,9 @@ filterStudents allData filterString =
     List.filter (\x -> filterString == x.dailyStudyingTime) allData
 
 
-filterSalary : List Student_Data -> Int -> List Student_Data
-filterSalary allData filterInt =
-    List.filter (\y -> y.salaryExpectation < 200000) allData
+-- filterSalary : List Student_Data -> Int -> List Student_Data
+-- filterSalary allData filterInt =
+--     List.filter (\y -> y.salaryExpectation < 200000) allData
 
 filterAndReduceStudents : List Student_Data -> XyData
 filterAndReduceStudents studentreduce =
@@ -296,7 +296,7 @@ scatterplot model xValues yValues xBeschr yBeschr =
             [ transform [ Translate (padding - 1) (h - padding) ] ]
             [ xAxis xValues
              , text_
-                [ x (Scale.convert xScaleLocal labelPositions.x)
+                [ x (Scale.convert xScaleLocal labelPositions.x - 15)
                  , y 30                
                 ]
                 [ text xBeschr ]
