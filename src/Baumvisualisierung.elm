@@ -58,7 +58,7 @@ treeDecoder =
 initialModel : () -> ( Model, Cmd Msg )
 initialModel () =
     ( { wide = 3000, height = 2000, radius = 100, distance = 20, tree = Tree.singleton "", error = "shit...." }
-    , Http.get { url = "https://raw.githubusercontent.com/TornadoTebbe/Elm2/main/Daten/baumFertigStud.json?token=GHSAT0AAAAAAB3NMVWEFZ6J7ZV3PFBVBBHOY5AJY3Q", expect = Http.expectJson GotFlare treeDecoder }
+    , Http.get { url = "https://raw.githubusercontent.com/TornadoTebbe/ElmTest2/main/Daten/BaumStudent.json?token=GHSAT0AAAAAAB4RNFVUZUKLA67TN33O7CF2Y5APP6A", expect = Http.expectJson GotFlare treeDecoder }
     )
 
 

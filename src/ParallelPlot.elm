@@ -35,7 +35,7 @@ type alias Student_Data =
     ,   hobbies : String
     ,   dailyStudyingTime : String
     ,   preferStudyTime : String
-    ,   salaryExpectation : Int
+    ,   salaryExpectation : Float
     ,   satisfyDegree : String --Bool
     ,   willignessDegree: String
     ,   socialMedia : String
@@ -100,7 +100,7 @@ init : () -> ( Model, Cmd Msg )
 init _ =
     (Loading , 
     Http.get
-    { url = "https://raw.githubusercontent.com/TornadoTebbe/ElmTest/main/Daten/Student_Behaviour.csv"
+    { url = "https://raw.githubusercontent.com/TornadoTebbe/ElmTest2/main/Daten/Student_Behaviour.csv?token=GHSAT0AAAAAAB4RNFVUIQKZT5GZJCIFBXPYY5AO3YQ"
     , expect = Http.expectString GotText
     })
 
@@ -127,7 +127,7 @@ decodeCsvStudentdata =
               |> Csv.Decode.andMap (Csv.Decode.field "hobbies" Ok)
               |> Csv.Decode.andMap (Csv.Decode.field "daily studing time" Ok)
               |> Csv.Decode.andMap (Csv.Decode.field "prefer to study in" Ok)
-              |> Csv.Decode.andMap (Csv.Decode.field "salary expectation" (String.toInt >> Result.fromMaybe "error parsing string"))
+              |> Csv.Decode.andMap (Csv.Decode.field "salary expectation" (String.toFloat >> Result.fromMaybe "error parsing string"))
               |> Csv.Decode.andMap (Csv.Decode.field "Do you like your degree?" Ok) --(String.toBool >> Result.fromMaybe "error parsing string")) 
               |> Csv.Decode.andMap (Csv.Decode.field "willingness to pursue a career based on their degree  " Ok)
               |> Csv.Decode.andMap (Csv.Decode.field "social medai & video" Ok)
@@ -370,8 +370,8 @@ update msg model =
         GotText result ->
             case result of
                 Ok fullText ->
-                    ( Success <| {data = studentListe [fullText], studTime = "0 - 30 minute", wert1 = .tenthMark, wert2 = .twelthMark, wert3 = .collegeMark, wert4 = .weight,
-                    wertName1 = "Tenth Mark", wertName2 = "Twelth Mark", wertName3 = "College Mark", wertName4 = "Weight of Student "} , Cmd.none)
+                    ( Success <| {data = studentListe [fullText], studTime = "0 - 30 minute", wert1 = .tenthMark, wert2 = .twelthMark, wert3 = .collegeMark, wert4 = .salaryExpectation,
+                    wertName1 = "Tenth Mark", wertName2 = "Twelth Mark", wertName3 = "College Mark", wertName4 = "Salary Expectation"} , Cmd.none)
 
                 Err _ ->
                     (model, Cmd.none)
