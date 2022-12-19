@@ -113,7 +113,7 @@ init : () -> ( Model, Cmd Msg )
 init _ =
     (Loading , 
     Http.get
-    { url = "https://raw.githubusercontent.com/TornadoTebbe/ElmTest2/main/Daten/Student_Behaviour.csv?token=GHSAT0AAAAAAB3NMVWFKHCINYVH46OAZZAUY5AWBWA"
+    { url = "https://raw.githubusercontent.com/TornadoTebbe/ElmTest2/main/Daten/Student_Behaviour.csv"
     , expect = Http.expectString GotText
     })
 
