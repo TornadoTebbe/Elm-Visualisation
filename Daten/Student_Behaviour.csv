@@ -46,7 +46,7 @@ No,Male,Commerce,160,70,70,70,70,Cinema,3 - 4 hour,Anytime,20000,Yes,100%,1 - 30
 Yes,Male,Commerce,160,65,70,75,70,Sports,0 - 30 minute,Anytime,20000,Yes,75%,1 - 1.30 hour,30 - 60 minutes,Good,good,Yes
 Yes,Female,B.com Accounting and Finance ,154,45,64,88,70,Sports,1 - 2 Hour,Morning,10000,Yes,25%,1 - 1.30 hour,0 - 30 minutes,Bad,good,No
 No,Male,B.com Accounting and Finance ,160,80,75,75,75,Sports,30 - 60 minute,Anytime,30000,Yes,75%,More than 2 hour,1.30 - 2 hour,Good,good,No
-No,Male,B.com Accounting and Finance ,90,83,60,82,65,Video Games,0 - 30 minute,Anytime,100000,Yes,75%,30 - 60 Minute,1.30 - 2 hour,Awful,good,No
+No,Male,B.com Accounting and Finance ,90,83,60,82,65,Video Games,0 - 30 minute,Anytime,20000,Yes,75%,30 - 60 Minute,1.30 - 2 hour,Awful,good,No
 Yes,Male,B.com Accounting and Finance ,156,70,66,65,60,Reading books,1 - 2 Hour,Morning,20000,Yes,50%,30 - 60 Minute,30 - 60 minutes,fabulous,good,No
 No,Male,B.com Accounting and Finance ,155,55,73,72,1,Reading books,1 - 2 Hour,Night,15000,Yes,75%,1 - 30 Minute,30 - 60 minutes,Good,good,No
 Yes,Male,B.com Accounting and Finance ,153,56,62,53,80,Sports,1 - 2 Hour,Morning,50000,Yes,75%,30 - 60 Minute,2 - 2.30 hour,Awful,Awful,Yes
