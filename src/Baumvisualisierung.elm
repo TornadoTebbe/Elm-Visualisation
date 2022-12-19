@@ -4,6 +4,7 @@ import Browser
 import Color
 import Dict exposing (Dict)
 import Html exposing (Html)
+import Html.Attributes exposing (style)
 import Html.Events
 import Http
 import Json.Decode
@@ -57,7 +58,7 @@ treeDecoder =
 initialModel : () -> ( Model, Cmd Msg )
 initialModel () =
     ( { wide = 3000, height = 2000, radius = 100, distance = 20, tree = Tree.singleton "", error = "shit...." }
-    , Http.get { url = "https://raw.githubusercontent.com/TornadoTebbe/ElmTest2/main/Daten/BaumStudent.json?token=GHSAT0AAAAAAB3NMVWF2HO33GGJYOYRRXVYY4ZZEJA", expect = Http.expectJson GotFlare treeDecoder }
+    , Http.get { url = "https://raw.githubusercontent.com/TornadoTebbe/Elm2/main/Daten/baumFertigStud.json?token=GHSAT0AAAAAAB3NMVWEFZ6J7ZV3PFBVBBHOY5AJY3Q", expect = Http.expectJson GotFlare treeDecoder }
     )
 
 
@@ -265,7 +266,10 @@ treeView model =
 
 view : Model -> Html Msg
 view model =
-    Html.div []
+    Html.div [
+                -- style "height" "90px"
+                style "width" "90%"
+            ]
         ([ Html.text model.error
          , Html.text "Breite: "
          , Html.input [ Html.Events.onInput ChangeWide ] []

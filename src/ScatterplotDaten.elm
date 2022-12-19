@@ -90,24 +90,24 @@ type Model
 stringToStudent : String -> StudentAttribute
 stringToStudent str =
 
-        if str == "10th Maadfrk" then
-             TenthMark
+        if str == "10th Mark" then
+            TenthMark
 
         else if str == "12th Mark" then
-             TwelthMark
+            TwelthMark
 
         else if str == "salary expectation" then
-             SalaryExpectation
+            SalaryExpectation
 
         else
-             CollegeMark
+            CollegeMark
 
 
 studentToReverseString : StudentAttribute -> String
 studentToReverseString stringo =
     case stringo of
         TenthMark ->
-            "tenth Markkj"
+            "10th Mark"
 
         TwelthMark ->
             "12th Mark"
@@ -395,7 +395,7 @@ init : () -> ( Model, Cmd Msg )
 init _ =
     (Loading , 
     Http.get
-    { url = "https://raw.githubusercontent.com/TornadoTebbe/ElmTest/main/Daten/Student_Behaviour.csv"
+    { url = "https://raw.githubusercontent.com/TornadoTebbe/ElmTest2/main/Daten/Student_Behaviour.csv?token=GHSAT0AAAAAAB4RNFVUBHVJR3CZW3255YXCY5AOEIQ"
     , expect = Http.expectString GotText
     })
     
@@ -492,11 +492,11 @@ view model =
                 filData =
                     filterStudents fullText.data fullText.dailyStudyingTime 
 
-                -- numStud =  brauchen für spätere Anzeige, wenn Listenlänge anzeigen.
-                --     List.length fullText.data
+                numStud =  
+                     List.length fullText.data
                 
-                -- numFilStud =
-                --     List.length filData
+                numFilStud =
+                    List.length filData
 
                 filRedNumStud : XyData
                 filRedNumStud =
@@ -518,10 +518,10 @@ view model =
                     , Html.h3 []
                     [Html.text ("Scatterplot Lernzeit " ++ fullText.dailyStudyingTime ++ ":")]
                 , Html.p []
-                [ Html.text (String.fromInt (List.length xVal))] --hier ändern für big stonks male female
+                [ Html.text ("Anzahl Studenten gesamt: " ++ (String.fromInt (numStud)))] 
 
                  , Html.p []
-                [ Html.text ("TestString55")] 
+                [ Html.text ("Anzahl Studenten mit ausgewählter Lernzeit: " ++ (String.fromInt(numFilStud)))] 
                 
 
                 , Html.h4 []

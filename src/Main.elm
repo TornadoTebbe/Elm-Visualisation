@@ -11,7 +11,7 @@ import String exposing (fromInt, toInt)
 import Debug exposing (log)
 import Http
 import TypedSvg.Attributes exposing (y)
-import ScatteplotDaten exposing (StudentAttribute)
+import ScatterplotDaten exposing (..)
 
 
 
@@ -157,7 +157,7 @@ displaytext conf =
     in
          pre [] [ text (var)
          , text (conf.description)
-         , div[][scatterplotDaten model]]
+         , div[][scatterplot model]]
          
         --  , div [] [ScatterplotDaten conf.data] ]
         --  , Html.button [ onClick BiggestWin ] [ text "Click me" ] ]
