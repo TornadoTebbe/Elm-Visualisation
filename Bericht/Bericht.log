@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.12) (preloaded format=pdflatex 2022.12.18)  19 DEC 2022 16:53
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.12) (preloaded format=pdflatex 2022.12.18)  19 DEC 2022 18:30
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -680,7 +680,11 @@ LaTeX Font Info:    Trying to load font information for T1+lmr on input line 19
 (C:\Users\pault\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmr.fd
 File: t1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-(Bericht.aux)
+(Bericht.aux
+
+LaTeX Warning: Label `Scatter' multiply defined.
+
+)
 \openout1 = `Bericht.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 19.
@@ -919,13 +923,35 @@ Underfull \hbox (badness 10000) in paragraph at lines 156--159
 
 LaTeX Warning: Reference `fig:Scatter' on page 8 undefined on input line 166.
 
-[8 <./Scatterplot.png>] [9]
 
-LaTeX Warning: Empty bibliography on input line 202.
+Underfull \hbox (badness 10000) in paragraph at lines 166--170
 
-[10] (Bericht.aux)
+ []
+
+[8 <./Scatterplot.png>]
+<ScatterDrop.png, id=66, 417.81094pt x 216.05719pt>
+File: ScatterDrop.png Graphic file (type png)
+<use ScatterDrop.png>
+Package pdftex.def Info: ScatterDrop.png  used on input line 175.
+(pdftex.def)             Requested size: 313.35744pt x 162.04248pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 181--185
+
+ []
+
+
+LaTeX Warning: Citation 'Hinneburg' on page 9 undefined on input line 187.
+
+[9 <./ScatterDrop.png>] [10]
+
+LaTeX Warning: Empty bibliography on input line 220.
+
+[11] (Bericht.aux)
 
 LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: There were multiply-defined labels.
 
 Package rerunfilecheck Info: File `Bericht.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
@@ -939,10 +965,10 @@ Package logreq Info: Writing requests to 'Bericht.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 21407 strings out of 475281
- 399440 string characters out of 2774064
- 1305410 words of memory out of 3000000
- 42599 multiletter control sequences out of 15000+600000
+ 21416 strings out of 475281
+ 399591 string characters out of 2774064
+ 1305485 words of memory out of 3000000
+ 42605 multiletter control sequences out of 15000+600000
  513053 words of font info for 57 fonts, out of 8000000 for 9000
  1143 hyphenation exceptions out of 8191
  108i,8n,106p,10631b,2367s stack positions out of 10000i,1000n,20000p,200000b,80000s
@@ -954,9 +980,9 @@ sers/pault/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:/Us
 ers/pault/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr12.pfb><C:/Use
 rs/pault/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri10.pfb><C:/Use
 rs/pault/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmssbx10.pfb>
-Output written on Bericht.pdf (10 pages, 248489 bytes).
+Output written on Bericht.pdf (11 pages, 261452 bytes).
 PDF statistics:
- 190 PDF objects out of 1000 (max. 8388607)
- 35 named destinations out of 1000 (max. 500000)
- 182 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 200 PDF objects out of 1000 (max. 8388607)
+ 37 named destinations out of 1000 (max. 500000)
+ 187 words of extra memory for PDF output out of 10000 (max. 10000000)
 

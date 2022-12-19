@@ -146,7 +146,7 @@ Wie bereits in \ref{Anforderungen} erwähnt wurde sich als erste Visualisierung 
 \begin{figure}[h]
 \begin{center}
 \includegraphics[scale=0.35]{Scatterplot.png}
-\caption{Test12}
+\caption{Scatterplot}
 \label{Scatter}
 \end{center}
 \end{figure}
@@ -165,8 +165,26 @@ Der Scatterplot an sich besitzt zwei Achsen, die X-Achse und die Y-Achse. Deren 
 
 Die manuelle Einstellung der Achsen wäre sehr großer Aufwand und auch durchaus ungeeignet, weswegen sich hier für eine dynamische Option entschieden wurde.Die beiden Achsen wurden dem Wertebereich angepasst und können so auch flexibel mit den unterschiedlichen reingeparsten Daten interagieren und sich verändern. In \autoref{fig:Scatter} %fiiiiiiiiiiiiiiiiiiix
 enthält in diesem Beispiel die X-Achse als Werte die Daten von College Mark und die Y-Achse die Werte der Daten von 12th Mark.
+Zusätzlich zu den dargestellten Achsen und deren Beschriftung enthält ein Scatterplot Punkte, die die verschiedenen zu untersuchenden Individuen und ihre Werte abbilden sollen (in diesem speziellen Fall die Studenten.\\
+Aus dem Scatterplot kann also anhand der zwei beschrifteten Achsen und den Punkten auf einen Blick erkannt werden, wie die Notenverteilung bei den unterschiedlich ausgewählten Lernzeiten aussieht.\\
 
+\noindent Wie bereits oben erwähnt können die X- und die Y-Achse dynamisch gewählt werden, genauso wie der \glqq Filter\grqq ,der die Lernzeit auswählt und unter dieser Prämisse die Daten der Noten auswählt
 
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale=0.75]{ScatterDrop.png}
+\caption{Ausgewählte Drop-Down-Funktionen und Head}
+\label{Scatter}
+\end{center}
+\end{figure}
+
+Zu sehen ist, dass die Lernzeit 0-30 Minuten ausgewählt wurde und zusätzlich dazu die bereits erwähnten Achsen. So ist es dem LEser überlassen sich die verschiedenen WErte und differenten Korrelationen der Daten ausgeben zu lassen. Dies stellte eine der Anforderungen an die Visualisierung dar und wurde zusätzlich mit der einfachen Handhabung, gegeben durch die Drop-Downs in die Tat umgesetzt. Es lässt sich so sehr leicht auf einen Blick erkenne, in welchem Notenbereich sich Studenten bewegen, die 0-30 Minuten lernen. Zusätzlich dazu wird die Relation zwischen der Note im College und der Note aus der 12.Klasse abgebildet. \\
+Dem Leser werden außerdem zwei zusätzliche Informationen geliefert, einmal wieviele Studenten es insgesamt gibt und außerdem wieviele Studenten von dieser Gesamtanzahl grade ausgewählt sind. Also wieviele Studenten von 235 0-30 Minuten lernen, in dem Fall 46. \\
+So kann sich der Leser ein besseres Bild dazu machen, wie sich die Lernzeit grobt verteilt.\\
+Außerdem wird dem Betrachter die Hover-Funktion bereitgestellt, dass bedeutet, dass wenn er über die einzelnen Punkte mit der Maus rüber fährt, leuchtet der Punkt grün auf und gibt ihm das Geschlecht mittig über dem Punkt aus.\\
+
+Eine weiter ähnliche Visualisierungstechnik ist der QQ-Plot, dieser Teil die Datenwerte in verschiede Quantile ein. Hier werden die Verteilunen verglichen, Hinneburg beschreibt es als \glqq Verschiebungen zwischen zwei Verteilungen werden effizient durch Vergleich der Quantile gefunden\grqq \\
+\cite{Hinneburg}. Da bei der zugrundeliegenden Arbeit allerdings nicht die Quantile veranschaulicht werden sollen, sondern vielmehr die einzelnen Noten der Studenten interessant sind, macht ein Scatterplot deutlich mehr Sinn.
 \subsubsection{Visualisierung Zwei}
 
 \subsubsection{Visualisierung Drei}

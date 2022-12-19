@@ -2352,6 +2352,7 @@
     <bcf:citekey order="1" intorder="1">Earthman</bcf:citekey>
     <bcf:citekey order="2" intorder="1">Munzner2008</bcf:citekey>
     <bcf:citekey order="3" intorder="1">Hinneburg</bcf:citekey>
+    <bcf:citekey order="4" intorder="1">Hinneburg</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nty">
