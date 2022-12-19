@@ -95,14 +95,24 @@ subscriptions model =
   Sub.none
 
 
+getCSVData : (Result Http.Error String -> Msg) -> Cmd Msg
+getCSVData msg = 
+    datenStudis 
+    |> List.map 
+      (\d ->
+      Http.get
+      { url = "https://raw.githubusercontent.com/TornadoTebbe/ElmTest/main/Daten" ++ d
+      , expect = Http.expectString msg
+      }    
+    )
+    |> Cmd.batch
+
 
 init : () -> ( Model, Cmd Msg )
 init _ =
-    (Loading , 
-    Http.get
-    { url = "https://raw.githubusercontent.com/TornadoTebbe/ElmTest2/main/Daten/Student_Behaviour.csv?token=GHSAT0AAAAAAB4RNFVUIQKZT5GZJCIFBXPYY5AO3YQ"
-    , expect = Http.expectString GotText
-    })
+    (Loading
+    , getCSVData GotText 
+    )
 
 
 csvString_to_data : String -> List Student_Data
