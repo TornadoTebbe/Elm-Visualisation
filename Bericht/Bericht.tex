@@ -9,6 +9,10 @@
 \usepackage[left=2cm, right=2cm, top=2cm, bottom=2cm, bindingoffset=1cm, includeheadfoot]{geometry}
 %Zeilenabstand bitte nicht ändern
 \usepackage[onehalfspacing]{setspace}
+%grafik einfügen
+\usepackage{graphicx}
+%einfügen von hyperref
+\usepackage{hyperref}
 
 \usepackage[backend=biber,style=numeric,]{biblatex}\addbibresource{literatur.bib}
 
@@ -109,6 +113,7 @@ Allerdings ist, wie schon im oberen Bereich der Hausarbeit erwähnt die Gleichun
 
 
 \subsection{Anforderungen an die Visualisierungen}
+\label{Anforderungen}
 \noindent Da die Leser einschätzen sollen können, ob und wenn ja inwieweit eine Korrelation zwischen den verschiedenen Parametern mit Noten und Zeitaufwand besteht, war es wichtig diese Daten aufeinander abgestimmt, in jeweils einer Visualisierung darstellen zu können.\\
 
 \noindent Der Leser sollte bei allen Visualisierungen die Möglichkeit haben nach dem Parameter Zeit zu differenzieren und sich am Ende die Noten von den unterschiedlichen Studenten aus den unterschiedlichen Klassen/College ausgeben zu lassen. Es sollte also erst eine grobe Differenzierung getroffen werden können, um sich nach dieser ersten Einteilung genauer mit den verschiedenen Noten auseinandersetzen zu können.\\
@@ -131,9 +136,42 @@ Diskutieren sie also nicht einfach Zeitreihendiagramme, weil sie in den Anforder
 Diskutieren sie die Expressivität und die Effektivität der einzelnen Visualisierungen. 
 
 Die eben beschriebenen Präsentationen und Begründungen sollen für jede der drei folgenden Visualisierungen durchgeführt werden. 
+
+
 \subsubsection{Visualisierung Eins}
+Wie bereits in \ref{Anforderungen} erwähnt wurde sich als erste Visualisierung für den Scatterplot entschieden, abgebildet in Abb.1.
+
+
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale=0.35]{Scatterplot.png}
+\caption{Test12}
+\label{Scatter}
+\end{center}
+\end{figure}
+
+
+
+Warum sich für den Scatterplot entschieden wurde, wurde bereits in \ref{Anforderungen} erläutert, zur genaueren Definition des Scatterplots und wie die \textit{Student Behaviour}-Daten darin dargestellt wurden wird in den folgenden Abschnitten näher darauf eingegangen.
+\pagebreak
+Der Scatterplot an sich besitzt zwei Achsen, die X-Achse und die Y-Achse. Deren Größe kann entweder manuell bestimmt werden oder hat vier weitere Möglichkeiten gleiche Daten verschieden darzustellen(\cite{Hinneburg})\\
+\begin{itemize}
+\item  X- und Y-Achse haben einen gleich großen Wertebereich
+\item Nur die Y-Achse hat einen großen Wertebereich
+\item Nur die X-Achse hat einen großen Wertebereich
+\item Der Wertebereich in X und Y wird durch die Daten bestimmt
+\end{itemize}
+
+Die manuelle Einstellung der Achsen wäre sehr großer Aufwand und auch durchaus ungeeignet, weswegen sich hier für eine dynamische Option entschieden wurde.Die beiden Achsen wurden dem Wertebereich angepasst und können so auch flexibel mit den unterschiedlichen reingeparsten Daten interagieren und sich verändern. In \autoref{fig:Scatter} %fiiiiiiiiiiiiiiiiiiix
+enthält in diesem Beispiel die X-Achse als Werte die Daten von College Mark und die Y-Achse die Werte der Daten von 12th Mark.
+
+
 \subsubsection{Visualisierung Zwei}
+
 \subsubsection{Visualisierung Drei}
+
+
 
 \subsection{Interaktion}
 Die präsentierten Visualisierungstechniken müssen interaktiv zu einer Anwendung verknüpft werden.
