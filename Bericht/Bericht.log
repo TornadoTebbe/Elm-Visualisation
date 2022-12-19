@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.12) (preloaded format=pdflatex 2022.12.18)  19 DEC 2022 11:24
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.12) (preloaded format=pdflatex 2022.12.18)  19 DEC 2022 15:13
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -832,11 +832,31 @@ Underfull \hbox (badness 10000) in paragraph at lines 95--99
 
  []
 
-[4] [5] [6] [7]
+[4] [5]
+Underfull \hbox (badness 10000) in paragraph at lines 112--113
 
-LaTeX Warning: Empty bibliography on input line 161.
+ []
 
-[8] (Bericht.aux)
+
+Underfull \hbox (badness 10000) in paragraph at lines 114--115
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 116--118
+
+ []
+
+[6]
+Underfull \hbox (badness 10000) in paragraph at lines 119--120
+
+ []
+
+[7]
+
+LaTeX Warning: Empty bibliography on input line 164.
+
+[8] [9] (Bericht.aux)
 
 LaTeX Warning: There were undefined references.
 
@@ -852,13 +872,13 @@ Package logreq Info: Writing requests to 'Bericht.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 20569 strings out of 475281
- 386367 string characters out of 2774064
+ 20570 strings out of 475281
+ 386373 string characters out of 2774064
  1291580 words of memory out of 3000000
  41796 multiletter control sequences out of 15000+600000
  513053 words of font info for 57 fonts, out of 8000000 for 9000
  1143 hyphenation exceptions out of 8191
- 108i,7n,106p,10631b,2367s stack positions out of 10000i,1000n,20000p,200000b,80000s
+ 108i,8n,106p,10631b,2367s stack positions out of 10000i,1000n,20000p,200000b,80000s
 {C:/Users/pault/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc}{C
 :/Users/pault/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ts1.enc}<C:/U
 sers/pault/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx10.pfb><C:/U
@@ -867,9 +887,9 @@ sers/pault/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:/Us
 ers/pault/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr12.pfb><C:/Use
 rs/pault/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri10.pfb><C:/Use
 rs/pault/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmssbx10.pfb>
-Output written on Bericht.pdf (8 pages, 203190 bytes).
+Output written on Bericht.pdf (9 pages, 204857 bytes).
 PDF statistics:
- 176 PDF objects out of 1000 (max. 8388607)
- 32 named destinations out of 1000 (max. 500000)
+ 180 PDF objects out of 1000 (max. 8388607)
+ 33 named destinations out of 1000 (max. 500000)
  177 words of extra memory for PDF output out of 10000 (max. 10000000)
 
