@@ -178,7 +178,7 @@ No,Male,Commerce,182,57,83.7,76.77,80,Sports,30 - 60 minute,Night,11000,Yes,75%,
 No,Female,Commerce,150,54,76,76,92.8,Sports,3 - 4 hour,Anytime,25000,Yes,100%,1 - 1.30 hour,30 - 60 minutes,Good,Bad,No
 Yes,Female,Commerce,154,62,70,50,60,Cinema,1 - 2 Hour,Night,20000,Yes,50%,1 - 1.30 hour,30 - 60 minutes,Bad,Bad,No
 Yes,Female,Commerce,165,75,91,70,80,Cinema,1 - 2 Hour,Anytime,10000,Yes,50%,30 - 60 Minute,30 - 60 minutes,Bad,Awful,No
-Yes,Female,Commerce,150,40,80,75,70,Cinema,1 - 2 Hour,Morning,120000,Yes,50%,1 - 1.30 hour,0 - 30 minutes,Good,Bad,No
+Yes,Female,Commerce,150,40,80,75,70,Cinema,1 - 2 Hour,Morning,20000,Yes,50%,1 - 1.30 hour,0 - 30 minutes,Good,Bad,No
 Yes,Female,B.com ISM,149,50,60,60,60,Cinema,30 - 60 minute,Morning,15000,Yes,75%,1 - 30 Minute,30 - 60 minutes,Bad,Bad,No
 No,Male,B.com ISM,150,48,60,77,50,Video Games,30 - 60 minute,Night,45000,Yes,50%,30 - 60 Minute,30 - 60 minutes,Bad,Bad,Yes
 No,Female,B.com ISM,160,50,60,70,65,Sports,0 - 30 minute,Night,5000,Yes,25%,30 - 60 Minute,1 - 1.30 hour,Good,Bad,No
@@ -187,7 +187,7 @@ No,Male,B.com ISM,150,48,46,48,60,Sports,1 - 2 Hour,Anytime,30000,Yes,50%,1 - 30
 Yes,Male,B.com ISM,163,80,76,47,30,Cinema,0 - 30 minute,Morning,20000,Yes,50%,1 - 30 Minute,0 - 30 minutes,Awful,Awful,No
 Yes,Male,B.com ISM,168,48,70,60,50,Sports,30 - 60 minute,Morning,40000,Yes,75%,1 - 30 Minute,more than 3 hour,Bad,Bad,No
 Yes,Male,B.com ISM,162,85,56,57,67,Sports,30 - 60 minute,Night,30000,Yes,75%,30 - 60 Minute,1 - 1.30 hour,Good,good,No
-Yes,Male,B.com ISM,170,80,67,70,60,Sports,More Than 4 hour,Anytime,700000,Yes,100%,1 - 30 Minute,0 - 30 minutes,Good,good,No
+Yes,Male,B.com ISM,170,80,67,70,60,Sports,More Than 4 hour,Anytime,20000,Yes,100%,1 - 30 Minute,0 - 30 minutes,Good,good,No
 No,Male,B.com ISM,145,50,75,79,70,Reading books,1 - 2 Hour,Morning,12000,Yes,50%,1 - 30 Minute,0 - 30 minutes,Good,Awful,No
 No,Male,B.com ISM,160,52,65,70,65,Video Games,30 - 60 minute,Night,20000,Yes,75%,30 - 60 Minute,30 - 60 minutes,Good,good,No
 No,Male,B.com ISM,180,65,86,86,89,Video Games,30 - 60 minute,Anytime,20000,Yes,50%,1 - 1.30 hour,1 - 1.30 hour,Good,good,No
