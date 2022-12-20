@@ -180,7 +180,7 @@ update msg model =
 
 knoten : Float -> Scale.ContinuousScale Float -> Scale.ContinuousScale Float -> Float -> Float -> String-> Svg msg
 knoten  rad scaleX scaleY xValue yValue name =
-            g [ class [ "point" ], fontSize <| Px 10.0, fontFamily [ "sans-serif" ] ]       
+            g [ class [ "point" ], fontSize <| Px 30.0, fontFamily [ "sans-serif" ] ]       
                 [ circle
                     [ cx (Scale.convert scaleX xValue)
                     , cy (Scale.convert scaleY yValue)
@@ -390,7 +390,7 @@ treePlot wide height rad distance tree =
         nameValues = Dict.keys layout
 
     in
-    svg [ viewBox 50 0 wide height, TypedSvg.Attributes.width <| TypedSvg.Types.Percent 100, TypedSvg.Attributes.height <| TypedSvg.Types.Percent 100 ]
+    svg [ viewBox 100 0 wide height, TypedSvg.Attributes.width <| TypedSvg.Types.Percent 100, TypedSvg.Attributes.height <| TypedSvg.Types.Percent 100 ]
         [ style []
             [ TypedSvg.Core.text """
             .point circle { stroke: rgba(100, 100, 100,1); fill: rgba(100,150,150,1); }
@@ -473,10 +473,12 @@ view model =
                 , Html.input [ Html.Events.onInput ChangeDistance ] []
 
                 ,  Html.h3 []
-                    [ Html.text ( "Darstellung der LErnzeiten:") ]          
+                    [ Html.text ( "Darstellung der Lernzeiten:") ]          
                 , ul []
-                    [ li [] [ Html.text ("bsp1")]
-                    , li [] [ Html.text ("bsp2")]
+                    [ li [] [ Html.text ("Best college Note Male: 97")]
+                    , li [] [ Html.text ("Schlechteste Colle Note Male: 30")]
+                    , li [] [ Html.text ("Beste Colle Note Female: 100")]
+                    , li [] [ Html.text ("Schlechteste Colle Note Female: 12")]
                         , treePlot wide height rad distance converteTree
 
                 ]

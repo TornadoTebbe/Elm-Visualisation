@@ -96,7 +96,7 @@ stringToStudent str =
         else if str == "12th Mark" then
             TwelthMark
 
-        else if str == "salary expectation" then
+        else if str == "Salary expectation" then
             SalaryExpectation
 
         else
@@ -125,7 +125,7 @@ studentToMaybePoint student =
     map4 
         (\tenthMark twelthMark collegeMark salaryExpectation->
             Point
-                (student.gender ++ "( " ++ student.preferStudyTime ++ ")" )
+                (student.gender ++ " (Prefered Study Time: " ++ student.preferStudyTime ++ ")" )
                 (tenthMark)
                 (twelthMark)
                 (salaryExpectation)
@@ -296,7 +296,7 @@ scatterplot model xValues yValues xBeschr yBeschr =
             [ transform [ Translate (padding - 1) (h - padding) ] ]
             [ xAxis xValues
              , text_
-                [ x (Scale.convert xScaleLocal labelPositions.x - 15)
+                [ x 350
                  , y 30                
                 ]
                 [ text xBeschr ]
@@ -356,10 +356,10 @@ buttonX : Html Msg
 buttonX =
     Html.select
         [ onInput (\x -> stringToStudent x |> ChooseStudent1) ]
-        [Html.option [value "10th Mark"] [Html.text "10th Grade Mark"]
+         [Html.option [value "10th Mark"] [Html.text "10th Grade Mark"]
         ,Html.option [value "12th Mark"] [Html.text "12th Grade Mark"]
         ,Html.option [value "college mark"] [Html.text "College Mark"]  
-        ,Html.option [value "salary expectation"] [Html.text "Salary Expectation"]
+        ,Html.option [value "Salary expectation"] [Html.text "Salary Expectation"]
         ]
 
 buttonY : Html Msg
@@ -369,7 +369,7 @@ buttonY =
         [Html.option [value "10th Mark"] [Html.text "10th Grade Mark"]
         ,Html.option [value "12th Mark"] [Html.text "12th Grade Mark"]
         ,Html.option [value "college mark"] [Html.text "College Mark"]  
-        ,Html.option [value "salary expectation"] [Html.text "Salary Expectation"]
+        ,Html.option [value "Salary expectation"] [Html.text "Salary Expectation"]
         ]
 
 
@@ -494,6 +494,8 @@ view model =
 
                 numStud =  
                      List.length fullText.data
+
+                
                 
                 numFilStud =
                     List.length filData
