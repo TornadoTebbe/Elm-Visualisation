@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.12) (preloaded format=pdflatex 2022.12.18)  20 DEC 2022 21:32
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.12) (preloaded format=pdflatex 2022.12.18)  20 DEC 2022 23:11
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1160,10 +1160,73 @@ Underfull \hbox (badness 10000) in paragraph at lines 450--452
  []
 
 [21] [22 <./MenTree.png> <./WomenTree.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 459--460
 
-LaTeX Warning: Empty bibliography on input line 468.
+ []
 
-[23] (Bericht.aux)
+
+LaTeX Warning: Citation 'Deng19' on page 23 undefined on input line 461.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 461--462
+
+ []
+
+<ParallelQuelle1.jpg, id=208, 244.31097pt x 118.9577pt>
+File: ParallelQuelle1.jpg Graphic file (type jpg)
+<use ParallelQuelle1.jpg>
+Package pdftex.def Info: ParallelQuelle1.jpg  used on input line 470.
+(pdftex.def)             Requested size: 317.60422pt x 154.64497pt.
+
+LaTeX Warning: Citation 'Deng19' on page 23 undefined on input line 477.
+
+
+LaTeX Warning: Citation 'page: 168' on page 23 undefined on input line 477.
+
+
+LaTeX Warning: Citation 'Deng19' on page 23 undefined on input line 477.
+
+
+LaTeX Warning: Citation 'Deng19' on page 23 undefined on input line 478.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 477--479
+
+ []
+
+[23 <./ParallelQuelle1.jpg>]
+
+LaTeX Warning: Citation 'Xu14' on page 24 undefined on input line 481.
+
+
+LaTeX Warning: Citation 'Xu14' on page 24 undefined on input line 481.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 481--482
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 483--484
+
+ []
+
+<Quelle2.png, id=216, 1223.32031pt x 339.51843pt>
+File: Quelle2.png Graphic file (type png)
+<use Quelle2.png>
+Package pdftex.def Info: Quelle2.png  used on input line 489.
+(pdftex.def)             Requested size: 366.99893pt x 101.85631pt.
+
+LaTeX Warning: Citation 'Xu14' on page 24 undefined on input line 495.
+
+
+LaTeX Warning: Citation 'page 2' on page 24 undefined on input line 495.
+
+[24 <./Quelle2.png>]
+
+LaTeX Warning: Empty bibliography on input line 524.
+
+[25] (Bericht.aux)
 
 LaTeX Warning: There were undefined references.
 
@@ -1179,10 +1242,10 @@ Package logreq Info: Writing requests to 'Bericht.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 21749 strings out of 475281
- 404760 string characters out of 2774064
- 1308450 words of memory out of 3000000
- 42883 multiletter control sequences out of 15000+600000
+ 21774 strings out of 475281
+ 405138 string characters out of 2774064
+ 1308648 words of memory out of 3000000
+ 42901 multiletter control sequences out of 15000+600000
  520313 words of font info for 59 fonts, out of 8000000 for 9000
  1143 hyphenation exceptions out of 8191
  108i,8n,106p,10631b,2367s stack positions out of 10000i,1000n,20000p,200000b,80000s
@@ -1196,9 +1259,9 @@ rs/pault/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr9.pfb><C:/Users
 /pault/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri10.pfb><C:/Users
 /pault/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri9.pfb><C:/Users/
 pault/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmssbx10.pfb>
-Output written on Bericht.pdf (23 pages, 1597695 bytes).
+Output written on Bericht.pdf (25 pages, 2149362 bytes).
 PDF statistics:
- 342 PDF objects out of 1000 (max. 8388607)
- 68 named destinations out of 1000 (max. 500000)
- 273 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 358 PDF objects out of 1000 (max. 8388607)
+ 72 named destinations out of 1000 (max. 500000)
+ 283 words of extra memory for PDF output out of 10000 (max. 10000000)
 
