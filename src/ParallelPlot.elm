@@ -19,6 +19,7 @@ import TypedSvg.Types exposing (AnchorAlignment(..), Length(..), Opacity(..), Pa
 import Http
 import Csv.Decode exposing (..)
 import Csv exposing (..)
+import ScatterplotDaten exposing (StudentAttribute(..))
 
 
 
@@ -474,7 +475,7 @@ view model =
                  [Html.p [Html.Attributes.style "fontSize" "16px"] 
                  [ Html.a[href "Main.elm"] [Html.text "Startseite"]
                  , Html.br [] []
-                 , Html.a[href "paralleplotDaten.elm"] [Html.text "paralleplot"]
+                 , Html.a[href "ScatterplotDaten.elm"] [Html.text "Scatterplot"]
                  , Html.br [] []
                  , Html.a[href "Baumvisualisierung.elm"] [Html.text "Baumvisualisierung"]
                  , Html.br [] []
@@ -493,10 +494,46 @@ view model =
                             "Gefilterte Studenten insgesamt: "
                             ++ String.fromInt numberStudentsFiltered
                         ]
-                    -- , ul []
-                    --     [ Html.button [ onClick TauschA ] [ Html.text <| "Tausche " ++ model.wert1 ++ " und " ++ model.wert2 ]
-                    --     , Html.button [ onClick TauschB ] [ Html.text <| "Tausche " ++ model.wert2 ++ " und " ++ model.wert3 ]
-                    --     , Html.button [ onClick TauschC ] [ Html.text <| "Tausche " ++ model.wert3 ++ " und " ++ model.wert4 ]
+
+                , Html.h2 []
+                [Html.text ("Auswahl 1. Achse: ")]
+                    , Html.button[onClick (ChoosePos1 (.tenthMark, "Tenth Mark"))][Html.text ("Tenth Mark")]
+                    , Html.button[onClick (ChoosePos1 (.twelthMark, "Twelth Mark"))][Html.text ("Twelth Mark")]
+                    , Html.button[onClick (ChoosePos1 (.collegeMark, "College Mark"))][Html.text ("College Mark")]
+                    , Html.button[onClick (ChoosePos1 (.salaryExpectation, "Salary Expectation"))][Html.text ("Salary Expectation")]
+
+                , Html.br [][]
+
+                , Html.h2 []
+                [Html.text ("Auswahl 2. Achse: ")]
+                    , Html.button[onClick (ChoosePos2 (.tenthMark, "Tenth Mark"))][Html.text ("Tenth Mark")]
+                    , Html.button[onClick (ChoosePos2 (.twelthMark, "Twelth Mark"))][Html.text ("Twelth Mark")]
+                    , Html.button[onClick (ChoosePos2 (.collegeMark, "College Mark"))][Html.text ("College Mark")]
+                    , Html.button[onClick (ChoosePos2 (.salaryExpectation, "Salary Expectation"))][Html.text ("Salary Expectation")]
+
+                , Html.br [][]
+
+                , Html.h2 []
+                [Html.text ("Auswahl 3. Achse: ")]
+                    , Html.button[onClick (ChoosePos3 (.tenthMark, "Tenth Mark"))][Html.text ("Tenth Mark")]
+                    , Html.button[onClick (ChoosePos3 (.twelthMark, "Twelth Mark"))][Html.text ("Twelth Mark")]
+                    , Html.button[onClick (ChoosePos3 (.collegeMark, "College Mark"))][Html.text ("College Mark")]
+                    , Html.button[onClick (ChoosePos3 (.salaryExpectation, "Salary Expectation"))][Html.text ("Salary Expectation")]
+
+                , Html.br [][]
+
+                , Html.h2 []
+                [Html.text ("Auswahl 4. Achse: ")]
+                    , Html.button[onClick (ChoosePos4 (.tenthMark, "Tenth Mark"))][Html.text ("Tenth Mark")]
+                    , Html.button[onClick (ChoosePos4 (.twelthMark, "Twelth Mark"))][Html.text ("Twelth Mark")]
+                    , Html.button[onClick (ChoosePos4 (.collegeMark, "College Mark"))][Html.text ("College Mark")]
+                    , Html.button[onClick (ChoosePos4 (.salaryExpectation, "Salary Expectation"))][Html.text ("Salary Expectation")]
+
+                , Html.br [][]
+                    -- , li []
+                    --     [ Html.button [ onClick ChoosePos1 ] [ Html.text <| "Tausche " ++ model.wert1 ++ " und " ++ model.wert2 ]
+                    --     , Html.button [ onClick ChoosePos2 ] [ Html.text <| "Tausche " ++ model.wert2 ++ " und " ++ model.wert3 ]
+                    --     , Html.button [ onClick ChoosePos3 ] [ Html.text <| "Tausche " ++ model.wert3 ++ " und " ++ model.wert4 ]
                     --     ]
                     , paralleplot 600 2 multiDimData
                     ]

@@ -97,7 +97,8 @@ Die Daten wurden als einzelne CSV-Datei in \textit{kaggle} bereitgestellt und au
 Zudem wurden sie im eigenen Github hochgeladen und dort im Ordner Daten gespeichert. Mithilfe dieser Datei wurden der Scatterplot und der Parallelplot erstellt. zur Visualisierung des Baumdiagramms wurde zusätzlich eine json-Datei erstellt \textit{"json.Name"} und auch im Ordner Daten hinterlegt. Zusätzlich dazu finden sich im Github-Repository auch noch Python-Code, mit dessen Hilfe die Daten aufbereitet werden sollen, genaueres in \ref{Datenvorverarbeitung}
 
 
-\subsection{Datenvorverarbeitung}\label{Datenvorverarbeitung}
+\subsection{Datenvorverarbeitung}
+\label{Datenvorverarbeitung}
 Im obigen Abschnitt wurde bereits kurz auf den Datensatz eingegangen und erklärt, dass es sich um eine einzelne CSV-Date handelte. Aufgrunddessen musste keinerlei größere Vorverabeitung an den Daten vorgenommen werden, zumindest für den Parallelplot und den Scatterplot. Für das Baumdiagramm wurde zuerst versucht mithilfe von Pyhtoncode die csv-Datei in eine json-Datei umzuwandeln. Leider gelang dies nicht, sodass die csv erst in eine Excel-Datei umgewandelt wurde. Anschließend wurde mithilfe der Excel-Datei manuell eine json-Datei erstellt um anhand dieser die Baumdarstellung zu visualisieren. In der json wurden dann nur die für das Baumdiagramm relevanten Daten übernommen. Aufgrund anfänglicher Überlegungen die verschieden klassierten \textit{Zeiten}, wie \textit{daily studying time}, \textit{social media time} und \textit{travelling time} in einzelne Klassen in Form von Integers festzuhalten, also \textit{daily studying time} von 0-30 Minuten wäre 1, 30-60 Minuten 2 usw. wurde die csv-Datei in R geladen um die Daten somit zu manipulieren. Aufgrund der späteren Nutzung der \textit{daily studying time} als Drop-down Tabelle wurde dieser Gedanke wieder verworfen.
 %Zusätzlich Ausfilterung der Daten von SalaryExpectation aufgrund von Ausreißer
 %Am Ende wurde dies aber dennoch erneut mit Pyhton gemacht allerdings mit den Daten \textit{social media time}, indem eine neue Spalte als daily studying class erstellt wurde und immer die Mitte der Zeit als Float erstellt wurde, sodass die Daten nun doch in den Parallelplot und den Scatterplot eingefügt wurden
@@ -385,41 +386,74 @@ Sollte es hier bei einem der Schritte zu einem Fehler kommen, wird die \glqq Err
 
 \noindent Am schwierigsten gestaltete sich bei dieser Implementierung das Laden der Daten. Genauer gesagt das Umstrukturieren der Csv-Datei in eine \textit{json}. Hierbei wurde anfangs versucht dies mit einer \textit{python} - Anwendung umzuschreiben. Dieser Ansatz funktionierte leider nicht, da die Funktion keine genestete Datei als Ergebnis ausgab und es somit nicht für die Baumdarstellung genutzt werden konnte. \\
 Nach mehrmaligem Rumprobieren wurde die Datei daher manuell erstellt. Dies führte allerdings zum nächsten Problem: Bei der Darstellung der verschiedenen Noten kam es häufig zu Dopplungen bei den \textit{children}, da sich beispielsweise die Noten der besten Frau mit Lernzeit 0-30 Minuten mit der besten Frau der Lernzeit 30-60 Minuten deckten. % Hierfür wurde xy.
+%ergänzen
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-% Sie die Implementierung ihrer Visualisierungsanwendung in Elm. Stellen die Gliederung ihres Quellcodes vor. Haben Sie verschiedene Elm-Module erstellt. Was war aufwändig umzusetzen, was ließ sich mit dem vorhanden Code aus den Übungen relativ einfach umsetzen? 
-
-%Wie sieht die Elm-Datenstruktur für das Model aus, in dem die verschiedenen Zustände der Interaktion gespeichert werden können.
 
 \section{Anwendungsfälle}
+
+.... Da nicht einzelne Personen, sondern Muster im großen ganzen erkannt werden sollen, stellt es sich etwas schwieriger dar, dieses als einzelnes Bild in der Hausarbeit darzustellen. Vielmehr sollte der Leser dies in den Visualisierungen selber ausprobieren.
+
+\begin{itemize}
+\item Informationsbeschaffung Elternteil des Notenverlaufs bei verändernder Lernzeit
+\item Verlauf und Zusammenhang der Noten mit sich ändernder Lernzeit
+\item Korrelation Notendurchschnitt mit Geschlecht und Lernzeit
+\item Der Wertebereich in X und Y wird durch die Daten bestimmt
+\end{itemize}
+
 Präsentieren sie für jede der drei Visualisierungen einen sinnvollen Anwendungsfall in dem ein bestimmter Fakt, ein Muster oder die Abwesenheit eines Musters visuell festgestellt wird. Begründen sie warum dieser Anwendungsfall wichtig für die Zielgruppe der Anwenderinnen ist. Diskutieren sie weiterhin, ob die oben beschriebene Information auch mit anderen Visualisierungstechniken hätte gefunden werden können. Falls dies möglich wäre, vergleichen sie die den Aufwand und die Schwierigkeiten ihres Ansatzes und der Alternativen. 
 \subsection{Anwendung Visualisierung Eins}
 \label{AnwEins}
+Ein Anwendungsfall mit dem Scatterplot wäre ein Elternteil, dass sehen will, wie sich die Noten der Studenten über die Jahre hinweg unter dem Einfluss der Lernzeit ansehen, um so eventuell Rückschlüsse auf das eigene Kind und deren mögliche Entwicklung zu ziehen.\\
+
+\noindent Dafür werden nun die einzelnen Achsen jeweils verändert, um die richtigen Werte auszuwählen und mögliche  Veränderungen der Note in Kombination mit der Lernzeit zu sehen.
+
+
 \subsection{Anwendung Visualisierung Zwei}
 \label{AnwZwei}
+Im zweiten Beispiel wird eine Visualisierung anhand des Parallelplots angewandt. Hier wird der Notenverlauf in Abhängigkeit der Variable Lernzeit und der am Ende verbundenen Gehaltserwartung untersucht. Es sollte also erkennbar sein, dass Studenten die viel Lernen gute Noten und auch eine höhere Gehaltsvorstellung haben, als wenig lernende Studenten, die eher schlechte Noten und dahingehend auch mit schlechterem Gehalt rechnen sollten.\\
+
+\noindent Das dies allerdings nicht immer der Fall ist zeigt sich vor allem deutlich bei der Lernzeit \glqq Mehr als 4 Stunden \grqq . Hier hat eine Studentin also die höchstmöglich auswählbare Lernzeit angegeben und war zwar in der 10. Klasse mit der Note \textit{80} und der 12. Klasse mit \textit{70} zwar noch relativ gut, ging im aber deutlich nach unten. Hier erreichte sie nur die Note \textit{12}. Sie hat also trotz sehr hohem Lernaufwand im College schlechte Noten und gibt trotzdessen den in dieser Rubrik höchsten Wert in der Gehaltserwartung an, mit \textit{30000}.\\
+
+\noindent Dies spiegelt also in keinster Weise die im vorhinein getroffenen Erwartungen wieder, dass die vier Variablen bei allen in einem Zusammenhang stehen.\\
+Natürlich lässt sich nicht von einem Individuum auf alle schließen und könnte als Ausreißer dargestellt werden, dennoch spricht es gegen die aufgestellte These.\\
+
+\noindent Viele Gegenbeispiele lassen sich zudem bei der Lernzeit \glqq 0-30 Minuten herausfiltern\grqq . Trotz der relativ niedrigen Lernzeit gibt es viele Studenten, die gute bis sehr gute Noten über die Klassen und das College hinweg haben. Zwei dieser Beispiele sind deutlich in Abbildung \ref{BspPar} zu sehen.
+
+
+\begin{figure}
+\begin{center}
+    \subfigure[]{\includegraphics[width=.75\textwidth]{BspPar1.png}}
+    \subfigure[]{\includegraphics[width=.75\textwidth]					{BspPar2.png}}
+\caption{Zwei Beispiele Parallelplot - Lernzeit: 0 - 30 Minuten}
+\label{BspPar}
+\end{center}
+\end{figure}
+
+
+
 \subsection{Anwendung Visualisierung Drei}
 \label{AnwDrei}
+
+Da bei der Baumvisualisierung erst im Geschlecht und dann in die verschiedenen Lernzeiten unterteilt wird und als letztes \glqq Kind\grqq der Durchschnitt gezeigt wird, soll geschaut werden, inwieweit sich der Durchschnitt bei steigendern Lernzeit verändert. Auch die Differenzen zwischen den Geschlechtern soll hier beachtet werden.Dies ist in der gezeigten Abbildung \ref{WoMenTree} nocheinmal bildlich visualisiert worden.
+
+
+\begin{figure}
+\begin{center}
+    \subfigure[Baumdiagramm Männer]{\includegraphics[width=.75\textwidth]{MenTree.png}}
+    \subfigure[Baumdiagramm Frauen]{\includegraphics[width=.75\textwidth]					{WomenTree.png}}
+\caption{Gegenüberstellung des Notendurchschnitts der Lernzeit bei Männern und Frauen}
+\label{WoMenTree}
+\end{center}
+\end{figure}
+
+\noindent Bei den Männern ist eine durchaus positive Korrelation zwischen der Lernzeit und dem Notendurchschnitt zu erkennen, vor allem wenn die beiden Extrema verglichen werden. Bei der geringsten Lernzeit liegt der Durchschnitt bei 64, wohingegen er bei der höchsten Lernzeit bei 77 liegt. Es ist also ein starker Anstieg von 13 Notenpunkten im Durchschnitt zu erkennen. Zudem ist eine fast permanente Steigung über alle Lernzeiten hinweg zu erkennen. Nur einmal sinkt der Wert anstatt zu steigen und zwar von 68 auf 67. Danach steigt der Wert jedoch  wieder zweimal an.\\
+\noindent Bei den Männer lässt sich anhand der vorliegenden Grafik also die Aussage treffen, dass die Lernzeit und der Notendurchschnitt positiv miteinander korrelieren.\\
+
+\noindent Bei den Frauen ist dahingehend leider keine ähnliche Aussage zu treffen. Vor allem der Ausreißer bei der höchsten Lernzeit von über 4 Stunden zieht den Durchschnitt sehr nach unten. Dies ist aber wahrscheinlich auf die geringen Anzahl der Frauen in diesem Segment zurückzuführen. Zudem ist hier keine stetige Steigung der Werte zu erkennen. \pagebreak
+
+
+
 
 \section{Verwandte Arbeiten}
 Führen sie eine kurze Literatursuche in der wissenschaftlichen Literatur zu Informationsvisualisierung und Visual Analytics nach ähnlichen Anwendungen durch. Diskutieren sie mindestens zwei Artikel. Stellen sie Gemeinsamkeiten und Unterschiede dar.
