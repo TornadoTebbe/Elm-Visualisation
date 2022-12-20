@@ -6847,7 +6847,7 @@ var $elm$html$Html$select = _VirtualDom_node('select');
 var $author$project$ScatterplotDaten$CollegeMark = {$: 'CollegeMark'};
 var $author$project$ScatterplotDaten$SalaryExpectation = {$: 'SalaryExpectation'};
 var $author$project$ScatterplotDaten$stringToStudent = function (str) {
-	return (str === '10th Mark') ? $author$project$ScatterplotDaten$TenthMark : ((str === '12th Mark') ? $author$project$ScatterplotDaten$TwelthMark : ((str === 'salary expectation') ? $author$project$ScatterplotDaten$SalaryExpectation : $author$project$ScatterplotDaten$CollegeMark));
+	return (str === '10th Mark') ? $author$project$ScatterplotDaten$TenthMark : ((str === '12th Mark') ? $author$project$ScatterplotDaten$TwelthMark : ((str === 'Salary expectation') ? $author$project$ScatterplotDaten$SalaryExpectation : $author$project$ScatterplotDaten$CollegeMark));
 };
 var $elm$virtual_dom$VirtualDom$text = _VirtualDom_text;
 var $elm$html$Html$text = $elm$virtual_dom$VirtualDom$text;
@@ -6906,7 +6906,7 @@ var $author$project$ScatterplotDaten$buttonX = A2(
 			$elm$html$Html$option,
 			_List_fromArray(
 				[
-					$elm$html$Html$Attributes$value('salary expectation')
+					$elm$html$Html$Attributes$value('Salary expectation')
 				]),
 			_List_fromArray(
 				[
@@ -6962,7 +6962,7 @@ var $author$project$ScatterplotDaten$buttonY = A2(
 			$elm$html$Html$option,
 			_List_fromArray(
 				[
-					$elm$html$Html$Attributes$value('salary expectation')
+					$elm$html$Html$Attributes$value('Salary expectation')
 				]),
 			_List_fromArray(
 				[
@@ -8151,8 +8151,7 @@ var $author$project$ScatterplotDaten$scatterplot = F5(
 							$elm_community$typed_svg$TypedSvg$text_,
 							_List_fromArray(
 								[
-									$elm_community$typed_svg$TypedSvg$Attributes$InPx$x(
-									A2($gampleman$elm_visualization$Scale$convert, xScaleLocal, labelPositions.x) - 15),
+									$elm_community$typed_svg$TypedSvg$Attributes$InPx$x(350),
 									$elm_community$typed_svg$TypedSvg$Attributes$InPx$y(30)
 								]),
 							_List_fromArray(
