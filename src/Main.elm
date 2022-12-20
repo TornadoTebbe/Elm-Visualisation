@@ -10,6 +10,7 @@ main =
     Html.div [Html.Attributes.style "padding" "20px"]
         [Html.h1 []
             [   Html.text "Modul Information Retrieval und Visualisierung Sommersemester 2022"
+            , Html.br [][]
         
         
             ]

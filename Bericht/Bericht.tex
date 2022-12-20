@@ -15,6 +15,8 @@
 \usepackage{subfigure}
 %einfügen von hyperref
 \usepackage{hyperref}
+%nested imtemize
+\usepackage{enumitem}
 
 \usepackage[backend=biber,style=numeric,]{biblatex}\addbibresource{literatur.bib}
 
@@ -28,16 +30,17 @@
 \maketitle% verwendet die zuvor gemachte Angaben zur Gestaltung eines Titels
 \pagebreak
 % ----------------------------------------------------------------------------
-% Inhaltsverzeichnis:
-%\tableofcontents
+Inhaltsverzeichnis:
+\tableofcontents
 % ----------------------------------------------------------------------------
 % Gliederung und Text:
 
 \section{Einleitung}
 \label{Einleitung}
-......
-Viele verschiedene Faktoren haben einen Einfluss auf die Note der Studenten. Dies geht bereits damit los in welche Familie das Kind hineingeboren wird, welchen akademischen Standart die Eltern haben, welche finanziellen Mittel usw. Weiter spielt die Erziehung und der spätere soziale Umgang eine Rolle. \cite{Earthman}
-Diese Einflüsse sind schwer zu messen, vor allem schwer genau zu messen. Diese Faktoren sind kaum von alleine beeinflussbar, es lässt sich nicht bestimmen, in welche Familie ich geboren werde und welche Voraussetzungen ich also für später mit auf den Weg gegeben bekomme. Doch auf welche Faktoren kann der Student selber später Einfluss nehmen. Die Zeit, die täglich in oder eben nicht in die schulische Weiterbildung investiert wird, sollte in der Theorie so einen selbst beeinflussbaren Faktor darstellen. 
+
+Viele verschiedene Faktoren haben einen Einfluss auf die Note der Studenten. Dies geht bereits damit los in welche Familie das Kind hineingeboren wird, welchen akademischen Standard die Eltern haben, welche finanziellen Mittel usw. Weiter spielt die Erziehung und der spätere soziale Umgang eine Rolle. \cite{Earthman}
+Diese Einflüsse sind schwer zu messen, vor allem schwer genau zu messen. Zudem sind diese Faktoren kaum von alleine beeinflussbar.\\
+Doch auf welche Faktoren kann der Student selber später Einfluss nehmen. Die Zeit, die täglich in oder eben nicht in die schulische Weiterbildung investiert wird, sollte in der Theorie so einen selbst beeinflussbaren Faktor darstellen. Und ich welcher weise lässt sich auch eine Tendenz Tendenz in der Fluktuation der Noten erkennen. Bleiben Schüler, die bereits in der Schule schlechtere Noten haben auch im College schlecht?
 In dieser Arbeit werden sich also folgende Fragen und folgende gestellt Zielstellungen gesetzt:
 
 \begin{itemize}
@@ -62,7 +65,7 @@ Wer in der Schule und im College gute Noten hat und sich somit einen besseren Ab
 \subsection{Zielgruppen}
 Die Zielgruppe für die Daten umfasst ein weites Spektrum an Personen. Die Visualisierung sind sowohl für Schüler und Studenten, als auch für Lehrer und Eltern interessant, also jegliche Personengruppe, die Berührungspunkte mit der Notengebung und deren Einflussfaktoren aufweist.
 Die Informationen, die aus den Visualisierungen gewonnen werden können, können sehr gut dafür genutzt werden zu sehen, wie grade der Einflussfaktor Lernzeit und auch die vorangegangen Noten aus der Schulzeit einen Einfluss auf die Noten im College nehmen. Differenziert werden kann hierbei auch nochmal unter den Geschlechtern. 
-Auch interessant könnte dieses Projekt aber auch für Forschende im Bereich soziale Ungleichheitne in der Bildung sein. Wenn keine eindeutigen Anzeichen zu sehen sind für eine Korrelation zwischen investierter Lernzeit und besseren Noten, so könnte dies ein Anzeichen dafür sein, dass doch andere Einflussgrößen mehr Auswirkung auf die Noten haben als der reine Fleiß. Dies wäre ein starker Indikator für soziale Ungleichheiten bei der Bildung, wie es bereits in der Einleitung angedeutet wurde. 
+Auch interessant könnte dieses Projekt aber auch für Forschende im Bereich soziale Ungleichheiten in der Bildung sein. Wenn keine eindeutigen Anzeichen zu sehen sind für eine Korrelation zwischen investierter Lernzeit und besseren Noten, so könnte dies ein Anzeichen dafür sein, dass doch andere Einflussgrößen mehr Auswirkung auf die Noten haben als der reine Fleiß. Dies wäre ein starker Indikator für soziale Ungleichheiten bei der Bildung, wie es bereits in der Einleitung angedeutet wurde. 
 
 
 
@@ -105,6 +108,7 @@ Im obigen Abschnitt wurde bereits kurz auf den Datensatz eingegangen und erklär
 \\
 
 \section{Visualisierungen}
+\label{gross3}
 In den nachfolgenden Abschnitten wird näher auf die oben genannten Zielstellungen eingegangen.
 
 \subsection{Analyse der Anwendungsaufgaben}
@@ -402,11 +406,23 @@ Nach mehrmaligem Rumprobieren wurde die Datei daher manuell erstellt. Dies führ
 \end{itemize}
 
 Präsentieren sie für jede der drei Visualisierungen einen sinnvollen Anwendungsfall in dem ein bestimmter Fakt, ein Muster oder die Abwesenheit eines Musters visuell festgestellt wird. Begründen sie warum dieser Anwendungsfall wichtig für die Zielgruppe der Anwenderinnen ist. Diskutieren sie weiterhin, ob die oben beschriebene Information auch mit anderen Visualisierungstechniken hätte gefunden werden können. Falls dies möglich wäre, vergleichen sie die den Aufwand und die Schwierigkeiten ihres Ansatzes und der Alternativen. 
+
+
 \subsection{Anwendung Visualisierung Eins}
 \label{AnwEins}
-Ein Anwendungsfall mit dem Scatterplot wäre ein Elternteil, dass sehen will, wie sich die Noten der Studenten über die Jahre hinweg unter dem Einfluss der Lernzeit ansehen, um so eventuell Rückschlüsse auf das eigene Kind und deren mögliche Entwicklung zu ziehen.\\
+Ein Anwendungsfall mit dem Scatterplot wäre ein Elternteil, dass sehen will, wie sich die Noten der Studenten über die Jahre hinweg unter dem Einfluss der Lernzeit ansehen, um so eventuell Rückschlüsse auf das eigene Kind und deren mögliche Entwicklung zu ziehen. Dem Elternteil soll also die Gesamtverteilung der Noten nach einer eigen vorgenommenen Filterung zur Verfügung gestellt werden, sodass sie sich einen guten, möglichst unvoreingenommenen Überblick verschaffen kann. Der Scatterplot soll die Daten fast schon \textit{plain} darstellen, sodass dem Benutzer keinerlei Dinge suggeriert werden.\\
 
-\noindent Dafür werden nun die einzelnen Achsen jeweils verändert, um die richtigen Werte auszuwählen und mögliche  Veränderungen der Note in Kombination mit der Lernzeit zu sehen.
+\noindent Dies ist, wie in Abbildug \ref{ScatterAnw} zu sehen ist sehr gut gelungen. Der Nutzer bekommt eine sehr einfache Visualisierung vorgestellt, auf denen er einzig die Achsen und die dargestellten Einzeldaten einsehen kann. Beim Fahren mit der Maus über die einzelnen Punkte erhält der Leser allerdings kleine weiter Informationen, wie das Geschlecht und die Zeit, in welcher die Studenten am liebsten lernen. Im Gegensatz zum Parallelplot in \ref{AnwZwei} sind dies wenige und Informationen. So soll weiterhin gewahrt werden, dass der Leser einen allgemeineren Überblick behält. 
+
+\begin{figure}[h]
+\begin{center}
+	\includegraphics[scale=.25]{ScatterAnw.png}
+	\caption{Scatterplot mit Hover-Funktion}
+	\label{ScatterAnw}
+\end{center}
+\end{figure}
+
+\noindent Mithilfe der \textit{Hover} - Funktion lässt sich hier außerdem weitere Informationen über den Einfluss der Lernzeit generieren. So wird nicht nur die Dauer beachtet, sondern zusätzlich noch die Uhrzeit am Tag.
 
 
 \subsection{Anwendung Visualisierung Zwei}
@@ -501,23 +517,42 @@ Er stellt hier also die These auf, dass es nicht unbedingt den einen einzelnen E
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-Führen sie eine kurze Literatursuche in der wissenschaftlichen Literatur zu Informationsvisualisierung und Visual Analytics nach ähnlichen Anwendungen durch. Diskutieren sie mindestens zwei Artikel. Stellen sie Gemeinsamkeiten und Unterschiede dar.
-
 \section{Zusammenfassung und Ausblick}
-Fassen sie die Beiträge ihre Visualisierungsanwendung zusammen. Wo bietet sie für die Personen der Zielgruppe einen echten Mehrwert.
+In dieser Arbeit wurde sich viel mit den Zusammenhängen zwischen Noten untereinander und auch der investierten Lernzeit auseinandergesetzt. Es sollte dem Benutzer außerdem ermöglicht werden die Visualisierungen schnell zu überschauen und beim näheren Auseinandersetzen damit aber mehr Möglichkeiten geben. Der Nutzer sollte die verschiedenen Einflussfaktoren sich persönlich darstellen lassen können, ohne den Überblick zu verlieren.\\
 
-Was wären mögliche sinnvolle Erweiterungen, entweder auf der Ebene der Visualisierungen und/oder auf der Datenebene?
+\noindent Besonders gut gelungen ist dies beim Parallelplot. Hier eignete sich der Datensatz und die Unterteilung in die Lernzeiten hervorragend für die gestellten Zielsetzung. Der Datensatz war nicht zu überfüllt, dass der Nutzer aufgrund einer Vielzahl von \textit{polylines} den Überblick verliert. vielmehr barg jede einzelne Auswahlmöglichkeit genug Daten um diese gut veranschaulichen zu können. Die Abhängigkeit der Noten untereinander im Zusammenspiel mit der ausgewählten Lernzeit und der Gehaltserwartung konnten hier gut abgebildet werden. Mit den Hover-Elementen konnte außerdem eine einzelne Person hervorgehoben werden und es wurden zusätzliche Informationen geliefert um dem Benutzer ein besseres Allgemeinbild zu liefern.\\
+
+\noindent  Ähnlich verhielt sich diese Thematik beim Scatterplot. Dieser wurde allerdings simpler gehalten. Es wurden nicht alle Informationen auf einmal abgebildet, sondern man ließ dem Benutzer immer die Wahl zwischen zwei verschiedenen. Diese Drop-down-Funktionen und die \textit{Hover} - Funktion gabend dem Leser somit einige Freiheiten, mit denen er die Daten genauer inspizieren konnte.\\
+
+\noindent Für einen großen Teil der angesprochene Zielgruppe (Schüler, Lehrer, Eltern), also vor allem Anfänger im Umgang und der Interpretation von Visualisierungen waren diese drei Möglichkeiten also gut gewählt.\\
+
+\noindent Sinnvolle Erweiterungen für den Datensatz wären beispielsweise, die bereits in \ref{Einleitung} angesprochenen weiteren Faktoren, die die Noten weitergehend beinflussen, um so mögliche Standardfehler zu verringern. Anbieten würde sich dabei die Bildung oder der finanzielle Status der Eltern, diesen könnte man wieder klassieren und so als Drop-Down Möglichkeit auswählen.\\ 
+
+\noindent Zudem könnte das Projekt auch noch um zusätzliche Visualisierungen erweitert werden. In \ref{gross3} wurden in den jeweiligen Unterkategorien der Visualisierungen \ref{VisEins}, \ref{VisZwei} und \ref{VisDrei} jeweils eine Alternative Visualisierungsmöglichkeit zur derzeit vorhandenen vorgestellt. Man könnte diese dem Nutzer auch noch zur Verfügung stellen, um ihm so die Option eines anderen Blickwinkels aber der gleichen Visualisierungstechnik offen zu lassen.\\
+Genauso können aber weitere ergänzende Visualisierungen eingebettet werden, wie beispielsweise ein Mosaikplot.\\
+
+\noindent Abschließend sollen noch kurz die in \ref{Einleitung} gestellten Fragen beantwortet werden:
+
+\begin{itemize} 
+\item Wie korrelieren Noten und Zeitgestaltung und lassen sich daraus Rückschlüsse ziehen, wenn ja welche?
+     \begin{itemize}[label=$\star$]
+        \item Es lässt sich kaum eine Korrelation erkennen, möglicherweise liegt dies aber auch an 						Ausreißern
+     \end{itemize}
+\item Wie stehen die Noten im Zusammenhang mit anderen Variablen? \dots{}
+	\begin{itemize}[label=$\star$]
+        \item Es lässt sich kein Zusammenhang zwischen den Noten untereinander erkennen
+        \item Auch kein erkennbarer Zusammenhang zwischen Noten und \textit{salary expectation}
+     \end{itemize}
+\item Wie können die verschiedenen Daten übersichtlich veranschaulicht werden um dem Leser einen schnellen Überblick zu geben \dots{}
+	\begin{itemize}[label=$\star$]
+        \item Dies geschah mit Hilfe der Visaulisierunge Parallelplot, Scatterplot und Baumdiagramm
+     \end{itemize}
+\end{itemize}
+
+
+%Fassen sie die Beiträge ihre Visualisierungsanwendung zusammen. Wo bietet sie für die Personen der Zielgruppe einen echten Mehrwert.
+
+%Was wären mögliche sinnvolle Erweiterungen, entweder auf der Ebene der Visualisierungen und/oder auf der Datenebene?
 
 \section*{Anhang: Git-Historie}
 
