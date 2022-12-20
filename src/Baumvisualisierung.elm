@@ -84,8 +84,8 @@ treeDecoder =
 
 init : () -> ( Model, Cmd Msg )
 init () =
-    ( { wide = 3000, height = 2000, radius = 100, distance = 20, tree = Tree.singleton "", error = "" }
-    , Http.get { url = "https://raw.githubusercontent.com/TornadoTebbe/ElmTest2/main/Daten/baumfertig.json", expect = Http.expectJson GotFlare treeDecoder }
+    ( { wide = 4000, height = 2000, radius = 50, distance = 1, tree = Tree.singleton "", error = "" }
+    , Http.get { url = "https://raw.githubusercontent.com/TornadoTebbe/Elm2/main/Daten/baumFertigStud.json?token=GHSAT0AAAAAAB3NMVWFBH3NSTTQVHN6LB42Y5CAEOQ", expect = Http.expectJson GotFlare treeDecoder }
     )
 
 
@@ -390,7 +390,7 @@ treePlot wide height rad distance tree =
         nameValues = Dict.keys layout
 
     in
-    svg [ viewBox 100 0 wide height, TypedSvg.Attributes.width <| TypedSvg.Types.Percent 100, TypedSvg.Attributes.height <| TypedSvg.Types.Percent 100 ]
+    svg [ viewBox -50 0 (wide + 150) height, TypedSvg.Attributes.width <| TypedSvg.Types.Percent 100, TypedSvg.Attributes.height <| TypedSvg.Types.Percent 100 ]
         [ style []
             [ TypedSvg.Core.text """
             .point circle { stroke: rgba(100, 100, 100,1); fill: rgba(100,150,150,1); }
@@ -400,16 +400,16 @@ treePlot wide height rad distance tree =
             .point:hover text { display: inline; }
           """ ]
 
-        , TypedSvg.rect
-            [ TypedSvg.Attributes.x1 <| TypedSvg.Types.Px 1
-            , TypedSvg.Attributes.y1 <| TypedSvg.Types.Px 1
-            , TypedSvg.Attributes.width <| TypedSvg.Types.Px (wide + 2 * padding - 1)
-            , TypedSvg.Attributes.height <| TypedSvg.Types.Px (height + 2 * padding - 1)
-            , TypedSvg.Attributes.fill <| Paint <| Color.white
-            , stroke <| Paint <| Color.darkRed
-            , strokeWidth <| Px 0.5
-            ]
-            []
+        -- , TypedSvg.rect
+        --     [ TypedSvg.Attributes.x1 <| TypedSvg.Types.Px 1
+        --     , TypedSvg.Attributes.y1 <| TypedSvg.Types.Px 1
+        --     , TypedSvg.Attributes.width <| TypedSvg.Types.Px (wide + 2 * padding - 1)
+        --     , TypedSvg.Attributes.height <| TypedSvg.Types.Px (height + 2 * padding - 1)
+        --     , TypedSvg.Attributes.fill <| Paint <| Color.white
+        --     , stroke <| Paint <| Color.darkRed
+        --     , strokeWidth <| Px 0.5
+        --     ]
+        --     []
         , g
             [ transform [ Translate padding padding ] ]
                 (
@@ -469,16 +469,11 @@ view model =
                 , Html.input [ Html.Events.onInput ChangeHeight ] []
                 , Html.text "Radius: "
                 , Html.input [ Html.Events.onInput ChangeRadius ] []
-                , Html.text "Abstand: "
-                , Html.input [ Html.Events.onInput ChangeDistance ] []
 
                 ,  Html.h3 []
                     [ Html.text ( "Darstellung der Lernzeiten:") ]          
                 , ul []
-                    [ li [] [ Html.text ("Best college Note Male: 97")]
-                    , li [] [ Html.text ("Schlechteste Colle Note Male: 30")]
-                    , li [] [ Html.text ("Beste Colle Note Female: 100")]
-                    , li [] [ Html.text ("Schlechteste Colle Note Female: 12")]
+                    [ li [] [ Html.text ("Durchschnittliche Colle Note: ACM")]
                         , treePlot wide height rad distance converteTree
 
                 ]
