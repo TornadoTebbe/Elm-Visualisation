@@ -57,7 +57,7 @@ treeDecoder =
 
 initialModel : () -> ( Model, Cmd Msg )
 initialModel () =
-    ( { wide = 3000, height = 2000, radius = 100, distance = 20, tree = Tree.singleton "", error = "shit...." }
+    ( { wide = 3000, height = 2000, radius = 100, distance = 20, tree = Tree.singleton "", error = "" }
     , Http.get { url = "https://raw.githubusercontent.com/TornadoTebbe/ElmTest2/main/Daten/BaumStudent.json", expect = Http.expectJson GotFlare treeDecoder }
     )
 
@@ -267,7 +267,7 @@ treeView model =
 view : Model -> Html Msg
 view model =
     Html.div [
-                -- style "height" "90px"
+
                 style "width" "90%"
             ]
         ([ Html.text model.error

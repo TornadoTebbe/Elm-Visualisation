@@ -95,20 +95,6 @@ subscriptions model =
   Sub.none
 
 
--- getCSVData : (Result Http.Error String -> Msg) -> Cmd Msg
--- getCSVData msg = 
---     datenStudis 
---     |> List.map 
---       (\d ->
---       Http.get
---       { url = "https://raw.githubusercontent.com/TornadoTebbe/ElmTest2/main/" ++ d
---       , expect = Http.expectString msg
---       }    
---     )
---     |> Cmd.batch
-
-
-
 init : () -> ( Model, Cmd Msg )
 init _ =
     (Loading , 
@@ -155,18 +141,6 @@ studentListe : List String -> List Student_Data
 studentListe student_liste =
     List.map(\x -> csvString_to_data x) student_liste
         |> List.concat
-
--- getCSV : (Result Http.Error String -> Msg) -> Cmd Msg
--- getCSV msg =
---     datenStudis 
---     |> List.map 
---       (\d ->
---       Http.get
---         { url = "https://raw.githubusercontent.com/TornadoTebbe/ElmTest/main/" ++ d
---         , expect = Http.expectString msg
---         }
---     )
---     |> Cmd.batch
 
 
 datenStudis: List String
@@ -256,7 +230,7 @@ scatterplot w ar model =
     <|
         [ TypedSvg.style []
             [   TypedSvg.Core.text """"
-                .parallelpoint { stroke: Color.black;}
+                .parallelpoint { stroke: Color.yellow;}
                 .parallelpoint:hover {stroke: rgb(98, 153, 12); stroke-width: 2;} 
                 .parallelpoint text { display: none; }
                 .parallelpoint:hover text { display: inline; stroke: rgb(0, 0, 0); stroke-width: 0.01; font-size: small; font-family: calibri}  
@@ -268,7 +242,7 @@ scatterplot w ar model =
             , TypedSvg.Attributes.width <| TypedSvg.Types.Px (w + 2 * padding - 1)
             , TypedSvg.Attributes.height <| TypedSvg.Types.Px (h + 2 * padding - 1)
             , TypedSvg.Attributes.fill <| Paint <| Color.white
-            , stroke <| Paint <| Color.grey
+            , stroke <| Paint <| Color.darkRed
             , strokeWidth <| Px 0.5
             ]
             []
@@ -292,7 +266,7 @@ scatterplot w ar model =
                         text_
                             [ fontFamily [ "sans-serif" ]
                             , fontSize (Px 10)
-                            , fill <| Paint <| Color.red
+                            , fill <| Paint <| Color.black  --maybe male female?
                             , x <| Scale.convert xScale (toFloat index + 1)
                             , y <| padding * 7 / 8
                             , textAnchor AnchorMiddle

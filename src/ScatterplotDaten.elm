@@ -504,7 +504,14 @@ view model =
 
             in
             Html.div [Html.Attributes.style "padding" "20px"] 
-                 [Html.p [Html.Attributes.style "fontSize" "16px"] []
+                 [Html.p [Html.Attributes.style "fontSize" "16px"] 
+                 [ Html.a[href "Main.elm"] [Html.text "Startseite"]
+                 , Html.br [] []
+                 , Html.a[href "ParallelPlot.elm"] [Html.text "Parallele Koordinaten"]
+                 , Html.br [] []
+                 , Html.a[href "Baumvisualisierung.elm"] [Html.text "Baumvisualisierung"]
+                 , Html.br [] []
+                 ]
 
                 , Html.h2 []
                     [Html.text ("Scatterplot")]
