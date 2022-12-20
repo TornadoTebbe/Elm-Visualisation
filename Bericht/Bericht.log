@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.12) (preloaded format=pdflatex 2022.12.18)  19 DEC 2022 19:32
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.12) (preloaded format=pdflatex 2022.12.18)  20 DEC 2022 00:23
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -935,7 +935,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 180--184
 LaTeX Warning: Citation 'Hinneburg2022' on page 9 undefined on input line 186.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 189--190
+Underfull \hbox (badness 10000) in paragraph at lines 190--191
 
  []
 
@@ -943,10 +943,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 189--190
 <ParallelPlot.png, id=78, 1355.0625pt x 676.77844pt>
 File: ParallelPlot.png Graphic file (type png)
 <use ParallelPlot.png>
-Package pdftex.def Info: ParallelPlot.png  used on input line 195.
+Package pdftex.def Info: ParallelPlot.png  used on input line 196.
 (pdftex.def)             Requested size: 474.27899pt x 236.876pt.
 
-Overfull \hbox (19.0348pt too wide) in paragraph at lines 195--196
+Overfull \hbox (19.0348pt too wide) in paragraph at lines 196--197
  [] 
  []
 
@@ -954,18 +954,55 @@ Overfull \hbox (19.0348pt too wide) in paragraph at lines 195--196
 <ParallelDrop.png, id=88, 453.19313pt x 98.61844pt>
 File: ParallelDrop.png Graphic file (type png)
 <use ParallelDrop.png>
-Package pdftex.def Info: ParallelDrop.png  used on input line 207.
+Package pdftex.def Info: ParallelDrop.png  used on input line 208.
 (pdftex.def)             Requested size: 453.19202pt x 98.61818pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 214--215
+Underfull \hbox (badness 10000) in paragraph at lines 215--216
 
  []
 
+
+Underfull \hbox (badness 10000) in paragraph at lines 217--218
+
+ []
+
+
+LaTeX Warning: Citation 'Doerner0304' on page 11 undefined on input line 220.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 220--222
+
+ []
+
+
+LaTeX Warning: Citation 'Hinneburg2022' on page 11 undefined on input line 227.
+
+
 [11 <./ParallelDrop.png>]
+<BspBaum.png, id=96, 455.45157pt x 398.23781pt>
+File: BspBaum.png Graphic file (type png)
+<use BspBaum.png>
+Package pdftex.def Info: BspBaum.png  used on input line 233.
+(pdftex.def)             Requested size: 341.58783pt x 298.67761pt.
 
-LaTeX Warning: Empty bibliography on input line 254.
+Underfull \hbox (badness 10000) in paragraph at lines 239--243
 
-[12] (Bericht.aux)
+ []
+
+[12 <./BspBaum.png>]
+
+LaTeX Warning: Citation 'Hinneburg2022' on page 13 undefined on input line 244.
+
+
+
+LaTeX Warning: Citation 'Hinneburg2022' on page 13 undefined on input line 254.
+
+
+[13]
+
+LaTeX Warning: Empty bibliography on input line 287.
+
+[14] (Bericht.aux)
 
 LaTeX Warning: There were undefined references.
 
@@ -981,10 +1018,10 @@ Package logreq Info: Writing requests to 'Bericht.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 21435 strings out of 475281
- 399924 string characters out of 2774064
- 1305588 words of memory out of 3000000
- 42619 multiletter control sequences out of 15000+600000
+ 21447 strings out of 475281
+ 400069 string characters out of 2774064
+ 1305717 words of memory out of 3000000
+ 42627 multiletter control sequences out of 15000+600000
  513053 words of font info for 57 fonts, out of 8000000 for 9000
  1143 hyphenation exceptions out of 8191
  108i,8n,106p,10631b,2367s stack positions out of 10000i,1000n,20000p,200000b,80000s
@@ -996,9 +1033,9 @@ sers/pault/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:/Us
 ers/pault/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr12.pfb><C:/Use
 rs/pault/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri10.pfb><C:/Use
 rs/pault/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmssbx10.pfb>
-Output written on Bericht.pdf (12 pages, 630168 bytes).
+Output written on Bericht.pdf (14 pages, 660773 bytes).
 PDF statistics:
- 217 PDF objects out of 1000 (max. 8388607)
- 40 named destinations out of 1000 (max. 500000)
- 197 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 232 PDF objects out of 1000 (max. 8388607)
+ 43 named destinations out of 1000 (max. 500000)
+ 202 words of extra memory for PDF output out of 10000 (max. 10000000)
 

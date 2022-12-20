@@ -186,6 +186,7 @@ Außerdem wird dem Betrachter die Hover-Funktion bereitgestellt, dass bedeutet, 
 \cite{Hinneburg2022}. Da bei der zugrundeliegenden Arbeit allerdings nicht die Quantile veranschaulicht werden sollen, sondern vielmehr die einzelnen Noten der Studenten interessant sind, macht ein Scatterplot deutlich mehr Sinn.
 
 \subsubsection{Visualisierung Zwei}
+\label{SubZwei}
 Die zweite Visualisierung wurde in Form eines Parallelplots dargestellt. Dieser hat, wie bereits in \ref{Anforderungen} gegenüber des Scatterplots den Vorteil, dass hier mehrere Daten auf einmal, sogenannte mehrdimensionale Daten dargestellt werden können.\\ Es können also von einem Studenten unter der Auswahl einer Lernzeitklasse alle Noten auf einmal darstellen. Hierzu werden die verschiedenen Attribute (Noten) vertikal nebeneinander aufgelistet und mithilfe einer Linie verbunden. Diese Linie übernimmt quasi die Aufgabe des Punkts aus dem Scatterplot und veranschaulicht so einzelne Studenten, siehe \ref{Parallel}. Hierbei wurde sich wieder für die Noten 10.Klasse, 12.Klasse \& College Mark zusätzlich zu \textit{Salary expectation} entschieden. So kann die mögliche Korrelation zwischen den einzelnen Noten und der Lernzeit und der Korrelation der einzelnen Noten untereinander gut veranschaulicht werden.\\
 
 
@@ -213,15 +214,47 @@ Die zweite Visualisierung wurde in Form eines Parallelplots dargestellt. Dieser 
 
 \noindent Für den Leser ist so nun, wie in der Zielstellung in \ref{Einleitung} formulierten Anforderung auf einen Blick ersichtlich, wie sich die Verteilung der Noten gestaltet. Sollten sich sehr viele Linien im höheren Segment des Parallelplots ansiedeln, so ist klar, dass in der ausgewählten Lernklasse (in diesem Beispiel 0-30 Minuten)viele Studenten gute Noten in der Schule hatten und immer noch gute Noten im College haben, sowie eine hohe Erwartung an ihr späteres Gehalt haben. Genau das gleiche gilt selbstverständlich für den umgekehrten Fall.\\
 
-Dem Vorteil der mehrdimensionalen Datendarstellung des Parallelplots steht allerdings die Ünubersichtlichkeit des Gleichnamigen gegenüber. Wenn auch alle Daten auf einmal abgebildet werden können, so leidet darunter die exakte Differenzierung der unterschiedlichen Individuen. Beim Parallelplot ist es also durchaus schwierig die einzelnen Studenten voneinander zu differenzieren, da die Linien sich an den unterschiedlich Abschnitten schneiden und so nicht genau erkennbar ist, wo welche Linie weiterführt. %daher einführung hover Funktion!
-
-\noindent 
+\noindent Dem Vorteil der mehrdimensionalen Datendarstellung des Parallelplots steht allerdings die Ünubersichtlichkeit des Gleichnamigen gegenüber. Wenn auch alle Daten auf einmal abgebildet werden können, so leidet darunter die exakte Differenzierung der unterschiedlichen Individuen. Beim Parallelplot ist es also durchaus schwierig die einzelnen Studenten voneinander zu differenzieren. Denn die Linien schneiden sich an den vertikalen Achsen und so ist nicht genau erkennbar, wo welche Linie welches Studenten weiterführt.\\ %daher einführung hover Funktion!
 
 
+\noindent Genau wie die Parallelen Koordinaten gewährleisten die sternförmigen Koordinaten eine verlustfreie und eindeutige Anordnung der Daten. Im Gegensatz dazu werden die sternförmigen Koordinaten aber nicht parallel nebeneinander angeordnet, sondern es findet eine sternförmige Anordnung der Merkmalsachsen statt \cite{Doerner0304}.\\
+Für die Zielsetzung eignet sich der Parallelplot allerdings besser, da es für den Betrachter deutlich leichter ist auf den ersten Blick die Verteilung der Linien einzuordnen. Er kann anhand dieser Verteilung schneller ein Urteil über die Korrelation der Daten fällen, als die bei den sternförmigen Koordinaten der Fall wäre. Hier wäre, wie bereits oben bereits beschrieben, ein gutes mentales Modell und Kenntnisse in Visualisierungsmethoden nötig gewesen, um die Darstellung zu interpretieren; zumindest eine gewisse stärkere Auseinandersetzung mit der Visualisierung an sich.\\
 
+\noindent Eben dieser Fall wollte aber vermieden werden. Es sollte auf den ersten Blick direkt ein ungefähres Urteil über die Daten gefällt werden können und sich dann danach weiter damit auseinandergesetzt werden können. Bei den sternförmigen Koordinaten wäre dies nicht gegeben gewesen. 
 
 
 \subsubsection{Visualisierung Drei}
+In der dritten und letzten Visualisierung wurde sich für eine explizite Baumdarstellung entschieden. Diese Veranschaulichungsmöglichkeit ist dargestellt als zusammenhängender Graph und die Beziehung zwischen Knoten mit gerichteten Kanten. Außerdem sind alle Knoten von der Wurzel aus erreichbar \cite{Hinneburg2022}.\\
+Die auf die Daten angewendete Baumdarstellung ist in Abbildung \ref{Baum} zu sehen.
+
+
+\begin{figure}[h]
+\begin{center}
+	\includegraphics[scale=.75]{BspBaum.png}
+	\caption{Explizite Baumdarstellung}
+	\label{Baum}
+\end{center}
+\end{figure}
+
+\noindent Die Wurzel stellt hier der einzelne Student dar. Dieser hat sechs sogenannte Kinder, also Knoten, die mit gerichteten Kanten von ihm wegführen und sie die Beziehung zueinander visuell darstellen. Diese sechs Kinder sind die unterschiedlichen Lernzeiten, die bereits in den vorherigen Visualisierungen immer als Drop-Down zur Verfügung standen.\\
+Diese Knoten wiederum haben eine weiter Unterteilung in Männlich und in weiblich, umso erneut zwischen den Geschlechtern Differenzen feststellen zu können.
+Die letzten Kinder sind die Noten. Diese wurden diesmal nicht nach Klassen und College unterteilt, sondern nach der besten, schlechtesten und der Durchschnittsnote aus dem College.\\
+Der Leser kann so, wie dies bereits in den vorherigen Visualisierungen der Fall war, zuerst die Unterteilung der Studenten nach Lernzeit vornehmen. Und danach kann er nach Geschlecht unterteilen und die jeweiligen Leistungen direkt als String ablesen.\\
+
+Diese Visualisierung hat den Vorteil, dass die exakten Noten inklusive des Durchschnitts dargestellt werden können und so dem Leser direkt als String geliefert werden, es wird also keinerlei Hover-Funktion benötigt. Zudem ist den meisten Lesern die Baumstruktur durchaus aus vielen normalen Lebensbereichen geläufig, wie z.B. der Ordnerstruktur auf dem PC oder der Turnierstruktur bei einer Weltmeisterschaft \cite{Hinneburg2022}.\\
+Allerdings bietet die explizite Baumdarstellung auch einige Nachteile, so wird sie sehr schnell unübersichtlich und zu weit verschachtelt, wenn zu viele Knoten dazukommen.\\
+Eine andere Möglichkeit wäre daher die implizite Baumdarstellung gewesen, die die grafische Beziehung zwischen Objekten mittels der drei Möglichkeiten
+
+\begin{itemize}
+\item Umschließen
+\item Überlappen
+\item und Berühren
+\end{itemize}
+
+\noindent sinnvoll darstellen kann \cite{Hinneburg2022}. Diese haben aber, ähnlich der sternförmigen Koordinaten aus Abschnitt \ref{SubZwei} den Nachteil, dass sie nicht sehr intuitiv für den Leser sind. Der Leser kann bei der ersten Betrachtung, im Gegensatz zur expliziten Baumdarstellung kaum eine Unterteilung der Hierarchie vornehmen. So wird eine der wichtigen Zielstellungen nicht erfüllt. Dieser und der Grund, dass den meisten Menschen die explizite Baumdarstellung weitaus geläufiger ist, wurde sich für letztere Visualisierung entschieden. 
+
+
+
 
 
 
