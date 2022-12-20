@@ -5,7 +5,7 @@
             "name": "Male",
             "children": [
                 {
-                    "name": "Daily studying time: 0 -30 Minutes",
+                    "name": "0 -30 Minutes",
                     "children": [
                         {
                             "name": "Best college Mark: 97"
@@ -19,7 +19,7 @@
                     ]
                 },
                 {
-                    "name": "Daily studying time: 30 -60 Minutes",
+                    "name": "30 -60 Minutes",
                     "children": [
                         {
                             "name": "Best college Mark: 92"
@@ -33,7 +33,7 @@
                     ]
                 },
                 {
-                    "name": "Daily studying time: 1 -2 Hours",
+                    "name": "1 -2 Hours",
                     "children": [
                         {
                             "name": "Best college Mark: 90"
@@ -47,7 +47,7 @@
                     ]
                 },
                 {
-                    "name": "Daily studying time: 2 -3 Hours",
+                    "name": "2 -3 Hours",
                     "children": [
                         {
                             "name": "Best college Mark: 80"
@@ -61,7 +61,7 @@
                     ]
                 },
                 {
-                    "name": "Daily studying time: 3 -4 Hours",
+                    "name": "3 -4 Hours",
                     "children": [
                         {
                             "name": "Best college Mark: 95"
@@ -75,7 +75,7 @@
                     ]
                 },
                 {
-                    "name": "Daily studying time: More Than 4 Hours",
+                    "name": "More Than 4 Hours",
                     "children": [
                         {
                             "name": "Best college Mark: 90"
@@ -94,7 +94,7 @@
             "name": "Female",
             "children": [
                 {
-                    "name": "Daily studying time: 0 - 30 Minutes",
+                    "name": "0 - 30 Minutes",
                     "children": [
                         {
                             "name": "Best college Mark: 90"
@@ -108,7 +108,7 @@
                     ]
                 },
                 {
-                    "name": "Daily studying time: 30 - 60 Minutes",
+                    "name": "30 - 60 Minutes",
                     "children": [
                         {
                             "name": "Best college Mark: 90"
@@ -122,7 +122,7 @@
                     ]
                 },
                 {
-                    "name": "Daily studying time: 1 - 2 Hours",
+                    "name": "1 - 2 Hours",
                     "children": [
                         {
                             "name": "Best college Mark: 100"
@@ -136,7 +136,7 @@
                     ]
                 },
                 {
-                    "name": "Daily studying time: 2 - 3 Hours",
+                    "name": "2 - 3 Hours",
                     "children": [
                         {
                             "name": "Best college Mark: 95"
@@ -150,7 +150,7 @@
                     ]
                 },
                 {
-                    "name": "Daily studying time: 3 - 4 Hours",
+                    "name": "3 - 4 Hours",
                     "children": [
                         {
                             "name": "Best college Mark: 100"
@@ -164,7 +164,7 @@
                     ]
                 },
                 {
-                    "name": "Daily studying time: More than 4 Hours",
+                    "name": "More than 4 Hours",
                     "children": [
                         {
                             "name": "Best college Mark: 70"
