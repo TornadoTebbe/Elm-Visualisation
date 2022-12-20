@@ -11,6 +11,8 @@
 \usepackage[onehalfspacing]{setspace}
 %grafik einfügen
 \usepackage{graphicx}
+%arbeiten mit mehreren Bilder
+\usepackage{subfigure}
 %einfügen von hyperref
 \usepackage{hyperref}
 
@@ -92,11 +94,11 @@ Hier wurde also eine der oben gestellten Zielstellungen sinnvoll und gut umgeset
 \label{Bereitstellung}
 
 Die Daten wurden als einzelne CSV-Datei in \textit{kaggle} bereitgestellt und auch also solche weiterverarbeitet. 
-Zudem wurden sie im eigenen Github hochgeladen und dort im Ordner Daten gespeichert. Mithilfe dieser Datei wurden der Scatterplot und der Paralleplot erstellt. zur Visualisierung des Baumdiagramms wurde zusätzlich eine json-Datei erstellt \textit{"json.Name"} und auch im Ordner Daten hinterlegt. Zusätzlich dazu finden sich im Github-Repository auch noch Python-Code, mit dessen Hilfe die Daten aufbereitet werden sollen, genaueres in \ref{Datenvorverarbeitung}
+Zudem wurden sie im eigenen Github hochgeladen und dort im Ordner Daten gespeichert. Mithilfe dieser Datei wurden der Scatterplot und der Parallelplot erstellt. zur Visualisierung des Baumdiagramms wurde zusätzlich eine json-Datei erstellt \textit{"json.Name"} und auch im Ordner Daten hinterlegt. Zusätzlich dazu finden sich im Github-Repository auch noch Python-Code, mit dessen Hilfe die Daten aufbereitet werden sollen, genaueres in \ref{Datenvorverarbeitung}
 
 
 \subsection{Datenvorverarbeitung}\label{Datenvorverarbeitung}
-Im obigen Abschnitt wurde bereits kurz auf den Datensatz eingegangen und erklärt, dass es sich um eine einzelne CSV-Date handelte. Aufgrunddessen musste keinerlei größere Vorverabeitung an den Daten vorgenommen werden, zumindest für den Paralleplot und den Scatterplot. Für das Baumdiagramm wurde zuerst versucht mithilfe von Pyhtoncode die csv-Datei in eine json-Datei umzuwandeln. Leider gelang dies nicht, sodass die csv erst in eine Excel-Datei umgewandelt wurde. Anschließend wurde mithilfe der Excel-Datei manuell eine json-Datei erstellt um anhand dieser die Baumdarstellung zu visualisieren. In der json wurden dann nur die für das Baumdiagramm relevanten Daten übernommen. Aufgrund anfänglicher Überlegungen die verschieden klassierten \textit{Zeiten}, wie \textit{daily studying time}, \textit{social media time} und \textit{travelling time} in einzelne Klassen in Form von Integers festzuhalten, also \textit{daily studying time} von 0-30 Minuten wäre 1, 30-60 Minuten 2 usw. wurde die csv-Datei in R geladen um die Daten somit zu manipulieren. Aufgrund der späteren Nutzung der \textit{daily studying time} als Drop-down Tabelle wurde dieser Gedanke wieder verworfen.
+Im obigen Abschnitt wurde bereits kurz auf den Datensatz eingegangen und erklärt, dass es sich um eine einzelne CSV-Date handelte. Aufgrunddessen musste keinerlei größere Vorverabeitung an den Daten vorgenommen werden, zumindest für den Parallelplot und den Scatterplot. Für das Baumdiagramm wurde zuerst versucht mithilfe von Pyhtoncode die csv-Datei in eine json-Datei umzuwandeln. Leider gelang dies nicht, sodass die csv erst in eine Excel-Datei umgewandelt wurde. Anschließend wurde mithilfe der Excel-Datei manuell eine json-Datei erstellt um anhand dieser die Baumdarstellung zu visualisieren. In der json wurden dann nur die für das Baumdiagramm relevanten Daten übernommen. Aufgrund anfänglicher Überlegungen die verschieden klassierten \textit{Zeiten}, wie \textit{daily studying time}, \textit{social media time} und \textit{travelling time} in einzelne Klassen in Form von Integers festzuhalten, also \textit{daily studying time} von 0-30 Minuten wäre 1, 30-60 Minuten 2 usw. wurde die csv-Datei in R geladen um die Daten somit zu manipulieren. Aufgrund der späteren Nutzung der \textit{daily studying time} als Drop-down Tabelle wurde dieser Gedanke wieder verworfen.
 %Zusätzlich Ausfilterung der Daten von SalaryExpectation aufgrund von Ausreißer
 %Am Ende wurde dies aber dennoch erneut mit Pyhton gemacht allerdings mit den Daten \textit{social media time}, indem eine neue Spalte als daily studying class erstellt wurde und immer die Mitte der Zeit als Float erstellt wurde, sodass die Daten nun doch in den Parallelplot und den Scatterplot eingefügt wurden
 \\
@@ -138,7 +140,8 @@ Diskutieren sie die Expressivität und die Effektivität der einzelnen Visualisi
 Die eben beschriebenen Präsentationen und Begründungen sollen für jede der drei folgenden Visualisierungen durchgeführt werden. 
 
 
-\subsubsection{Visualisierung Eins}
+\subsubsection{Scatterplot}
+\label{VisEins}
 Wie bereits in \ref{Anforderungen} erwähnt wurde sich als erste Visualisierung für den Scatterplot entschieden, abgebildet in Abbildung \ref{Scatter}.
 
 
@@ -185,8 +188,8 @@ Außerdem wird dem Betrachter die Hover-Funktion bereitgestellt, dass bedeutet, 
 \noindent Eine weiter ähnliche Visualisierungstechnik ist der QQ-Plot, dieser Teil die Datenwerte in verschiede Quantile ein. Hier werden die Verteilunen verglichen, Hinneburg beschreibt es als \glqq Verschiebungen zwischen zwei Verteilungen werden effizient durch Vergleich der Quantile gefunden\grqq \\
 \cite{Hinneburg2022}. Da bei der zugrundeliegenden Arbeit allerdings nicht die Quantile veranschaulicht werden sollen, sondern vielmehr die einzelnen Noten der Studenten interessant sind, macht ein Scatterplot deutlich mehr Sinn.
 
-\subsubsection{Visualisierung Zwei}
-\label{SubZwei}
+\subsubsection{Parallelplot}
+\label{VisZwei}
 Die zweite Visualisierung wurde in Form eines Parallelplots dargestellt. Dieser hat, wie bereits in \ref{Anforderungen} gegenüber des Scatterplots den Vorteil, dass hier mehrere Daten auf einmal, sogenannte mehrdimensionale Daten dargestellt werden können.\\ Es können also von einem Studenten unter der Auswahl einer Lernzeitklasse alle Noten auf einmal darstellen. Hierzu werden die verschiedenen Attribute (Noten) vertikal nebeneinander aufgelistet und mithilfe einer Linie verbunden. Diese Linie übernimmt quasi die Aufgabe des Punkts aus dem Scatterplot und veranschaulicht so einzelne Studenten, siehe \ref{Parallel}. Hierbei wurde sich wieder für die Noten 10.Klasse, 12.Klasse \& College Mark zusätzlich zu \textit{Salary expectation} entschieden. So kann die mögliche Korrelation zwischen den einzelnen Noten und der Lernzeit und der Korrelation der einzelnen Noten untereinander gut veranschaulicht werden.\\
 
 
@@ -223,7 +226,8 @@ Für die Zielsetzung eignet sich der Parallelplot allerdings besser, da es für 
 \noindent Eben dieser Fall wollte aber vermieden werden. Es sollte auf den ersten Blick direkt ein ungefähres Urteil über die Daten gefällt werden können und sich dann danach weiter damit auseinandergesetzt werden können. Bei den sternförmigen Koordinaten wäre dies nicht gegeben gewesen. 
 
 
-\subsubsection{Visualisierung Drei}
+\subsubsection{Explizite Baumdarstellung}
+\label{VisDrei}
 In der dritten und letzten Visualisierung wurde sich für eine explizite Baumdarstellung entschieden. Diese Veranschaulichungsmöglichkeit ist dargestellt als zusammenhängender Graph und die Beziehung zwischen Knoten mit gerichteten Kanten. Außerdem sind alle Knoten von der Wurzel aus erreichbar \cite{Hinneburg2022}.\\
 Die auf die Daten angewendete Baumdarstellung ist in Abbildung \ref{Baum} zu sehen.
 
@@ -251,7 +255,7 @@ Eine andere Möglichkeit wäre daher die implizite Baumdarstellung gewesen, die 
 \item und Berühren
 \end{itemize}
 
-\noindent sinnvoll darstellen kann \cite{Hinneburg2022}. Diese haben aber, ähnlich der sternförmigen Koordinaten aus Abschnitt \ref{SubZwei} den Nachteil, dass sie nicht sehr intuitiv für den Leser sind. Der Leser kann bei der ersten Betrachtung, im Gegensatz zur expliziten Baumdarstellung kaum eine Unterteilung der Hierarchie vornehmen. So wird eine der wichtigen Zielstellungen nicht erfüllt. Dieser und der Grund, dass den meisten Menschen die explizite Baumdarstellung weitaus geläufiger ist, wurde sich für letztere Visualisierung entschieden. 
+\noindent sinnvoll darstellen kann \cite{Hinneburg2022}. Diese haben aber, ähnlich der sternförmigen Koordinaten aus Abschnitt \ref{VisZwei} den Nachteil, dass sie nicht sehr intuitiv für den Leser sind. Der Leser kann bei der ersten Betrachtung, im Gegensatz zur expliziten Baumdarstellung kaum eine Unterteilung der Hierarchie vornehmen. So wird eine der wichtigen Zielstellungen nicht erfüllt. Dieser und der Grund, dass den meisten Menschen die explizite Baumdarstellung weitaus geläufiger ist, wurde sich für letztere Visualisierung entschieden. 
 
 
 
@@ -259,20 +263,163 @@ Eine andere Möglichkeit wäre daher die implizite Baumdarstellung gewesen, die 
 
 
 \subsection{Interaktion}
+\label{Interaktion}
 Die präsentierten Visualisierungstechniken müssen interaktiv zu einer Anwendung verknüpft werden.
 Die Interaktion mit einer Visualisierung soll in den anderen Visualisierungen zu einer Änderung führen. 
 Erklären sie die möglichen Interaktionen mit den einzelnen Visualisierungen und die möglichen Verknüpfungen zwischen ihnen. Begründen Sie warum die konkreten Interaktionen umgesetzt wurden und welche Zwecke für die Anwenderinnen mit ihnen unterstützt werden. Begründen sie ebenfalls warum sie andere Interaktionsmöglichkeiten nicht umgesetzt haben. Wenn sie keine der geforderten Interaktionen umsetzen, erhalten Sie im gesamten Projekt deutlichen Punktabzug. 
 
 \section{Implementierung}
-Beschreiben Sie die Implementierung ihrer Visualisierungsanwendung in Elm. Stellen die Gliederung ihres Quellcodes vor. Haben Sie verschiedene Elm-Module erstellt. Was war aufwändig umzusetzen, was ließ sich mit dem vorhanden Code aus den Übungen relativ einfach umsetzen? 
 
-Wie sieht die Elm-Datenstruktur für das Model aus, in dem die verschiedenen Zustände der Interaktion gespeichert werden können.
+Die nächsten Abschnitte behandeln die Implementierung des Codes. Für die Implementierung wurde sich an den Übungen orientiert und dieser Code dann übernommen und angepasst. Für \ref{ScatterParallel} an Übung 1 und  Übung 6 und für\ref{ImplBaum} an Übung 7.\\
+
+\subsection{Scatterplot und Parallelplot}
+\label{ScatterParallel}
+
+\noindent Jede einzelne Datei besteht grundlegend aus einem \textit{main}, welches die Funktionen \textit{init}, \textit{update} \textit{subsriptions} und \textit{view}, siehe Abbildung \ref{Main}.
+Der erste Schritt war die Daten zu laden und zu Decoden. Dabei wurde sich wieder am Code der Übung 7 orientiert. Die Daten wurden aus der \textit{Student\_Behaviour.csv}-Datei geladen, die im Github abgelegt war. Das Laden der Daten geschah über die eben erwähnte \textit{init}-Funktion, bei der mtihilfe eines \textit{Http.get}-Befehls der Link aus dem eigenen Github geladen wurde. Auf die anderen funktionen wird später genauer und individuell eingegangen.
+
+
+
+
+
+\begin{figure}[h]
+\begin{center}
+	\includegraphics[scale=.75]{Main.png}
+	\caption{Main}
+	\label{Main}
+\end{center}
+\end{figure}
+
+
+\noindent Nachdem die Laden über die \textit{init}-Funktion geladen wurden, müssen sie nun dekodiert werden.
+Zuerst mussten die verschiedenen Module dafür geladen und importiert werden, in diesem Fall \glqq Csv\grqq und \glqq Csv.Decode\grqq. %möglicherweise Einfügen Abbildung oder ähnliches und dann Aufführung weiter unten?
+Mithilfe dieser Module konnte die Funktion zum codieren der Daten geschrieben werden, dieser Code ist zu sehen in Abbildung \ref{Decode}.\\
+
+
+\begin{figure}[h]
+\begin{center}
+	\includegraphics[scale=.5]{decode.png}
+	\caption{Ausschnitt der Decode-Funktion}
+	\label{Decode}
+\end{center}
+\end{figure}
+
+\noindent Hier werden die einzelnen Daten als String reingeparst und falls sie auch ein String in der weiteren Verarbeitung sein sollen als \glqq Ok\grqq markiert. Falls sie umgeformt werden sollen, wird dies mit der Anweisung \glqq String.to\grqq und danach der gewünschte Datentyp, z.B. Float erreicht. In einem Beispiel im Datensatz wäre das beispielsweise bei \textit{10th Mark} der Fall. Damit in elm aber weiter damit als Float gearbeitet werden kann, muss dieser Datentyp nochmal in einem \textit{type} definiert werden. Die Daten wurden also im \textit{type} \textit{Student\_Data} nochmals definiert um mit ihnen später weiterarbeiten zu können. Hier mussten sie als genau der Datentyp definiert werden, als der sie auch vorher decoded wurden. Sonst warf es eine Fehlermeldung aus. Die \textit{type}-Definition sah dann wie in Abbildung \ref{Type}. Das Decodieren war zu Anfang eine sehr mühselige Arbeit und nahm einiges an Zeit in Anspruch, da hier alle Strings genauso geschrieben werden mussten, wie in der Csv-Datei. Da es auch ein paar Rechtschreibfehler gab (z.B. \glqq social medai\grqq statt \glqq social media\grqq und teilweise Leerzeichen hinter den Strings standen (beispielsweise bei \glqq stress level\grqq war dies anfänglich etwas frustrierend. 
+
+
+
+\begin{figure}[h]
+\begin{center}
+	\includegraphics[scale=.75]{typeDef.png}
+	\caption{Ausschnitt der \textit{type} - Definition Student\_Data}
+	\label{Type}
+\end{center}
+\end{figure}
+
+\noindent Der grundlegende Aufbau des Elm-Programms setzt sich aus vier Dateien zusammen, der \textit{Scatterplot\.elm}, \textit{Baumvisualisierung\.elm}, \textit{ParallelPlot\.elm} und  \textit{Main\.elm}. Jede Datei steht für die jeweilige Visualisierung, während die \textit{Main\.elm}-Datei die Startseite der Website darstellt.\\
+
+\noindent Der Aufbau der kompletten Visualisierung stellte ein weiteres größeres Problem dar. Die Verknüpfung der einzelnen \textit{case of} - Fälle ließ sich von mir nicht ohne jegliche Fehlermeldung lösen. Daher musste auf eine andere Art der Technik zurückgegriffen werden. Anstatt alles auf eine Seite zu laden, wurde hier mit einer \textit{Seitennavigationsleiste} gearbeitet %Bild einfügen, wenn Leiste steht.
+So kann zwischen den einzelnen Visualisierungen navigiert werden, siehe Abbildung \\%\ref{Navigation}.
+
+\noindent Zusätzlich zur \textit{type} - Definition Student\_Data wurden bei allen Visualisierungen ein \textit{type Msg} definiert. In diesem wurden die verschiedenen Aktionen festgelegt, die dem Leser bei \ref{Interaktion} zu Verfügung stehen , also die Lernzeit (\textit{ChangeStudTime}), oder die Daten für die Achsen (\textit{ChooseStudent1}, \textit{ChooseStudent2}) zu bestimmen. Zu sehen in Abbildung \ref{MsgScatter}. 
+
+\begin{figure}
+    \subfigure[\textit{type} - Definition \textit{Msg}]{\includegraphics[width=0.49\textwidth]{typeMsg.png}}
+    \subfigure[\textit{type} - Definition \textit{StudentAttribute}]{\includegraphics[width=0.49\textwidth]					{typeStudentAttribute.png}}
+\caption{\textit{type} - Definition im Beispiel Scatterplot}
+\label{MsgScatter}
+\end{figure}
+
+\noindent Bei dem \textit{type StudentAttribute} werden die Daten festgelegt, die später an den Achsen des Scatterplots abgebildet werden und dynamisch ausgewählt werden könne, in diesem Fall also die Noten aus der 10., 12. Klasse, aus dem College und die Erwartungen an das spätere Gehalt.\\
+
+\noindent Beim Parallelplot verhält sich diese Funktionalität ähnlich, es mussten nur zwei weitere Funktionen hinzugefügt werden und diese wurden dann auch direkt in die \textit{type Msg} eingebettet.
+Bei beiden Plots wurden zudem Punkte definiert, beim Scatterplot eine \textit{type Point} und beim Parallelplot eine \textit{type MultiDimPoint}.\\
+
+\noindent Weiterhin wurden bei beiden die \textit{Html} Drop-Down Funktion als eingefügt, damit der Leser auf der Website auswählen kann. Die drei Funktionalitäten, Auswahl X-, Y-Achse und LErnzeitasuwahl hatten alle denselben Aufbau. Sie bekamen den Value aus dem Datensatz gegeben und hatten ein \glqq Html.text\grqq Feld, welches dem Nutzer angezeigt wird. Mit \glqq Html.select\grqq konnte der Nutzer nun zwischen den vorher festgelegten Feldern auswählen.\\
+
+\noindent Diese Auswahl wurde in der \textit{update} - Funktion verarbeitet, siehe Abbildung \ref{updateScatter}. Diese interagiert mit der \textit{type Msg} und arbeitet mit der \textit{case of}. Bei \glqq GotText\grqq werden (in den folgenden Beispielen wird immer davon ausgegangen, dass es zu keiner Fehlermeldung kommt) die Daten geladen und ein \textit{Default} - Wert festgelegt, in diesem Fall liegt also die Lernzeit beim erfolgreichen Laden der Daten bei 0-30 Minuten und die Punkte auf der X-Achse als Noten der 10. Klasse und Y-Achse bei Noten der 12.Klasse.\\
+Falls der Nutzer die Zeit ändert, also die Funktion \glqq ChangeStudTime\grqq aufruft, werden die Daten dahingehend geändert, dass nun, bei gleichbleibenden Achsen (also Noten 10. und 12.Klasse) die Werte sich auf den gewünschten neuen Wert anpassen. Also würde z.B. die Lernzeit auf 1-2 Stunden angehoben werden, wird dies entsprechend angepasst. Gleiches gilt bei Änderung der Achsen. Hier tritt der Fall \glqq ChooseStudent1\grqq oder \glqq ChooseStudent2\grqq ein, je nachdem welche Achse geändert wird.
+Sollte es hier bei einem der Schritte zu einem Fehler kommen, wird die \glqq Error-Funktion\grqq durchgeführt.\\
+
+\noindent Bei beiden Plots wurden die Daten zudem noch gefiltert, welche dann in der \textit{view} - Funktion aufgerufen wurden. Diese \textit{view} - Funktion sah auch bei beiden ähnlich aus, sie handelte zuerst die Optionen des \textit{Failure} und \textit{Loading} um bei einem \textit{Success} die Daten und den Plot darzustellen. Hier wurden erst die verschiedenen Werte im \textit{let} - Teil definiert um sie danach im \textit{in} - Teil mit dem Plot an sich darstellen zu können. Im \textit{in} - Teil wurden außerdem die verschiedenen \textit{Html} - Attributen und \textit{hrefs} aufgelistet.\\
+
+
+
+\begin{figure}[h]
+\begin{center}
+	\includegraphics[scale=.5]{updateScatter.png}
+	\caption{Ausschnitt der update-Funktion aus dem Scatterplot}
+	\label{updateScatter}
+\end{center}
+\end{figure}
+
+
+
+
+
+
+\noindent Beim Scatterplot, welcher als erster visualisiert wurde, wurde die ungefähre Struktur aus den ersten Übungen übernommen. Hier mussten nachdem die Eckpunkte des Scatterplots aufgestellt worden waren, die Punkte und \textit{Maybe Points} erstellt werden. Zusätzlich dazu die Achsenbeschriftung und die oben bereits erwähnten \textit{update} und \textit{view} - Funktionen integriert werden. Danach erfolgte noch weitere Personalisierungen der Visualisierungen um sich die gewollten Werte anzeigen zu lassen.\\
+
+\noindent Ähnlich wurde beim Parallelplot vorgegangen, wobei der \textit{type Msg} hierfür noch um zwei weitere Variablen erweitert wurde, damit alle Möglichkeiten für die Achsen abgedeckt wurden. Bei der Erstellung dieser Visualisierung wurde sich an der Übung sechs orientiert. Dadurch, dass diese auch bereits die Option des Daten-Laden behandest, ging dies deutlich schneller als die Erstellung des Scatterplots. Auch hier wurde wieder, wie beim Scatterplot mit der Hover-Funktion gearbeitet, um die einzelnen zu betrachtenden Datenwerte besser hervorheben zu können.
+
+
+\subsection{Explizite Baumdarstellung}
+\label{ImplBaum}
+
+\noindent Für die Visualisierung der expliziten Baumdarstellung wurde sich an Übung 7 orientiert. Die Daten wurden 
+
+
+\noindent Der \textit{type Msg} ähnelt wieder dem der Plots s. Abbildung \ref{MsgScatter}, mit den veschiedenen dynamischen Möglichkeiten, die dem Nutzer gegeben werden um mit der Webseite zu interagieren. Die Daten wurden wieder über die \textit{init} - Funktion geladen. Allerdings wurden sie diesmal nicht aus einer Csv-Datei geladen, sondern aus einer \textit{json}. Wie bereits in \ref{Datenvorverarbeitung} erwähnt, wurde diese hierfür manuell aus der Csv-Datei erstellt, damit mit dieser gearbeitet werden konnte. Im Gegensatz zu den vorherigen Plots wurde bei der Baumvisualisierung eine andere Form der Datendecodierung gewählt, die aus der Übung 7 übernommen wurde, siehe Abbildung \ref{treeDecode}.
+
+
+\begin{figure}[h]
+\begin{center}
+	\includegraphics[scale=.75]{treeDecode.png}
+	\caption{Decode Funktion der Baumvisualisierung}
+	\label{treeDecode}
+\end{center}
+\end{figure}
+
+
+\noindent Die Interaktionsmöglichkeiten s. mehr dazu in \ref{Interaktion} sind ähnlich aufgebaut wie bei Scatterplot und Parallelplot. In der \textit{update} - Funktion werden die verschiedenen Messages angegeben, in denen die Optionen abgedeckt werden vgl. . \ref{updateScatter}, die dem Nutzer vorliegen. Also die Höhe, Weite, etc. des Baumdiagramms zu ändern. Wie in den beiden Plots die Punkte \glqq gezeichnet\grqq wurden, so werden hier mit den Funktionen \textit{Knoten} und \textit{Kanten} die Knoten und Kanten \glqq gezeichnet\grqq . Die Kanten verbinden die einzelnen Knoten miteinander, um so das explizite Baumdiagramm darstellen zu können.\\
+
+\noindent Am schwierigsten gestaltete sich bei dieser Implementierung das Laden der Daten. Genauer gesagt das Umstrukturieren der Csv-Datei in eine \textit{json}. Hierbei wurde anfangs versucht dies mit einer \textit{python} - Anwendung umzuschreiben. Dieser Ansatz funktionierte leider nicht, da die Funktion keine genestete Datei als Ergebnis ausgab und es somit nicht für die Baumdarstellung genutzt werden konnte. \\
+Nach mehrmaligem Rumprobieren wurde die Datei daher manuell erstellt. Dies führte allerdings zum nächsten Problem: Bei der Darstellung der verschiedenen Noten kam es häufig zu Dopplungen bei den \textit{children}, da sich beispielsweise die Noten der besten Frau mit Lernzeit 0-30 Minuten mit der besten Frau der Lernzeit 30-60 Minuten deckten. % Hierfür wurde xy.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% Sie die Implementierung ihrer Visualisierungsanwendung in Elm. Stellen die Gliederung ihres Quellcodes vor. Haben Sie verschiedene Elm-Module erstellt. Was war aufwändig umzusetzen, was ließ sich mit dem vorhanden Code aus den Übungen relativ einfach umsetzen? 
+
+%Wie sieht die Elm-Datenstruktur für das Model aus, in dem die verschiedenen Zustände der Interaktion gespeichert werden können.
 
 \section{Anwendungsfälle}
 Präsentieren sie für jede der drei Visualisierungen einen sinnvollen Anwendungsfall in dem ein bestimmter Fakt, ein Muster oder die Abwesenheit eines Musters visuell festgestellt wird. Begründen sie warum dieser Anwendungsfall wichtig für die Zielgruppe der Anwenderinnen ist. Diskutieren sie weiterhin, ob die oben beschriebene Information auch mit anderen Visualisierungstechniken hätte gefunden werden können. Falls dies möglich wäre, vergleichen sie die den Aufwand und die Schwierigkeiten ihres Ansatzes und der Alternativen. 
 \subsection{Anwendung Visualisierung Eins}
+\label{AnwEins}
 \subsection{Anwendung Visualisierung Zwei}
+\label{AnwZwei}
 \subsection{Anwendung Visualisierung Drei}
+\label{AnwDrei}
 
 \section{Verwandte Arbeiten}
 Führen sie eine kurze Literatursuche in der wissenschaftlichen Literatur zu Informationsvisualisierung und Visual Analytics nach ähnlichen Anwendungen durch. Diskutieren sie mindestens zwei Artikel. Stellen sie Gemeinsamkeiten und Unterschiede dar.

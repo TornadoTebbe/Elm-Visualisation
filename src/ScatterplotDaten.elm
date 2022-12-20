@@ -125,7 +125,7 @@ studentToMaybePoint student =
     map4 
         (\tenthMark twelthMark collegeMark salaryExpectation->
             Point
-                (student.gender)
+                (student.gender ++ "( " ++ student.preferStudyTime ++ ")" )
                 (tenthMark)
                 (twelthMark)
                 (salaryExpectation)

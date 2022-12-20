@@ -19,7 +19,6 @@ import TypedSvg.Types exposing (AnchorAlignment(..), Length(..), Opacity(..), Pa
 import Http
 import Csv.Decode exposing (..)
 import Csv exposing (..)
-import ScatterplotDaten exposing (StudentAttribute(..))
 
 
 
@@ -36,13 +35,13 @@ type alias Student_Data =
     ,   dailyStudyingTime : String
     ,   preferStudyTime : String
     ,   salaryExpectation : Float
-    ,   satisfyDegree : String --Bool
+    ,   satisfyDegree : String 
     ,   willignessDegree: String
     ,   socialMedia : String
     ,   travellingTime : String
     ,   stressLevel : String
     ,   financialStatus : String
-    ,   partTimeJob : String --Bool
+    ,   partTimeJob : String 
     }
 
 
@@ -195,8 +194,8 @@ filterStudents allData filterString =
 
 --parallelplot
 
-scatterplot : Float -> Float -> MultiDimData -> Svg msg
-scatterplot w ar model =
+paralleplot : Float -> Float -> MultiDimData -> Svg msg
+paralleplot w ar model =
     let
         h : Float
         h =
@@ -230,8 +229,8 @@ scatterplot w ar model =
     <|
         [ TypedSvg.style []
             [   TypedSvg.Core.text """"
-                .parallelpoint { stroke: Color.yellow;}
-                .parallelpoint:hover {stroke: rgb(98, 153, 12); stroke-width: 2;} 
+                .parallelpoint { stroke: Color.red;}
+                .parallelpoint:hover {stroke: rgb(0, 153, 150); stroke-width: 2;} 
                 .parallelpoint text { display: none; }
                 .parallelpoint:hover text { display: inline; stroke: rgb(0, 0, 0); stroke-width: 0.01; font-size: small; font-family: calibri}  
                 """
@@ -266,7 +265,7 @@ scatterplot w ar model =
                         text_
                             [ fontFamily [ "sans-serif" ]
                             , fontSize (Px 10)
-                            , fill <| Paint <| Color.black  --maybe male female?
+                            , fill <| Paint <| Color.red  --maybe male female?
                             , x <| Scale.convert xScale (toFloat index + 1)
                             , y <| padding * 7 / 8
                             , textAnchor AnchorMiddle
@@ -297,10 +296,10 @@ scatterplot w ar model =
                         g [class["parallelpoint"]][
                             Path.element graphenlinie
                             [ stroke <| Paint <| Color.black
-                            , opacity (Opacity 1)
+                            , opacity (Opacity 10)
                             , strokeWidth <| Px 0.7
                             , fill PaintNone
-                            , class ["parallelepoint"]
+                            , class ["parallelpoint"]
                             ]
                             , text_
                                 [ x 300
@@ -320,7 +319,7 @@ scatterplot w ar model =
                )
 
 
--- Übernahme des Button aus dem Scatterplot
+-- Übernahme des Button aus dem paralleplot
 
 changeTimelul : Html Msg
 changeTimelul =
@@ -425,7 +424,7 @@ update msg model =
                     (model, Cmd.none)
             
 
---einfügen der Viewfunktion, anfängliche Übernahme aus dem Scatterplot
+--einfügen der Viewfunktion, anfängliche Übernahme aus dem paralleplot
 
 view : Model -> Html Msg
 view model =
@@ -471,8 +470,16 @@ view model =
 
 
             in
-            Html.div []
-                [ Html.h1 [] [ Html.text ("Multidimensionale Daten für " ++ fullText.studTime)   ]
+            Html.div [Html.Attributes.style "padding" "20px"] 
+                 [Html.p [Html.Attributes.style "fontSize" "16px"] 
+                 [ Html.a[href "Main.elm"] [Html.text "Startseite"]
+                 , Html.br [] []
+                 , Html.a[href "paralleplotDaten.elm"] [Html.text "paralleplot"]
+                 , Html.br [] []
+                 , Html.a[href "Baumvisualisierung.elm"] [Html.text "Baumvisualisierung"]
+                 , Html.br [] []
+                 ]
+                , Html.h1 [] [ Html.text ("Multidimensionale Daten für " ++ fullText.studTime)   ]
                 , ul []
                     [ li [] [ Html.text <| "Ausgewählte tägliche Lernzeit: " ++ fullText.studTime ]
                     , changeTimelul
@@ -491,7 +498,7 @@ view model =
                     --     , Html.button [ onClick TauschB ] [ Html.text <| "Tausche " ++ model.wert2 ++ " und " ++ model.wert3 ]
                     --     , Html.button [ onClick TauschC ] [ Html.text <| "Tausche " ++ model.wert3 ++ " und " ++ model.wert4 ]
                     --     ]
-                    , scatterplot 600 2 multiDimData
+                    , paralleplot 600 2 multiDimData
                     ]
                 ]
 
