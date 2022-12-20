@@ -85,7 +85,7 @@ treeDecoder =
 init : () -> ( Model, Cmd Msg )
 init () =
     ( { wide = 4000, height = 2000, radius = 50, distance = 1, tree = Tree.singleton "", error = "" }
-    , Http.get { url = "https://raw.githubusercontent.com/TornadoTebbe/Elm2/main/Daten/baumFertigStud.json?token=GHSAT0AAAAAAB3NMVWFBH3NSTTQVHN6LB42Y5CAEOQ", expect = Http.expectJson GotFlare treeDecoder }
+    , Http.get { url = "https://raw.githubusercontent.com/TornadoTebbe/ElmTest2/main/Daten/baumfertig.json", expect = Http.expectJson GotFlare treeDecoder }
     )
 
 
