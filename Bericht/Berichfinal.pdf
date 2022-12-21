@@ -244,14 +244,23 @@ Für die Zielsetzung eignet sich der Parallelplot allerdings besser, da es für 
 \subsubsection{Explizite Baumdarstellung}
 \label{VisDrei}
 In der dritten und letzten Visualisierung wurde sich für eine explizite Baumdarstellung entschieden. Diese Veranschaulichungsmöglichkeit ist dargestellt als zusammenhängender Graph und die Beziehung zwischen Knoten mit gerichteten Kanten. Außerdem sind alle Knoten von der Wurzel aus erreichbar \cite{Hinneburg2022}.\\
+Die auf die Daten angewendete Baumdarstellung ist in Abbildung \ref{Baum} zu sehen.
 
 
-\noindent Die Wurzel stellt hier der einzelne Student dar. Dieser hat zwei sogenannte Kinder, also Knoten, die mit gerichteten Kanten von ihm wegführen und sie die Beziehung zueinander visuell darstellen. Diese zwei Kinder sind die zwei Geschlechter, also männlich und weiblich.\\
-Diese Knoten wiederum haben eine weiter Unterteilung in die verschiedenen Lernzeiten, die bereits in den vorherigen Visualisierungen immer als Drop-Down zur Verfügung standen.
-Die letzten Kinder sind die Noten. Diese wurden diesmal nicht nach Klassen und College unterteilt, sondern nach der Durchschnittsnote aus dem College.\\
+\begin{figure}[h]
+\begin{center}
+	\includegraphics[scale=.75]{BspBaum.png}
+	\caption{Explizite Baumdarstellung}
+	\label{Baum}
+\end{center}
+\end{figure}
+
+\noindent Die Wurzel stellt hier der einzelne Student dar. Dieser hat sechs sogenannte Kinder, also Knoten, die mit gerichteten Kanten von ihm wegführen und sie die Beziehung zueinander visuell darstellen. Diese sechs Kinder sind die unterschiedlichen Lernzeiten, die bereits in den vorherigen Visualisierungen immer als Drop-Down zur Verfügung standen.\\
+Diese Knoten wiederum haben eine weiter Unterteilung in Männlich und in weiblich, umso erneut zwischen den Geschlechtern Differenzen feststellen zu können.
+Die letzten Kinder sind die Noten. Diese wurden diesmal nicht nach Klassen und College unterteilt, sondern nach der besten, schlechtesten und der Durchschnittsnote aus dem College.\\
 Der Leser kann so, wie dies bereits in den vorherigen Visualisierungen der Fall war, zuerst die Unterteilung der Studenten nach Lernzeit vornehmen. Und danach kann er nach Geschlecht unterteilen und die jeweiligen Leistungen direkt als String ablesen.\\
 
-Diese Visualisierung hat den Vorteil, dass die Noten des Durchschnitts dargestellt werden können und so dem Leser direkt als String geliefert werden. Zudem ist den meisten Lesern die Baumstruktur durchaus aus vielen normalen Lebensbereichen geläufig, wie z.B. der Ordnerstruktur auf dem PC oder der Turnierstruktur bei einer Weltmeisterschaft \cite{Hinneburg2022}.\\
+Diese Visualisierung hat den Vorteil, dass die exakten Noten inklusive des Durchschnitts dargestellt werden können und so dem Leser direkt als String geliefert werden, es wird also keinerlei Hover-Funktion benötigt. Zudem ist den meisten Lesern die Baumstruktur durchaus aus vielen normalen Lebensbereichen geläufig, wie z.B. der Ordnerstruktur auf dem PC oder der Turnierstruktur bei einer Weltmeisterschaft \cite{Hinneburg2022}.\\
 Allerdings bietet die explizite Baumdarstellung auch einige Nachteile, so wird sie sehr schnell unübersichtlich und zu weit verschachtelt, wenn zu viele Knoten dazukommen.\\
 Eine andere Möglichkeit wäre daher die implizite Baumdarstellung gewesen, die die grafische Beziehung zwischen Objekten mittels der drei Möglichkeiten
 
@@ -410,7 +419,7 @@ Sollte es hier bei einem der Schritte zu einem Fehler kommen, wird die \glqq Err
 \noindent Für die Visualisierung der expliziten Baumdarstellung wurde sich an Übung 7 orientiert. Die Daten wurden 
 
 
-\noindent Der \textit{type Msg} ähnelt wieder dem der Plots. Abbildung \ref{MsgScatter}, mit den veschiedenen dynamischen Möglichkeiten, die dem Nutzer gegeben werden um mit der Webseite zu interagieren. Die Daten wurden wieder über die \textit{init} - Funktion geladen. Allerdings wurden sie diesmal nicht aus einer Csv-Datei geladen, sondern aus einer \textit{json}. Wie bereits in \ref{Datenvorverarbeitung} erwähnt, wurde diese hierfür manuell aus der Csv-Datei erstellt, damit mit dieser gearbeitet werden konnte. Im Gegensatz zu den vorherigen Plots wurde bei der Baumvisualisierung eine andere Form der Datendecodierung gewählt, die aus der Übung 7 übernommen wurde, siehe Abbildung \ref{treeDecode}.
+\noindent Der \textit{type Msg} ähnelt wieder dem der Plots s. Abbildung \ref{MsgScatter}, mit den verschiedenen dynamischen Möglichkeiten, die dem Nutzer gegeben werden um mit der Webseite zu interagieren. Die Daten wurden wieder über die \textit{init} - Funktion geladen. Allerdings wurden sie diesmal nicht aus einer Csv-Datei geladen, sondern aus einer \textit{json}. Wie bereits in \ref{Datenvorverarbeitung} erwähnt, wurde diese hierfür manuell aus der Csv-Datei erstellt. Im Gegensatz zu den vorherigen Plots wurde bei der Baumvisualisierung eine andere Form der Datendecodierung gewählt, die aus der Übung 7 übernommen wurde, siehe Abbildung \ref{treeDecode}.
 
 
 \begin{figure}[h]

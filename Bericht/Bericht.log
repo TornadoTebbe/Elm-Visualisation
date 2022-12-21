@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.12) (preloaded format=pdflatex 2022.12.18)  21 DEC 2022 09:12
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.12) (preloaded format=pdflatex 2022.12.18)  21 DEC 2022 09:53
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1021,257 +1021,257 @@ Underfull \hbox (badness 10000) in paragraph at lines 238--240
 
  []
 
+
+Underfull \hbox (badness 10000) in paragraph at lines 246--247
+
+ []
+
 [12 <./ParallelDrop.png>]
-<BspBaum.png, id=148, 455.45157pt x 398.23781pt>
-File: BspBaum.png Graphic file (type png)
-<use BspBaum.png>
-Package pdftex.def Info: BspBaum.png  used on input line 252.
-(pdftex.def)             Requested size: 341.58783pt x 298.67761pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 258--262
+Underfull \hbox (badness 10000) in paragraph at lines 249--253
 
  []
 
-[13 <./BspBaum.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 282--283
+
+Underfull \hbox (badness 10000) in paragraph at lines 273--274
 
  []
 
-<ScatterZeitDrop.png, id=161, 218.31563pt x 158.09062pt>
+[13]
+<ScatterZeitDrop.png, id=157, 218.31563pt x 158.09062pt>
 File: ScatterZeitDrop.png Graphic file (type png)
 <use ScatterZeitDrop.png>
-Package pdftex.def Info: ScatterZeitDrop.png  used on input line 288.
+Package pdftex.def Info: ScatterZeitDrop.png  used on input line 279.
 (pdftex.def)             Requested size: 163.7363pt x 118.56766pt.
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<ScatterAnw.png, id=163, 1303.11844pt x 621.07031pt>
+<ScatterAnw.png, id=159, 1303.11844pt x 621.07031pt>
 File: ScatterAnw.png Graphic file (type png)
 <use ScatterAnw.png>
-Package pdftex.def Info: ScatterAnw.png  used on input line 298.
+Package pdftex.def Info: ScatterAnw.png  used on input line 289.
 (pdftex.def)             Requested size: 325.77881pt x 155.2672pt.
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[14]
-<WahlAchse.png, id=172, 308.65312pt x 253.69781pt>
+ [14 <./ScatterZeitDrop.png> <./ScatterAnw.png>]
+<WahlAchse.png, id=170, 308.65312pt x 253.69781pt>
 File: WahlAchse.png Graphic file (type png)
 <use WahlAchse.png>
-Package pdftex.def Info: WahlAchse.png  used on input line 309.
+Package pdftex.def Info: WahlAchse.png  used on input line 300.
 (pdftex.def)             Requested size: 154.32617pt x 126.84859pt.
 
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 321--322
+Underfull \hbox (badness 10000) in paragraph at lines 312--313
 
  []
 
-[15 <./ScatterZeitDrop.png> <./ScatterAnw.png>]
-<Main.png, id=183, 234.8775pt x 119.69719pt>
+<Main.png, id=174, 234.8775pt x 119.69719pt>
 File: Main.png Graphic file (type png)
 <use Main.png>
-Package pdftex.def Info: Main.png  used on input line 337.
+Package pdftex.def Info: Main.png  used on input line 328.
 (pdftex.def)             Requested size: 176.15768pt x 89.77266pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 344--347
-
- []
-
-<decode.png, id=185, 747.54282pt x 156.585pt>
-File: decode.png Graphic file (type png)
-<use decode.png>
-Package pdftex.def Info: decode.png  used on input line 351.
-(pdftex.def)             Requested size: 373.7705pt x 78.2923pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[16 <./WahlAchse.png> <./Main.png>]
-<typeDef.png, id=195, 213.04594pt x 299.61937pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 335--338
+
+ []
+
+[15 <./WahlAchse.png>]
+<decode.png, id=183, 747.54282pt x 156.585pt>
+File: decode.png Graphic file (type png)
+<use decode.png>
+Package pdftex.def Info: decode.png  used on input line 342.
+(pdftex.def)             Requested size: 373.7705pt x 78.2923pt.
+<typeDef.png, id=185, 213.04594pt x 299.61937pt>
 File: typeDef.png Graphic file (type png)
 <use typeDef.png>
-Package pdftex.def Info: typeDef.png  used on input line 363.
+Package pdftex.def Info: typeDef.png  used on input line 354.
 (pdftex.def)             Requested size: 159.78406pt x 224.71397pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 369--370
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 360--361
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 371--373
+Underfull \hbox (badness 10000) in paragraph at lines 362--364
 
  []
 
-[17 <./decode.png> <./typeDef.png>]
-<typeMsg.png, id=205, 244.66406pt x 77.53969pt>
+[16 <./Main.png> <./decode.png>]
+<typeMsg.png, id=196, 244.66406pt x 77.53969pt>
 File: typeMsg.png Graphic file (type png)
 <use typeMsg.png>
-Package pdftex.def Info: typeMsg.png  used on input line 377.
+Package pdftex.def Info: typeMsg.png  used on input line 368.
 (pdftex.def)             Requested size: 223.07214pt x 70.69844pt.
-<typeStudentAttribute.png, id=206, 148.30406pt x 76.03406pt>
+<typeStudentAttribute.png, id=197, 148.30406pt x 76.03406pt>
 File: typeStudentAttribute.png Graphic file (type png)
 <use typeStudentAttribute.png>
-Package pdftex.def Info: typeStudentAttribute.png  used on input line 378.
+Package pdftex.def Info: typeStudentAttribute.png  used on input line 369.
 (pdftex.def)             Requested size: 223.07214pt x 114.37215pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 383--384
+Underfull \hbox (badness 10000) in paragraph at lines 374--375
+
+ []
+
+[17 <./typeDef.png> <./typeMsg.png> <./typeStudentAttribute.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 376--378
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 385--387
+Underfull \hbox (badness 10000) in paragraph at lines 379--380
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 388--389
+Underfull \hbox (badness 10000) in paragraph at lines 381--384
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 390--393
+Underfull \hbox (badness 10000) in paragraph at lines 385--386
 
  []
 
-[18 <./typeMsg.png> <./typeStudentAttribute.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 394--395
-
- []
-
-<updateScatter.png, id=220, 852.18375pt x 385.44pt>
+<updateScatter.png, id=211, 852.18375pt x 385.44pt>
 File: updateScatter.png Graphic file (type png)
 <use updateScatter.png>
-Package pdftex.def Info: updateScatter.png  used on input line 400.
+Package pdftex.def Info: updateScatter.png  used on input line 391.
 (pdftex.def)             Requested size: 426.09082pt x 192.71953pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 411--412
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 402--403
 
  []
 
-[19 <./updateScatter.png>]
-<treeDecode.png, id=230, 317.68687pt x 264.99pt>
+[18]
+<treeDecode.png, id=220, 317.68687pt x 264.99pt>
 File: treeDecode.png Graphic file (type png)
 <use treeDecode.png>
-Package pdftex.def Info: treeDecode.png  used on input line 427.
+Package pdftex.def Info: treeDecode.png  used on input line 418.
 (pdftex.def)             Requested size: 238.26456pt x 198.742pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 434--435
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 425--426
 
  []
 
-[20 <./treeDecode.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 458--459
+[19 <./updateScatter.png>] [20 <./treeDecode.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 449--450
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 459--460
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 461--462
 
  []
 
 [21]
-Underfull \hbox (badness 10000) in paragraph at lines 468--469
+Underfull \hbox (badness 10000) in paragraph at lines 463--465
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 470--471
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 472--474
-
- []
-
-<BspPar1.png, id=247, 1306.8825pt x 608.2725pt>
+<BspPar1.png, id=243, 1306.8825pt x 608.2725pt>
 File: BspPar1.png Graphic file (type png)
 <use BspPar1.png>
-Package pdftex.def Info: BspPar1.png  used on input line 480.
+Package pdftex.def Info: BspPar1.png  used on input line 471.
 (pdftex.def)             Requested size: 341.43314pt x 158.9082pt.
-<BspPar2.png, id=248, 1309.14093pt x 613.54219pt>
+<BspPar2.png, id=244, 1309.14093pt x 613.54219pt>
 File: BspPar2.png Graphic file (type png)
 <use BspPar2.png>
-Package pdftex.def Info: BspPar2.png  used on input line 481.
+Package pdftex.def Info: BspPar2.png  used on input line 472.
 (pdftex.def)             Requested size: 341.43314pt x 160.01338pt.
-[22] [23 <./BspPar1.png> <./BspPar2.png>]
-<MenTree.png, id=263, 652.68843pt x 474.27188pt>
+[22 <./BspPar1.png> <./BspPar2.png>]
+<MenTree.png, id=255, 652.68843pt x 474.27188pt>
 File: MenTree.png Graphic file (type png)
 <use MenTree.png>
-Package pdftex.def Info: MenTree.png  used on input line 497.
+Package pdftex.def Info: MenTree.png  used on input line 488.
 (pdftex.def)             Requested size: 341.43314pt x 248.10634pt.
-<WomenTree.png, id=264, 683.55376pt x 461.47406pt>
+<WomenTree.png, id=256, 683.55376pt x 461.47406pt>
 File: WomenTree.png Graphic file (type png)
 <use WomenTree.png>
-Package pdftex.def Info: WomenTree.png  used on input line 498.
+Package pdftex.def Info: WomenTree.png  used on input line 489.
 (pdftex.def)             Requested size: 341.43314pt x 230.51112pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 504--506
+Underfull \hbox (badness 10000) in paragraph at lines 495--497
 
  []
 
-[24] [25 <./MenTree.png> <./WomenTree.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 513--514
+[23] [24 <./MenTree.png> <./WomenTree.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 504--505
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 515--516
+Underfull \hbox (badness 10000) in paragraph at lines 506--507
 
  []
 
-<ParallelQuelle1.jpg, id=280, 244.31097pt x 118.9577pt>
+<ParallelQuelle1.jpg, id=271, 244.31097pt x 118.9577pt>
 File: ParallelQuelle1.jpg Graphic file (type jpg)
 <use ParallelQuelle1.jpg>
-Package pdftex.def Info: ParallelQuelle1.jpg  used on input line 524.
+Package pdftex.def Info: ParallelQuelle1.jpg  used on input line 515.
 (pdftex.def)             Requested size: 317.60422pt x 154.64497pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 531--533
+Underfull \hbox (badness 10000) in paragraph at lines 522--524
 
  []
 
-[26 <./ParallelQuelle1.jpg>]
-Underfull \hbox (badness 10000) in paragraph at lines 535--536
+[25 <./ParallelQuelle1.jpg>]
+Underfull \hbox (badness 10000) in paragraph at lines 526--527
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 537--538
+Underfull \hbox (badness 10000) in paragraph at lines 528--529
 
  []
 
-<Quelle2.png, id=293, 1223.32031pt x 339.51843pt>
+<Quelle2.png, id=285, 1223.32031pt x 339.51843pt>
 File: Quelle2.png Graphic file (type png)
 <use Quelle2.png>
-Package pdftex.def Info: Quelle2.png  used on input line 543.
+Package pdftex.def Info: Quelle2.png  used on input line 534.
 (pdftex.def)             Requested size: 366.99893pt x 101.85631pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 559--560
+Underfull \hbox (badness 10000) in paragraph at lines 550--551
 
  []
 
-[27 <./Quelle2.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 561--562
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 563--564
+[26 <./Quelle2.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 552--553
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 565--566
+Underfull \hbox (badness 10000) in paragraph at lines 554--555
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 567--568
+Underfull \hbox (badness 10000) in paragraph at lines 556--557
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 569--571
+Underfull \hbox (badness 10000) in paragraph at lines 558--559
 
  []
 
-[28] [29] [30] [31] (Bericht.aux)
+
+Underfull \hbox (badness 10000) in paragraph at lines 560--562
+
+ []
+
+[27] [28] [29] [30] (Bericht.aux)
 
 LaTeX Warning: There were undefined references.
 
@@ -1287,10 +1287,10 @@ Package logreq Info: Writing requests to 'Bericht.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 22290 strings out of 475281
- 414556 string characters out of 2774064
- 1318555 words of memory out of 3000000
- 43379 multiletter control sequences out of 15000+600000
+ 22280 strings out of 475281
+ 414426 string characters out of 2774064
+ 1319505 words of memory out of 3000000
+ 43372 multiletter control sequences out of 15000+600000
  535459 words of font info for 76 fonts, out of 8000000 for 9000
  1143 hyphenation exceptions out of 8191
  108i,8n,106p,10631b,2367s stack positions out of 10000i,1000n,20000p,200000b,80000s
@@ -1307,9 +1307,9 @@ s/pault/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri10.pfb><C:/User
 s/pault/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri9.pfb><C:/Users
 /pault/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmssbx10.pfb><C:/Use
 rs/pault/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt10.pfb>
-Output written on Bericht.pdf (31 pages, 2276493 bytes).
+Output written on Bericht.pdf (30 pages, 2250854 bytes).
 PDF statistics:
- 479 PDF objects out of 1000 (max. 8388607)
- 89 named destinations out of 1000 (max. 500000)
- 298 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 470 PDF objects out of 1000 (max. 8388607)
+ 87 named destinations out of 1000 (max. 500000)
+ 293 words of extra memory for PDF output out of 10000 (max. 10000000)
 
