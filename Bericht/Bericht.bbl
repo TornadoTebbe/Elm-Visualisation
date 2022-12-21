@@ -1,0 +1,213 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.2 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{nty/global//global/global}
+    \entry{Deng19}{inbook}{}
+      \name{author}{1}{}{%
+        {{hash=9df2cdd1e44c6832efe28769c3e86f87}{%
+           family={Deng},
+           familyi={D\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {University of Rochester, Rochester, NY 14627, United States}%
+      }
+      \strng{namehash}{9df2cdd1e44c6832efe28769c3e86f87}
+      \strng{fullhash}{9df2cdd1e44c6832efe28769c3e86f87}
+      \strng{bibnamehash}{9df2cdd1e44c6832efe28769c3e86f87}
+      \strng{authorbibnamehash}{9df2cdd1e44c6832efe28769c3e86f87}
+      \strng{authornamehash}{9df2cdd1e44c6832efe28769c3e86f87}
+      \strng{authorfullhash}{9df2cdd1e44c6832efe28769c3e86f87}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{We present PerformanceVis, a visual analytics tool for analyzing student admission and course performance data and investigating homework and exam question design. Targeting a university-wide introductory chemistry course with nearly 1000 student enrollment, we consider the requirements and needs of students, instructors, and administrators in the design of PerformanceVis. We study the correlation between question items from assignments and exams, employ machine learning techniques for student grade prediction, and develop an interface for interactive exploration of student course performance data. PerformanceVis includes four main views (overall exam grade pathway, detailed exam grade pathway, detailed exam item analysis, and overall exam & homework analysis) which are dynamically linked together for user interaction and exploration. We demonstrate the effectiveness of PerformanceVis through case studies along with an ad-hoc expert evaluation. Finally, we conclude this work by pointing out future work in this direction of learning analytics research.}
+      \field{title}{PerformanceVis: Visual analytics of student performance data from an introductory chemistry course}
+      \field{year}{2019}
+      \verb{doi}
+      \verb https://doi.org/10.1016/j.visinf.2019.10.004
+      \endverb
+      \verb{urlraw}
+      \verb https://www.sciencedirect.com/science/article/pii/S2468502X1930049X?via%3Dihub
+      \endverb
+      \verb{url}
+      \verb https://www.sciencedirect.com/science/article/pii/S2468502X1930049X?via%3Dihub
+      \endverb
+    \endentry
+    \entry{Doerner0304}{booklet}{}
+      \name{author}{1}{}{%
+        {{hash=346fe80e4ba05d5848df1c2f5c0f2eb6}{%
+           family={Dörner},
+           familyi={D\bibinitperiod},
+           given={Dr.\bibnamedelimi Ralf},
+           giveni={D\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+      }
+      \strng{namehash}{346fe80e4ba05d5848df1c2f5c0f2eb6}
+      \strng{fullhash}{346fe80e4ba05d5848df1c2f5c0f2eb6}
+      \strng{bibnamehash}{346fe80e4ba05d5848df1c2f5c0f2eb6}
+      \strng{authorbibnamehash}{346fe80e4ba05d5848df1c2f5c0f2eb6}
+      \strng{authornamehash}{346fe80e4ba05d5848df1c2f5c0f2eb6}
+      \strng{authorfullhash}{346fe80e4ba05d5848df1c2f5c0f2eb6}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Information Retrieval und Visualisierung, Schwerpunkt Information Visualisierung; Vorlesungsskript}
+    \endentry
+    \entry{Earthman}{article}{}
+      \name{author}{1}{}{%
+        {{hash=973f7aea5e4672b59e9361847369c9f8}{%
+           family={Earthman},
+           familyi={E\bibinitperiod}}}%
+      }
+      \strng{namehash}{973f7aea5e4672b59e9361847369c9f8}
+      \strng{fullhash}{973f7aea5e4672b59e9361847369c9f8}
+      \strng{bibnamehash}{973f7aea5e4672b59e9361847369c9f8}
+      \strng{authorbibnamehash}{973f7aea5e4672b59e9361847369c9f8}
+      \strng{authornamehash}{973f7aea5e4672b59e9361847369c9f8}
+      \strng{authorfullhash}{973f7aea5e4672b59e9361847369c9f8}
+      \field{sortinit}{E}
+      \field{sortinithash}{8da8a182d344d5b9047633dfc0cc9131}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{REVIEW OF RESEARCH ON THE RELATIONSHIP BETWEEN SCHOOL BUILDINGS, STUDENT ACHIEVEMENT, AND STUDENT BEHAVIOR}
+      \field{year}{1996}
+    \endentry
+    \entry{Hinneburg2022}{booklet}{}
+      \name{author}{1}{}{%
+        {{hash=f870cf6fafdd68cb303bbd7046ddae4b}{%
+           family={Hinneburg},
+           familyi={H\bibinitperiod}}}%
+      }
+      \strng{namehash}{f870cf6fafdd68cb303bbd7046ddae4b}
+      \strng{fullhash}{f870cf6fafdd68cb303bbd7046ddae4b}
+      \strng{bibnamehash}{f870cf6fafdd68cb303bbd7046ddae4b}
+      \strng{authorbibnamehash}{f870cf6fafdd68cb303bbd7046ddae4b}
+      \strng{authornamehash}{f870cf6fafdd68cb303bbd7046ddae4b}
+      \strng{authorfullhash}{f870cf6fafdd68cb303bbd7046ddae4b}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Information Retrieval und Visualisierung, Schwerpunkt Information Visualisierung; Vorlesungsskript}
+    \endentry
+    \entry{Munzner2008}{inbook}{}
+      \name{author}{1}{}{%
+        {{hash=f49068235c8a94e721f5ac15b17aed2c}{%
+           family={Munzner},
+           familyi={M\bibinitperiod},
+           given={Tamara},
+           giveni={T\bibinitperiod}}}%
+      }
+      \name{editor}{4}{}{%
+        {{hash=68275ea1b612b2653a1ce4c6a5cb487f}{%
+           family={Kerren},
+           familyi={K\bibinitperiod},
+           given={Andreas},
+           giveni={A\bibinitperiod}}}%
+        {{hash=b9346be3e7951dd33c9e5bf95dae9243}{%
+           family={Stasko},
+           familyi={S\bibinitperiod},
+           given={John\bibnamedelima T.},
+           giveni={J\bibinitperiod\bibinitdelim T\bibinitperiod}}}%
+        {{hash=d09af1fda718939e9a418404d4d6abcf}{%
+           family={Fekete},
+           familyi={F\bibinitperiod},
+           given={Jean-Daniel},
+           giveni={J\bibinithyphendelim D\bibinitperiod}}}%
+        {{hash=47da2f88c8e514c35d6d6d73183fa909}{%
+           family={North},
+           familyi={N\bibinitperiod},
+           given={Chris},
+           giveni={C\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Berlin, Heidelberg}%
+      }
+      \list{publisher}{1}{%
+        {Springer Berlin Heidelberg}%
+      }
+      \strng{namehash}{f49068235c8a94e721f5ac15b17aed2c}
+      \strng{fullhash}{f49068235c8a94e721f5ac15b17aed2c}
+      \strng{bibnamehash}{f49068235c8a94e721f5ac15b17aed2c}
+      \strng{authorbibnamehash}{f49068235c8a94e721f5ac15b17aed2c}
+      \strng{authornamehash}{f49068235c8a94e721f5ac15b17aed2c}
+      \strng{authorfullhash}{f49068235c8a94e721f5ac15b17aed2c}
+      \strng{editorbibnamehash}{7d36c574af6927da93746fb6f595c5cd}
+      \strng{editornamehash}{7d36c574af6927da93746fb6f595c5cd}
+      \strng{editorfullhash}{548b9d65fdbdb78419d7aa37b25bd968}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{The goal of this chapter is to help authors recognize and avoid a set of pitfalls that recur in many rejected information visualization papers, using a chronological model of the research process. Selecting a target paper type in the initial stage can avert an inappropriate choice of validation methods. Pitfalls involving the design of a visual encoding may occur during the middle stages of a project. In a later stage when the bulk of the research is finished and the paper writeup begins, the possible pitfalls are strategic choices for the content and structure of the paper as a whole, tactical problems localized to specific sections, and unconvincing ways to present the results. Final-stage pitfalls of writing style can be checked after a full paper draft exists, and the last set of problems pertain to submission.}
+      \field{booktitle}{Information Visualization: Human-Centered Issues and Perspectives}
+      \field{isbn}{978-3-540-70956-5}
+      \field{title}{Process and Pitfalls in Writing Information Visualization Research Papers}
+      \field{year}{2008}
+      \field{pages}{134\bibrangedash 153}
+      \range{pages}{20}
+      \verb{doi}
+      \verb 10.1007/978-3-540-70956-5_6
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1007/978-3-540-70956-5_6
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1007/978-3-540-70956-5_6
+      \endverb
+    \endentry
+    \entry{Xu14}{booklet}{}
+      \name{author}{1}{}{%
+        {{hash=02aa60b52defac8624a7c0ac76815e06}{%
+           family={Xu},
+           familyi={X\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Atlanta, Georgia, USA}%
+      }
+      \strng{namehash}{02aa60b52defac8624a7c0ac76815e06}
+      \strng{fullhash}{02aa60b52defac8624a7c0ac76815e06}
+      \strng{bibnamehash}{02aa60b52defac8624a7c0ac76815e06}
+      \strng{authorbibnamehash}{02aa60b52defac8624a7c0ac76815e06}
+      \strng{authornamehash}{02aa60b52defac8624a7c0ac76815e06}
+      \strng{authorfullhash}{02aa60b52defac8624a7c0ac76815e06}
+      \field{sortinit}{X}
+      \field{sortinithash}{1965c258adceecf23ce3d67b05113442}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{We use visual analytics to explore participation in five MOOCs at the University of Maryland. In some of these courses, our analysis reveals interesting clustering patterns of student behavior. For other courses, visualizations provide “color” to help us better understand the range of student behavior.}
+      \field{title}{Visual Analytics of MOOCs at Maryland}
+      \field{year}{2014}
+      \verb{doi}
+      \verb 10.1145/2556325.2567878
+      \endverb
+      \verb{urlraw}
+      \verb https://dl.acm.org/doi/10.1145/2556325.2567878
+      \endverb
+      \verb{url}
+      \verb https://dl.acm.org/doi/10.1145/2556325.2567878
+      \endverb
+    \endentry
+  \enddatalist
+  \missing{page: 168}
+\endrefsection
+\endinput
+

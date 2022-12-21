@@ -452,15 +452,17 @@ view model =
 
     in
             Html.div [Html.Attributes.style "padding" "20px"] 
-                 [Html.p [Html.Attributes.style "fontSize" "16px"] 
-                 [ Html.a[href "Main.elm"] [Html.text "Startseite"]
+                 [Html.p [Html.Attributes.style "fontSize" "16px"]
+                 [ Html.h1 [] [ Html.text ("Navigation zu den anderen Visualisierungsmöglichkeiten:")   ]
+                 
+                 , Html.a[href "Main.elm"] [Html.text "Startseite"]
                  , Html.br [] []
                  , Html.a[href "ScatterplotDaten.elm"] [Html.text "Scatterplot"]
                  , Html.br [] []
                  , Html.a[href "ParallelPlot.elm"] [Html.text "Parallelplot"]
                  , Html.br [] []
                  ]
-                , Html.h1 [] [ Html.text ("Baumdiagramm Studenten")   ]
+                , Html.h2 [] [ Html.text ("Baumdiagramm Studenten")   ]
                 , Html.p []
                 [ Html.text model.error
                 , Html.text "Breite: "
@@ -473,12 +475,21 @@ view model =
                 ,  Html.h3 []
                     [ Html.text ( "Darstellung der Lernzeiten:") ]          
                 , ul []
-                    [ li [] [ Html.text ("Durchschnittliche Colle Note: ACM")]
+                    [ li [] [ Html.text ("Durchschnittliche College Note: ACM")]
+                    , Html.br [] []
+                    , li [] [Html.text "Beste ACM Male: 77"]
+                    , Html.br [] []
+                    , li [] [Html.text "Beste ACM Female: 81"]
+                    , Html.br [] []
+                    , li [] [Html.text "Schlechteste ACM Male: 64"]
+                    , Html.br [] []
+                    , li [] [Html.text "Schlechteste ACM Female: 41"]
+
                         , treePlot wide height rad distance converteTree
 
-                ]
-
                 ]]
+
+                ]
 
 
 

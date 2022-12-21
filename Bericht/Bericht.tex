@@ -17,7 +17,6 @@
 \usepackage{hyperref}
 %nested imtemize
 \usepackage{enumitem}
-
 \usepackage[backend=biber,style=numeric,]{biblatex}\addbibresource{literatur.bib}
 
 \begin{document}
@@ -27,6 +26,17 @@
 %\subtitle{Untertitel}% optional
 \author{Paul Tebbe, Matrikelnummer: 216237588}% obligatorisch
 \date{21.12.2022}
+
+\dedication{\normalsize\vfill\hrule\vspace{10pt}
+	Link zum GitLab-Repository:\\
+	\url{https://github.com/TornadoTebbe/Elm-Visualisation}\\
+	
+	\vspace{10pt}
+	Link zur öffentlich zugänglichen Webseite (GitLab Pages):\\
+	\url{https://tornadotebbe.github.io/}
+}
+
+
 \maketitle% verwendet die zuvor gemachte Angaben zur Gestaltung eines Titels
 \pagebreak
 % ----------------------------------------------------------------------------
@@ -68,8 +78,6 @@ Die Informationen, die aus den Visualisierungen gewonnen werden können, können
 Auch interessant könnte dieses Projekt aber auch für Forschende im Bereich soziale Ungleichheiten in der Bildung sein. Wenn keine eindeutigen Anzeichen zu sehen sind für eine Korrelation zwischen investierter Lernzeit und besseren Noten, so könnte dies ein Anzeichen dafür sein, dass doch andere Einflussgrößen mehr Auswirkung auf die Noten haben als der reine Fleiß. Dies wäre ein starker Indikator für soziale Ungleichheiten bei der Bildung, wie es bereits in der Einleitung angedeutet wurde. 
 
 
-
-Beschreiben sie die Personengruppe oder Personengruppen, die das von ihnen benannte Anwendungsproblem lösen möchte. Auf welches Vorwissen können sie in dieser Gruppen von Anwenderinnen aufbauen? Welche Informations"-bedürf"-nisse werden durch die Visualisierungen adressiert?
 \subsection{Überblick und Beiträge}
 Der in dieser Arbeit verwendete Datensatz differenzieren die Studenten nach verschiedenen Merkmalen. Diese gehen von allgemeinen Unterscheidungen, wie Geschlecht, Alter und Gewicht, über die Aufteilung ihrer Freizeit und die aufgewendete Lernzeit bis hinzu dem körperlichen Wohlbefinden ausgedrückt mittels der Variable \glq stress level \grq .
 
@@ -102,9 +110,11 @@ Zudem wurden sie im eigenen Github hochgeladen und dort im Ordner Daten gespeich
 
 \subsection{Datenvorverarbeitung}
 \label{Datenvorverarbeitung}
-Im obigen Abschnitt wurde bereits kurz auf den Datensatz eingegangen und erklärt, dass es sich um eine einzelne CSV-Date handelte. Aufgrunddessen musste keinerlei größere Vorverabeitung an den Daten vorgenommen werden, zumindest für den Parallelplot und den Scatterplot. Für das Baumdiagramm wurde zuerst versucht mithilfe von Pyhtoncode die csv-Datei in eine json-Datei umzuwandeln. Leider gelang dies nicht, sodass die csv erst in eine Excel-Datei umgewandelt wurde. Anschließend wurde mithilfe der Excel-Datei manuell eine json-Datei erstellt um anhand dieser die Baumdarstellung zu visualisieren. In der json wurden dann nur die für das Baumdiagramm relevanten Daten übernommen. Aufgrund anfänglicher Überlegungen die verschieden klassierten \textit{Zeiten}, wie \textit{daily studying time}, \textit{social media time} und \textit{travelling time} in einzelne Klassen in Form von Integers festzuhalten, also \textit{daily studying time} von 0-30 Minuten wäre 1, 30-60 Minuten 2 usw. wurde die csv-Datei in R geladen um die Daten somit zu manipulieren. Aufgrund der späteren Nutzung der \textit{daily studying time} als Drop-down Tabelle wurde dieser Gedanke wieder verworfen.
-%Zusätzlich Ausfilterung der Daten von SalaryExpectation aufgrund von Ausreißer
-%Am Ende wurde dies aber dennoch erneut mit Pyhton gemacht allerdings mit den Daten \textit{social media time}, indem eine neue Spalte als daily studying class erstellt wurde und immer die Mitte der Zeit als Float erstellt wurde, sodass die Daten nun doch in den Parallelplot und den Scatterplot eingefügt wurden
+Im obigen Abschnitt wurde bereits kurz auf den Datensatz eingegangen und erklärt, dass es sich um eine einzelne CSV-Date handelte. Aufgrunddessen musste keinerlei größere Vorverabeitung an den Daten vorgenommen werden, zumindest für den Parallelplot und den Scatterplot. Die einzige Datenmanipulation, die hier erfolgte ist die Ausreißerbereinigung. Es gab ein paar wenige extreme Ausreißer (bei \textit{salary expectation}), die dazu führen würden, dass die Visualisierung der Daten darunter leidet. Für diese wurde daher der vorher berechnete Mittelwert eingesetzt.\\
+
+\noindent Für das Baumdiagramm wurde zuerst versucht mithilfe von Pyhtoncode die csv-Datei in eine json-Datei umzuwandeln. Leider gelang dies nicht, sodass die csv erst in eine Excel-Datei umgewandelt wurde. Anschließend wurde mithilfe der Excel-Datei manuell eine json-Datei erstellt um anhand dieser die Baumdarstellung zu visualisieren. In der json wurden dann nur die für das Baumdiagramm relevanten Daten übernommen. Aufgrund anfänglicher Überlegungen die verschieden klassierten \textit{Zeiten}, wie \textit{daily studying time}, \textit{social media time} und \textit{travelling time} in einzelne Klassen in Form von Integers festzuhalten, also \textit{daily studying time} von 0-30 Minuten wäre 1, 30-60 Minuten 2 usw. wurde die csv-Datei in R geladen um die Daten somit zu manipulieren. Aufgrund der späteren Nutzung der \textit{daily studying time} als Drop-down Tabelle wurde dieser Gedanke wieder verworfen.
+Für das Baumdiagramm wurden außerdem der Mittelwert der Noten in den jeweiligen Lernklassen berechnet.
+Dieser und der vorher für die Ausreißer berechnete Mittelwert sind in der \textit{Student\_Behaviour} Csv-Datei abgespeichert.
 \\
 
 \section{Visualisierungen}
@@ -269,9 +279,42 @@ Eine andere Möglichkeit wäre daher die implizite Baumdarstellung gewesen, die 
 
 \subsection{Interaktion}
 \label{Interaktion}
-Die präsentierten Visualisierungstechniken müssen interaktiv zu einer Anwendung verknüpft werden.
-Die Interaktion mit einer Visualisierung soll in den anderen Visualisierungen zu einer Änderung führen. 
-Erklären sie die möglichen Interaktionen mit den einzelnen Visualisierungen und die möglichen Verknüpfungen zwischen ihnen. Begründen Sie warum die konkreten Interaktionen umgesetzt wurden und welche Zwecke für die Anwenderinnen mit ihnen unterstützt werden. Begründen sie ebenfalls warum sie andere Interaktionsmöglichkeiten nicht umgesetzt haben. Wenn sie keine der geforderten Interaktionen umsetzen, erhalten Sie im gesamten Projekt deutlichen Punktabzug. 
+Der Leser wird zu Beginn der Visualisierung auf die Startseite geführt. Von hier aus hat er mithilfe verschiedener \textit{href} - Buttons die Möglichkeit auf die unterschiedlichen Visualisierungen zu navigieren. Diese Art der Navigation zieht sich über alle Seiten.\\
+
+\noindent Bei der ersten Visualisierung, dem Scatterplot bieten sich dem Nutzer gleich mehrere Interaktionsmöglichkeiten. Zum einen hat er die Auswahl zwischen drei verschiedenen Drop-Down-Funktionen. In der ersten kann er die Lernzeit auswählen. Hierfür stellen sich ihm die Optionen \ref{TimeDrop}. Die beiden anderen Drop-Downs sind gleich aufgebaut und bieten mehrere Möglichkeiten, auf die in \ref{VisEins} bereits näher eingegangen wurde.
+
+\begin{figure}[h]
+\begin{center}
+	\includegraphics[scale=.75]{ScatterZeitDrop.png}
+	\caption{Drop-Down Funktion der Lernzeit}
+	\label{TimeDrop}
+\end{center}
+\end{figure}
+
+\noindent Eine weiter Interaktionsmöglichkeit beim Scatterplot stellt die \textit{Hover} - Funktion dar,die dem Nutzer zusätzliche Informationen liefert. Wenn der Nutzer über die einzelnen punkte \textit{hovert}, so leuchtet der ausgewählte Punkt grün auf und liefert als \glqq Ausgabe\grqq mittig darüber das Geschlecht und die präferierte Lernzeit, genauer ist die in Abbildung \ref{ScatterAnw} zu sehen.
+
+\begin{figure}[h]
+\begin{center}
+	\includegraphics[scale=.25]{ScatterAnw.png}
+	\caption{Scatterplot mit Hover-Funktion}
+	\label{ScatterAnw}
+\end{center}
+\end{figure}
+
+\noindent Wie beim Scatterplot hat der Nutzer beim Parallelplot die Auswahlmöglichkeit der Drop-Down-Funktion für die Lernzeit, siehe Abbildung \ref{TimeDrop}.\\
+Zusätzlich dazu wird hier die Möglichkeit gegeben, die Anordnung der Achsen beliebig anzuordnen. Dies wird diesmal in Form von Button abgebildet um eine größere Breite an Interaktionsmöglichkeiten abzudecken, siehe Abbildung \ref{Buttons}. Hier gibt es für jede Achse dieselbe Auseahl an Variablen. Es wäre in der Theorie also auch möglich für jeden Achse denselben Wert festzulegen.
+
+\begin{figure}[h]
+\begin{center}
+	\includegraphics[scale=.5]{WahlAchse.png}
+	\caption{Parallelplot mit Button für die Auswahl der Achsen}
+	\label{Buttons}
+\end{center}
+\end{figure}
+
+Bei dem Baumdiagramm ist die Reihenfolge und Hierarchie bereits durch die Beschaffenheit des Diagramms an sich fest. Hier kann allerdings zusätzlich dazu durch die Eingabe der Breite, Höhe und des Radius die Visualisierung des Baums verändert werdend. Der Nutzer hat also keine vorher festgelegte Auswahl, sondern kann fast komplett frei entscheiden, was er in das \textit{input} - Feld schreibt. Die einzige Bedingung, die hier gilt ist, dass es sich um einen Float handeln muss.
+
+
 
 \section{Implementierung}
 
@@ -412,17 +455,10 @@ Präsentieren sie für jede der drei Visualisierungen einen sinnvollen Anwendung
 \label{AnwEins}
 Ein Anwendungsfall mit dem Scatterplot wäre ein Elternteil, dass sehen will, wie sich die Noten der Studenten über die Jahre hinweg unter dem Einfluss der Lernzeit ansehen, um so eventuell Rückschlüsse auf das eigene Kind und deren mögliche Entwicklung zu ziehen. Dem Elternteil soll also die Gesamtverteilung der Noten nach einer eigen vorgenommenen Filterung zur Verfügung gestellt werden, sodass sie sich einen guten, möglichst unvoreingenommenen Überblick verschaffen kann. Der Scatterplot soll die Daten fast schon \textit{plain} darstellen, sodass dem Benutzer keinerlei Dinge suggeriert werden.\\
 
-\noindent Dies ist, wie in Abbildug \ref{ScatterAnw} zu sehen ist sehr gut gelungen. Der Nutzer bekommt eine sehr einfache Visualisierung vorgestellt, auf denen er einzig die Achsen und die dargestellten Einzeldaten einsehen kann. Beim Fahren mit der Maus über die einzelnen Punkte erhält der Leser allerdings kleine weiter Informationen, wie das Geschlecht und die Zeit, in welcher die Studenten am liebsten lernen. Im Gegensatz zum Parallelplot in \ref{AnwZwei} sind dies wenige und Informationen. So soll weiterhin gewahrt werden, dass der Leser einen allgemeineren Überblick behält. 
+\noindent Dies ist, wie in Abbildug \ref{ScatterAnw} zu sehen ist sehr gut gelungen. Der Nutzer bekommt eine sehr einfache Visualisierung vorgestellt, auf denen er einzig die Achsen und die dargestellten Einzeldaten einsehen kann. Beim Fahren mit der Maus über die einzelnen Punkte erhält der Leser allerdings kleine weiter Informationen, wie das Geschlecht und die Zeit, in welcher die Studenten am liebsten lernen. Im Gegensatz zum Parallelplot in \ref{AnwZwei} sind dies wenige und Informationen. So soll weiterhin gewahrt werden, dass der Leser einen allgemeineren Überblick behält.
 
-\begin{figure}[h]
-\begin{center}
-	\includegraphics[scale=.25]{ScatterAnw.png}
-	\caption{Scatterplot mit Hover-Funktion}
-	\label{ScatterAnw}
-\end{center}
-\end{figure}
 
-\noindent Mithilfe der \textit{Hover} - Funktion lässt sich hier außerdem weitere Informationen über den Einfluss der Lernzeit generieren. So wird nicht nur die Dauer beachtet, sondern zusätzlich noch die Uhrzeit am Tag.
+\noindent Mithilfe der in \ref{Interaktion} erläuterten \textit{Hover} - Funktion lässt sich hier außerdem weitere Informationen über den Einfluss der Lernzeit generieren. So wird nicht nur die Dauer beachtet, sondern zusätzlich noch die Uhrzeit am Tag.
 
 
 \subsection{Anwendung Visualisierung Zwei}
@@ -490,7 +526,7 @@ In der ersten Arbeit von xyz wurde \glqq PerformanceVis\grqq entwickelt, ein vis
 \end{figure}
 
 
-\noindent Für das \textit{tool} \glqq PerformanceVis\grqq und zum besseren Verständnis der \glqq student performance [fluctuation] throughout the course, we should display the grade distributions for each exam.\grqq  \cite{Deng19, page: 168}. Es wurde also Wert darauf gelegt diese Fluktuation mithilfe der Notenverteilung in einem Parallelplot darzustellen, genauso wie es auch in dieser Arbeit der Fall war. Bei dieser Arbeit und vor allem bei dieser Visualisierung ist die Schlussfolgerung, dass die Noten sich untereinander beeinflussen. Bei der eigenen Arbeit konnten wir nicht zu dem gleichen Schluss kommen. Allerdings ist dies wahrscheinlich eher auf die Diskrepanz in der Stichprobengröße zurückzuführen, da in \cite{Deng19} diese fast viermal so groß ist (~1000 zu ~250).\\
+\noindent Für das \textit{tool} \glqq PerformanceVis\grqq und zum besseren Verständnis der \glqq student performance [fluctuation] throughout the course, we should display the grade distributions for each exam.\grqq  \cite{Deng19}. Es wurde also Wert darauf gelegt diese Fluktuation mithilfe der Notenverteilung in einem Parallelplot darzustellen, genauso wie es auch in dieser Arbeit der Fall war. Bei dieser Arbeit und vor allem bei dieser Visualisierung ist die Schlussfolgerung, dass die Noten sich untereinander beeinflussen. Bei der eigenen Arbeit konnten wir nicht zu dem gleichen Schluss kommen. Allerdings ist dies wahrscheinlich eher auf die Diskrepanz in der Stichprobengröße zurückzuführen, da in \cite{Deng19} diese fast viermal so groß ist (~1000 zu ~250).\\
 Was sich allerdings ähnelt ist die Art der Visualisierungen. In \cite{Deng19} wurde sich nicht nur auch für den Parallelplot, sonder außerdem auch für ein Baumdiagramm entschieden.\\
 
 
@@ -508,7 +544,7 @@ Was sich allerdings ähnelt ist die Art der Visualisierungen. In \cite{Deng19} w
 \end{center}
 \end{figure}
 
-\noindent Weiterhin beschreibt \cite{Xu14, page 2}\: \glqq [...] there are multiple ways to be
+\noindent Weiterhin beschreibt \cite{Xu14}\: \glqq [...] there are multiple ways to be
 successful in a course, and it is perhaps not necessary to do
 everything – at least, not for everyone\grqq .\\
 Er stellt hier also die These auf, dass es nicht unbedingt den einen einzelnen Einflussfaktor auf die Note und Erfolgsquote in einem Kurs gibt. Wie auch wir bereits in \ref{Einleitung} ähnlich beschrieben haben gibt es deutlich mehr, viele davon lassen sich nicht messen, wie die Kindheit oder die Lernumgebung und der soziale Status der Familie.
@@ -549,14 +585,12 @@ Genauso können aber weitere ergänzende Visualisierungen eingebettet werden, wi
      \end{itemize}
 \end{itemize}
 
-
-%Fassen sie die Beiträge ihre Visualisierungsanwendung zusammen. Wo bietet sie für die Personen der Zielgruppe einen echten Mehrwert.
-
-%Was wären mögliche sinnvolle Erweiterungen, entweder auf der Ebene der Visualisierungen und/oder auf der Datenebene?
+\newpage
+\printbibliography
 
 \section*{Anhang: Git-Historie}
 
-\printbibliography
+
 
 \end{document}
 
