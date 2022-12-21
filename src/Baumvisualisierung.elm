@@ -84,7 +84,7 @@ treeDecoder =
 
 init : () -> ( Model, Cmd Msg )
 init () =
-    ( { wide = 4000, height = 2000, radius = 50, distance = 1, tree = Tree.singleton "", error = "" }
+    ( { wide = 4000, height = 2500, radius = 50, distance = 1, tree = Tree.singleton "", error = "" }
     , Http.get { url = "https://raw.githubusercontent.com/TornadoTebbe/ElmTest2/main/Daten/baumfertig.json", expect = Http.expectJson GotFlare treeDecoder }
     )
 
@@ -157,26 +157,6 @@ update msg model =
             )
 
 
--- drawCircle : String -> Float -> Float -> Float -> Svg Msg
--- drawCircle name x y r =
---     TypedSvg.g []
---         [ TypedSvg.circle
---             [ TypedSvg.Attributes.fill (TypedSvg.Types.Paint (Color.rgb255 128 128 128))
---             , TypedSvg.Attributes.stroke (TypedSvg.Types.Paint (Color.rgb255 0 0 0))
---             , TypedSvg.Attributes.InPx.cx x
---             , TypedSvg.Attributes.InPx.cy y
---             , TypedSvg.Attributes.InPx.r r
---             ]
---             []
---         , TypedSvg.text_
---             [ TypedSvg.Attributes.InPx.x x
---             , TypedSvg.Attributes.InPx.y (y + 5.5)
---             , TypedSvg.Attributes.textAnchor TypedSvg.Types.AnchorMiddle
---             , TypedSvg.Attributes.fill (TypedSvg.Types.Paint (Color.rgb255 0 0 0))
---             ]
---             [ TypedSvg.Core.text name
---             ]
---         ]
 
 knoten : Float -> Scale.ContinuousScale Float -> Scale.ContinuousScale Float -> Float -> Float -> String-> Svg msg
 knoten  rad scaleX scaleY xValue yValue name =
@@ -195,41 +175,6 @@ knoten  rad scaleX scaleY xValue yValue name =
                     [ text name ]
                 ]
 
-
-
--- drawTreeLines : List ( String, Maybe String ) -> Dict String { x : Float, y : Float } -> List (Svg Msg)
--- drawTreeLines data dict =
---     let
---         helper : String -> Bool -> Float
---         helper name isX =
---             case Dict.get name dict of
---                 Just p ->
---                     if isX then
---                         p.x
-
---                     else
---                         p.y
-
---                 Nothing ->
---                     0
---     in
---     List.map
---         (\( node, mParent ) ->
---             case mParent of
---                 Just parent ->
---                     TypedSvg.line
---                         [ TypedSvg.Attributes.InPx.x1 (helper node True)
---                         , TypedSvg.Attributes.InPx.y1 (helper node False)
---                         , TypedSvg.Attributes.InPx.x2 (helper parent True)
---                         , TypedSvg.Attributes.InPx.y2 (helper parent False)
---                         , TypedSvg.Attributes.stroke (TypedSvg.Types.Paint (Color.rgb255 0 0 0))
---                         ]
---                         []
-
---                 Nothing ->
---                     TypedSvg.g [] []
---         )
---         data
 
 getKoordinaten: String ->  Dict String Coordinate -> Maybe Coordinate 
 getKoordinaten name dictKnoten =
@@ -266,50 +211,6 @@ kante xScale1 yScale1 koordinate tuple =
 
 
 
--- drawTree : List ( String, Maybe String ) -> Dict String { x : Float, y : Float } -> Float -> Svg Msg
--- drawTree data dict radius =
---     let
---         list =
---             Dict.toList dict
---     in
---     TypedSvg.g
---         []
---         (drawTreeLines data dict
---             ++ List.map
---                 (\( name, { x, y } ) -> drawCircle name x y radius)
---                 list
---         )
-
-
--- deleteDoublesInList : List ( String, Maybe String ) -> List ( String, Maybe String )
--- deleteDoublesInList list =
---     let
---         deleteDoublesInListHelper : List ( String, Maybe String ) -> List ( String, Maybe String ) -> List ( String, Maybe String )
---         deleteDoublesInListHelper l res =
---             case List.head l of
---                 Just ( headName, headTail ) ->
---                     deleteDoublesInListHelper (List.filter (\( x, _ ) -> x /= headName) l) (res ++ [ ( headName, headTail ) ])
-
---                 Nothing ->
---                     res
---     in
---     deleteDoublesInListHelper list []
-
-
--- transformTreeData : Tree String -> List ( String, Maybe String )
--- transformTreeData tree =
---     let
---         transformTreeDataHelper : Tree String -> List ( String, Maybe String ) -> List ( String, Maybe String )
---         transformTreeDataHelper t l =
---             case Tree.children t of
---                 head :: tail ->
---                     List.concat (List.map (\el -> transformTreeDataHelper el (l ++ [ ( Tree.label el, Just (Tree.label t) ) ])) ([ head ] ++ tail))
-
---                 [] ->
---                     l
---     in
---     deleteDoublesInList ([ ( Tree.label tree, Nothing ) ] ++ transformTreeDataHelper tree [])
-
 
 convertStud : Tree ( String, Maybe String ) -> Tree ( String, Maybe String )
 convertStud tree =
@@ -327,37 +228,6 @@ convertStud tree =
                     )
         )
         tree
-
-
-
--- treeView : Model -> List (Svg Msg)
--- treeView model =
---     let
---         w =
---             model.wide
-
---         h =
---             model.height
-
---         padding =
---             50
-
---         treeData =
---             transformTreeData model.tree
-
---         treeTemp =
---             TreeLayout.treeLayout
---                 (2 * model.radius + model.distance)
---                 treeData
-
---         tree =
---             Dict.fromList (List.map (\( name, { x, y } ) -> ( name, { x = x + w / 2, y = (y - 1) * (2 * model.radius + model.distance) } )) (Dict.toList treeTemp))
---     in
---     [ TypedSvg.svg [ TypedSvg.Attributes.viewBox 0 -100 (w + padding) (h + padding), TypedSvg.Attributes.width <| TypedSvg.Types.Percent 100, TypedSvg.Attributes.height <| TypedSvg.Types.Percent 100 ]
---         [ TypedSvg.g [ TypedSvg.Attributes.transform [ TypedSvg.Types.Translate padding padding ] ]
---             [ drawTree treeData tree model.radius ]
---         ]
---     ]
 
 
 treePlot : Float -> Float -> Float -> Float -> List ( String, Maybe String ) -> Svg msg
@@ -400,16 +270,7 @@ treePlot wide height rad distance tree =
             .point:hover text { display: inline; }
           """ ]
 
-        -- , TypedSvg.rect
-        --     [ TypedSvg.Attributes.x1 <| TypedSvg.Types.Px 1
-        --     , TypedSvg.Attributes.y1 <| TypedSvg.Types.Px 1
-        --     , TypedSvg.Attributes.width <| TypedSvg.Types.Px (wide + 2 * padding - 1)
-        --     , TypedSvg.Attributes.height <| TypedSvg.Types.Px (height + 2 * padding - 1)
-        --     , TypedSvg.Attributes.fill <| Paint <| Color.white
-        --     , stroke <| Paint <| Color.darkRed
-        --     , strokeWidth <| Px 0.5
-        --     ]
-        --     []
+
         , g
             [ transform [ Translate padding padding ] ]
                 (
@@ -490,36 +351,6 @@ view model =
                 ]]
 
                 ]
-
-
-
-
-
-
-
-
-
-
-
-
--- view : Model -> Html Msg
--- view model =
---     Html.div [
-
---                 style "width" "90%"
---             ]
---         ([ Html.text model.error
---          , Html.text "Breite: "
---          , Html.input [ Html.Events.onInput ChangeWide ] []
---          , Html.text "Höhe: "
---          , Html.input [ Html.Events.onInput ChangeHeight ] []
---          , Html.text "Radius: "
---          , Html.input [ Html.Events.onInput ChangeRadius ] []
---          , Html.text "Abstand: "
---          , Html.input [ Html.Events.onInput ChangeDistance ] []
---          ]
---             ++ treeView model
---         )
 
 
 main : Program () Model Msg

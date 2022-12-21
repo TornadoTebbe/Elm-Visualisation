@@ -16,7 +16,6 @@ import TypedSvg.Types exposing (AnchorAlignment(..), Length(..), Transform(..))
 import Csv
 import Csv.Decode
 import Http
-import List exposing (filterMap)
 import Html.Events exposing (onInput)
 import TypedSvg.Attributes exposing (points)
 
@@ -37,13 +36,13 @@ type alias Student_Data =
     ,   dailyStudyingTime : String
     ,   preferStudyTime : String
     ,   salaryExpectation : Float
-    ,   satisfyDegree : String --Bool
+    ,   satisfyDegree : String 
     ,   willignessDegree: String
     ,   socialMedia : String
     ,   travellingTime : String
     ,   stressLevel : String
     ,   financialStatus : String
-    ,   partTimeJob : String --Bool
+    ,   partTimeJob : String 
     }
 
 type StudentAttribute
@@ -76,7 +75,6 @@ type Model
   | Success 
         {data: List Student_Data
      , dailyStudyingTime: String
-    -- , salaryExpectation: Int
      , x: StudentAttribute
      , y: StudentAttribute
         }
@@ -85,7 +83,7 @@ type Model
 
 
 
--- work with Attributes
+-- work with Attributes to create the string 
 
 stringToStudent : String -> StudentAttribute
 stringToStudent str =
@@ -144,9 +142,6 @@ filterStudents allData filterString =
     List.filter (\x -> filterString == x.dailyStudyingTime) allData
 
 
--- filterSalary : List Student_Data -> Int -> List Student_Data
--- filterSalary allData filterInt =
---     List.filter (\y -> y.salaryExpectation < 200000) allData
 
 filterAndReduceStudents : List Student_Data -> XyData
 filterAndReduceStudents studentreduce =
@@ -338,6 +333,8 @@ pointCircle scaleX scaleY point xyPoint =
         ]
 
 
+--Erstellen der dropdown variablen für einfügen in update
+
 changeTimelul : Html Msg
 changeTimelul =
     Html.select
@@ -376,10 +373,6 @@ buttonY =
 
 
 
-
--- Laden der Daten
-
-
 main : Program () Model Msg
 main =
     Browser.element
@@ -399,10 +392,9 @@ init _ =
     , expect = Http.expectString GotText
     })
     
--- UPDATE
 
---Decodierung der Daten:
 
+-- UPDATE funktion Integrieren der Dropdown
 
 
 
@@ -483,10 +475,7 @@ view model =
                 yVal =
                     filterAttribute filData fullText.y
 
-                -- filData2: List Student_Data
-                -- filData2 =
-                --     filterSalary fullText.data
-                -- integrieren der Filterfunktion für unter 50k?
+
 
                 filData :  List Student_Data
                 filData =
@@ -542,7 +531,7 @@ view model =
                 ] 
 
 
-
+--decoding der Daten
 
 csvString_to_data : String -> List Student_Data
 csvString_to_data csvRaw =
@@ -567,13 +556,13 @@ decodeCsvStudentdata =
               |> Csv.Decode.andMap (Csv.Decode.field "daily studing time" Ok)
               |> Csv.Decode.andMap (Csv.Decode.field "prefer to study in" Ok)
               |> Csv.Decode.andMap (Csv.Decode.field "salary expectation" (String.toFloat >> Result.fromMaybe "error parsing string"))
-              |> Csv.Decode.andMap (Csv.Decode.field "Do you like your degree?" Ok) --(String.toBool >> Result.fromMaybe "error parsing string")) 
+              |> Csv.Decode.andMap (Csv.Decode.field "Do you like your degree?" Ok) 
               |> Csv.Decode.andMap (Csv.Decode.field "willingness to pursue a career based on their degree  " Ok)
               |> Csv.Decode.andMap (Csv.Decode.field "social medai & video" Ok)
               |> Csv.Decode.andMap (Csv.Decode.field "Travelling Time " Ok)
               |> Csv.Decode.andMap (Csv.Decode.field "Stress Level " Ok)
               |> Csv.Decode.andMap (Csv.Decode.field "Financial Status" Ok)
-              |> Csv.Decode.andMap (Csv.Decode.field "part-time job" Ok) --(String.tool >> Result.fromMaybe "error parsing string")) 
+              |> Csv.Decode.andMap (Csv.Decode.field "part-time job" Ok) 
         )
 
 

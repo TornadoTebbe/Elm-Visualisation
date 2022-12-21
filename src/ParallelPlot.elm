@@ -49,7 +49,6 @@ type alias Student_Data =
 type Msg
     = GotText (Result Http.Error String)
     | ChangeStudTime String
-    -- | ChangeInsta String
     | ChoosePos1 (Student_Data -> Float, String)
     | ChoosePos2 (Student_Data -> Float, String)
     | ChoosePos3 (Student_Data -> Float, String)
@@ -62,7 +61,6 @@ type Model
     | Success 
         {data: List Student_Data
         , studTime: String
-        -- , socTime: String
         , wert1 : Student_Data -> Float
         , wert2 : Student_Data -> Float
         , wert3 : Student_Data -> Float
@@ -94,6 +92,7 @@ subscriptions : Model -> Sub Msg
 subscriptions model =
   Sub.none
 
+--hochladen der daten aus github
 
 init : () -> ( Model, Cmd Msg )
 init _ =
@@ -127,13 +126,13 @@ decodeCsvStudentdata =
               |> Csv.Decode.andMap (Csv.Decode.field "daily studing time" Ok)
               |> Csv.Decode.andMap (Csv.Decode.field "prefer to study in" Ok)
               |> Csv.Decode.andMap (Csv.Decode.field "salary expectation" (String.toFloat >> Result.fromMaybe "error parsing string"))
-              |> Csv.Decode.andMap (Csv.Decode.field "Do you like your degree?" Ok) --(String.toBool >> Result.fromMaybe "error parsing string")) 
+              |> Csv.Decode.andMap (Csv.Decode.field "Do you like your degree?" Ok) 
               |> Csv.Decode.andMap (Csv.Decode.field "willingness to pursue a career based on their degree  " Ok)
               |> Csv.Decode.andMap (Csv.Decode.field "social medai & video" Ok)
               |> Csv.Decode.andMap (Csv.Decode.field "Travelling Time " Ok)
               |> Csv.Decode.andMap (Csv.Decode.field "Stress Level " Ok)
               |> Csv.Decode.andMap (Csv.Decode.field "Financial Status" Ok)
-              |> Csv.Decode.andMap (Csv.Decode.field "part-time job" Ok) --(String.tool >> Result.fromMaybe "error parsing string")) 
+              |> Csv.Decode.andMap (Csv.Decode.field "part-time job" Ok) 
         )
 
 
@@ -266,7 +265,7 @@ paralleplot w ar model =
                         text_
                             [ fontFamily [ "sans-serif" ]
                             , fontSize (Px 10)
-                            , fill <| Paint <| Color.red  --maybe male female?
+                            , fill <| Paint <| Color.red  
                             , x <| Scale.convert xScale (toFloat index + 1)
                             , y <| padding * 7 / 8
                             , textAnchor AnchorMiddle
@@ -336,20 +335,6 @@ changeTimelul =
 
 
 
--- changeSocial : Html Msg
--- changeSocial =
---     Html.select
---         [onInput ChangeStudTime]
---         [Html.option [value "0 Minute"] [Html.text "0 minutes"]
---         ,Html.option [value "1 - 30 Minute"] [Html.text "30 - 60 minutes"]
---         ,Html.option [value "30 - 60 minute"] [Html.text "30 - 60 minutes"]
---         ,Html.option [value "1 - 1.30 hour"] [Html.text "1 - 1.30 hours"]
---         ,Html.option [value "1.30 - 2 hour"] [Html.text "1.30 - 2 hours"]
---         ,Html.option [value "More Than 2 hour"] [Html.text "More Than 2 hours"]
---         ]
-
-
-
 
 update : Msg -> Model -> ( Model, Cmd Msg)
 update msg model =
@@ -373,16 +358,6 @@ update msg model =
                 _ ->
                     (model, Cmd.none)
 
-
-        -- ChangeInsta instaNew ->
-        --     case model of
-        --         Success first ->
-        --             ( Success <| {data = first.data , studTime = studTimeNew, wert1 = first.wert1, wert2 = first.wert2, wert3 = first.wert3, wert4 = first.wert4,
-        --             wertName1 = first.wertName1, wertName2 = first.wertName2, wertName3 = first.wertName3, wertName4 = first.wertName4} , Cmd.none)
-
-
-        --         _ ->
-        --             (model, Cmd.none)
 
 
         ChoosePos1 (wert1New, wertName1New) ->
@@ -530,11 +505,6 @@ view model =
                     , Html.button[onClick (ChoosePos4 (.salaryExpectation, "Salary Expectation"))][Html.text ("Salary Expectation")]
 
                 , Html.br [][]
-                    -- , li []
-                    --     [ Html.button [ onClick ChoosePos1 ] [ Html.text <| "Tausche " ++ model.wert1 ++ " und " ++ model.wert2 ]
-                    --     , Html.button [ onClick ChoosePos2 ] [ Html.text <| "Tausche " ++ model.wert2 ++ " und " ++ model.wert3 ]
-                    --     , Html.button [ onClick ChoosePos3 ] [ Html.text <| "Tausche " ++ model.wert3 ++ " und " ++ model.wert4 ]
-                    --     ]
                     , paralleplot 600 2 multiDimData
                     ]
                 ]

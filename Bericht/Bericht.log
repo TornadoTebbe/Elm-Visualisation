@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.12) (preloaded format=pdflatex 2022.12.18)  21 DEC 2022 02:20
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.12) (preloaded format=pdflatex 2022.12.18)  21 DEC 2022 02:31
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1072,17 +1072,17 @@ Underfull \hbox (badness 10000) in paragraph at lines 321--322
 <Main.png, id=183, 234.8775pt x 119.69719pt>
 File: Main.png Graphic file (type png)
 <use Main.png>
-Package pdftex.def Info: Main.png  used on input line 335.
+Package pdftex.def Info: Main.png  used on input line 337.
 (pdftex.def)             Requested size: 176.15768pt x 89.77266pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 342--345
+Underfull \hbox (badness 10000) in paragraph at lines 344--347
 
  []
 
 <decode.png, id=185, 747.54282pt x 156.585pt>
 File: decode.png Graphic file (type png)
 <use decode.png>
-Package pdftex.def Info: decode.png  used on input line 349.
+Package pdftex.def Info: decode.png  used on input line 351.
 (pdftex.def)             Requested size: 373.7705pt x 78.2923pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
@@ -1091,15 +1091,15 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 <typeDef.png, id=195, 213.04594pt x 299.61937pt>
 File: typeDef.png Graphic file (type png)
 <use typeDef.png>
-Package pdftex.def Info: typeDef.png  used on input line 361.
+Package pdftex.def Info: typeDef.png  used on input line 363.
 (pdftex.def)             Requested size: 159.78406pt x 224.71397pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 367--368
+Underfull \hbox (badness 10000) in paragraph at lines 369--370
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 369--371
+Underfull \hbox (badness 10000) in paragraph at lines 371--373
 
  []
 
@@ -1107,45 +1107,45 @@ Underfull \hbox (badness 10000) in paragraph at lines 369--371
 <typeMsg.png, id=205, 244.66406pt x 77.53969pt>
 File: typeMsg.png Graphic file (type png)
 <use typeMsg.png>
-Package pdftex.def Info: typeMsg.png  used on input line 375.
+Package pdftex.def Info: typeMsg.png  used on input line 377.
 (pdftex.def)             Requested size: 223.07214pt x 70.69844pt.
 <typeStudentAttribute.png, id=206, 148.30406pt x 76.03406pt>
 File: typeStudentAttribute.png Graphic file (type png)
 <use typeStudentAttribute.png>
-Package pdftex.def Info: typeStudentAttribute.png  used on input line 376.
+Package pdftex.def Info: typeStudentAttribute.png  used on input line 378.
 (pdftex.def)             Requested size: 223.07214pt x 114.37215pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 381--382
+Underfull \hbox (badness 10000) in paragraph at lines 383--384
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 383--385
+Underfull \hbox (badness 10000) in paragraph at lines 385--387
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 386--387
+Underfull \hbox (badness 10000) in paragraph at lines 388--389
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 388--391
+Underfull \hbox (badness 10000) in paragraph at lines 390--393
 
  []
 
 [18 <./typeMsg.png> <./typeStudentAttribute.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 392--393
+Underfull \hbox (badness 10000) in paragraph at lines 394--395
 
  []
 
 <updateScatter.png, id=220, 852.18375pt x 385.44pt>
 File: updateScatter.png Graphic file (type png)
 <use updateScatter.png>
-Package pdftex.def Info: updateScatter.png  used on input line 398.
+Package pdftex.def Info: updateScatter.png  used on input line 400.
 (pdftex.def)             Requested size: 426.09082pt x 192.71953pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 409--410
+Underfull \hbox (badness 10000) in paragraph at lines 411--412
 
  []
 
@@ -1153,105 +1153,100 @@ Underfull \hbox (badness 10000) in paragraph at lines 409--410
 <treeDecode.png, id=230, 317.68687pt x 264.99pt>
 File: treeDecode.png Graphic file (type png)
 <use treeDecode.png>
-Package pdftex.def Info: treeDecode.png  used on input line 425.
+Package pdftex.def Info: treeDecode.png  used on input line 427.
 (pdftex.def)             Requested size: 238.26456pt x 198.742pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 432--433
+Underfull \hbox (badness 10000) in paragraph at lines 434--435
 
  []
 
 [20 <./treeDecode.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 456--457
+Underfull \hbox (badness 10000) in paragraph at lines 458--459
 
  []
 
 [21]
-Underfull \hbox (badness 10000) in paragraph at lines 466--467
-
- []
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 468--469
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 470--472
+Underfull \hbox (badness 10000) in paragraph at lines 470--471
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 472--474
 
  []
 
 <BspPar1.png, id=247, 1306.8825pt x 608.2725pt>
 File: BspPar1.png Graphic file (type png)
 <use BspPar1.png>
-Package pdftex.def Info: BspPar1.png  used on input line 478.
+Package pdftex.def Info: BspPar1.png  used on input line 480.
 (pdftex.def)             Requested size: 341.43314pt x 158.9082pt.
 <BspPar2.png, id=248, 1309.14093pt x 613.54219pt>
 File: BspPar2.png Graphic file (type png)
 <use BspPar2.png>
-Package pdftex.def Info: BspPar2.png  used on input line 479.
+Package pdftex.def Info: BspPar2.png  used on input line 481.
 (pdftex.def)             Requested size: 341.43314pt x 160.01338pt.
 [22] [23 <./BspPar1.png> <./BspPar2.png>]
 <MenTree.png, id=263, 652.68843pt x 474.27188pt>
 File: MenTree.png Graphic file (type png)
 <use MenTree.png>
-Package pdftex.def Info: MenTree.png  used on input line 495.
+Package pdftex.def Info: MenTree.png  used on input line 497.
 (pdftex.def)             Requested size: 341.43314pt x 248.10634pt.
 <WomenTree.png, id=264, 683.55376pt x 461.47406pt>
 File: WomenTree.png Graphic file (type png)
 <use WomenTree.png>
-Package pdftex.def Info: WomenTree.png  used on input line 496.
+Package pdftex.def Info: WomenTree.png  used on input line 498.
 (pdftex.def)             Requested size: 341.43314pt x 230.51112pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 502--504
+Underfull \hbox (badness 10000) in paragraph at lines 504--506
 
  []
 
 [24] [25 <./MenTree.png> <./WomenTree.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 511--512
+Underfull \hbox (badness 10000) in paragraph at lines 513--514
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 513--514
+Underfull \hbox (badness 10000) in paragraph at lines 515--516
 
  []
 
 <ParallelQuelle1.jpg, id=280, 244.31097pt x 118.9577pt>
 File: ParallelQuelle1.jpg Graphic file (type jpg)
 <use ParallelQuelle1.jpg>
-Package pdftex.def Info: ParallelQuelle1.jpg  used on input line 522.
+Package pdftex.def Info: ParallelQuelle1.jpg  used on input line 524.
 (pdftex.def)             Requested size: 317.60422pt x 154.64497pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 529--531
+Underfull \hbox (badness 10000) in paragraph at lines 531--533
 
  []
 
 [26 <./ParallelQuelle1.jpg>]
-Underfull \hbox (badness 10000) in paragraph at lines 533--534
+Underfull \hbox (badness 10000) in paragraph at lines 535--536
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 535--536
+Underfull \hbox (badness 10000) in paragraph at lines 537--538
 
  []
 
 <Quelle2.png, id=293, 1223.32031pt x 339.51843pt>
 File: Quelle2.png Graphic file (type png)
 <use Quelle2.png>
-Package pdftex.def Info: Quelle2.png  used on input line 541.
+Package pdftex.def Info: Quelle2.png  used on input line 543.
 (pdftex.def)             Requested size: 366.99893pt x 101.85631pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 557--558
-
- []
-
-[27 <./Quelle2.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 559--560
 
  []
 
-
+[27 <./Quelle2.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 561--562
 
  []
@@ -1267,7 +1262,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 565--566
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 567--569
+Underfull \hbox (badness 10000) in paragraph at lines 567--568
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 569--571
 
  []
 
@@ -1289,7 +1289,7 @@ Package logreq Info: Writing requests to 'Bericht.run.xml'.
 Here is how much of TeX's memory you used:
  22289 strings out of 475281
  414549 string characters out of 2774064
- 1315575 words of memory out of 3000000
+ 1315555 words of memory out of 3000000
  43379 multiletter control sequences out of 15000+600000
  535459 words of font info for 76 fonts, out of 8000000 for 9000
  1143 hyphenation exceptions out of 8191
