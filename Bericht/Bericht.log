@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.12) (preloaded format=pdflatex 2022.12.18)  21 DEC 2022 02:31
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.12) (preloaded format=pdflatex 2022.12.18)  21 DEC 2022 09:12
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1271,7 +1271,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 569--571
 
  []
 
-[28] [29] [30] (Bericht.aux)
+[28] [29] [30] [31] (Bericht.aux)
 
 LaTeX Warning: There were undefined references.
 
@@ -1287,9 +1287,9 @@ Package logreq Info: Writing requests to 'Bericht.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 22289 strings out of 475281
- 414549 string characters out of 2774064
- 1315555 words of memory out of 3000000
+ 22290 strings out of 475281
+ 414556 string characters out of 2774064
+ 1318555 words of memory out of 3000000
  43379 multiletter control sequences out of 15000+600000
  535459 words of font info for 76 fonts, out of 8000000 for 9000
  1143 hyphenation exceptions out of 8191
@@ -1307,9 +1307,9 @@ s/pault/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri10.pfb><C:/User
 s/pault/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri9.pfb><C:/Users
 /pault/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmssbx10.pfb><C:/Use
 rs/pault/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt10.pfb>
-Output written on Bericht.pdf (30 pages, 2272398 bytes).
+Output written on Bericht.pdf (31 pages, 2276493 bytes).
 PDF statistics:
- 474 PDF objects out of 1000 (max. 8388607)
- 88 named destinations out of 1000 (max. 500000)
+ 479 PDF objects out of 1000 (max. 8388607)
+ 89 named destinations out of 1000 (max. 500000)
  298 words of extra memory for PDF output out of 10000 (max. 10000000)
 
