@@ -13,7 +13,7 @@ import Json.Decode
 import Scale
 import Tree exposing (Tree)
 import TypedSvg exposing (circle, g, line, style, svg, text_)
-import TypedSvg.Attributes exposing (class, fontFamily, fontSize, stroke, textAnchor, transform, viewBox, strokeWidth)
+import TypedSvg.Attributes exposing (class, fontFamily, fontSize, stroke, textAnchor, transform, viewBox)
 import TypedSvg.Attributes.InPx exposing (cx, cy, height, r, x, x1, x2, y, y1, y2)
 import TypedSvg.Core exposing (Svg)
 import TypedSvg.Types exposing (AnchorAlignment(..), Length(..), Paint(..), Transform(..))

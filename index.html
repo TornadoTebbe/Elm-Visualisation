@@ -4437,7 +4437,8 @@ var $elm$html$Html$a = _VirtualDom_node('a');
 var $elm$html$Html$br = _VirtualDom_node('br');
 var $elm$html$Html$div = _VirtualDom_node('div');
 var $elm$html$Html$h1 = _VirtualDom_node('h1');
-var $elm$html$Html$h2 = _VirtualDom_node('h2');
+var $elm$html$Html$h3 = _VirtualDom_node('h3');
+var $elm$html$Html$h4 = _VirtualDom_node('h4');
 var $elm$json$Json$Encode$string = _Json_wrap;
 var $elm$html$Html$Attributes$stringProperty = F2(
 	function (key, string) {
@@ -4452,6 +4453,7 @@ var $elm$html$Html$Attributes$href = function (url) {
 		'href',
 		_VirtualDom_noJavaScriptUri(url));
 };
+var $elm$html$Html$nav = _VirtualDom_node('nav');
 var $elm$html$Html$p = _VirtualDom_node('p');
 var $elm$virtual_dom$VirtualDom$style = _VirtualDom_style;
 var $elm$html$Html$Attributes$style = $elm$virtual_dom$VirtualDom$style;
@@ -4470,21 +4472,28 @@ var $author$project$Main$main = A2(
 			_List_Nil,
 			_List_fromArray(
 				[
-					$elm$html$Html$text('Modul Information Retrieval und Visualisierung Sommersemester 2022')
+					$elm$html$Html$text('Modul Information Retrieval und Visualisierung Sommersemester 2022'),
+					A2($elm$html$Html$br, _List_Nil, _List_Nil)
 				])),
 			A2(
-			$elm$html$Html$h2,
+			$elm$html$Html$h3,
 			_List_Nil,
 			_List_fromArray(
 				[
-					$elm$html$Html$text('Darstellung der Daten Student Behaviour')
+					$elm$html$Html$text('Anbei finden Sie die drei Visualisierungsmöglichkeiten zur Darstellung der kaggle-Daten Student_Behaviour'),
+					A2($elm$html$Html$br, _List_Nil, _List_Nil)
 				])),
 			A2(
-			$elm$html$Html$p,
+			$elm$html$Html$h4,
+			_List_Nil,
 			_List_fromArray(
 				[
-					A2($elm$html$Html$Attributes$style, 'fontSize', '16px')
-				]),
+					$elm$html$Html$text('Autor: Paul Tebbe'),
+					A2($elm$html$Html$br, _List_Nil, _List_Nil)
+				])),
+			A2(
+			$elm$html$Html$nav,
+			_List_Nil,
 			_List_fromArray(
 				[
 					A2(
@@ -4520,6 +4529,21 @@ var $author$project$Main$main = A2(
 							$elm$html$Html$text('Baumvisualisierung')
 						])),
 					A2($elm$html$Html$br, _List_Nil, _List_Nil)
+				])),
+			A2($elm$html$Html$br, _List_Nil, _List_Nil),
+			A2(
+			$elm$html$Html$p,
+			_List_fromArray(
+				[
+					A2($elm$html$Html$Attributes$style, 'fontSize', '17px')
+				]),
+			_List_fromArray(
+				[
+					$elm$html$Html$text('Die hier visualisierten Daten sollen dem/den Nutzer:innen eine ungefähre Vorstellung darüber verschaffen, ob Noten und die Lernzeiten von Studenten in einem Zusammenhang stehen.'),
+					A2($elm$html$Html$br, _List_Nil, _List_Nil),
+					$elm$html$Html$text('Der/die Nutzer:innen kann sich über die hrefs zu den verschiedenen Visaulisierungen bewegen.'),
+					A2($elm$html$Html$br, _List_Nil, _List_Nil),
+					$elm$html$Html$text('')
 				]))
 		]));
 _Platform_export({'Main':{'init':_VirtualDom_init($author$project$Main$main)(0)(0)}});}(this));

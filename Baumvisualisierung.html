@@ -6237,7 +6237,7 @@ var $author$project$Baumvisualisierung$init = function (_v0) {
 		{
 			distance: 1,
 			error: '',
-			height: 2000,
+			height: 2500,
 			radius: 50,
 			tree: $zwilias$elm_rosetree$Tree$singleton(''),
 			wide: 4000
@@ -6497,6 +6497,7 @@ var $zwilias$elm_rosetree$Tree$flatten = function (t) {
 	return A3($zwilias$elm_rosetree$Tree$foldr, $elm$core$List$cons, _List_Nil, t);
 };
 var $elm$html$Html$h1 = _VirtualDom_node('h1');
+var $elm$html$Html$h2 = _VirtualDom_node('h2');
 var $elm$html$Html$h3 = _VirtualDom_node('h3');
 var $elm$json$Json$Encode$string = _Json_wrap;
 var $elm$html$Html$Attributes$stringProperty = F2(
@@ -8467,6 +8468,13 @@ var $author$project$Baumvisualisierung$view = function (model) {
 				_List_fromArray(
 					[
 						A2(
+						$elm$html$Html$h1,
+						_List_Nil,
+						_List_fromArray(
+							[
+								$elm$html$Html$text('Navigation zu den anderen Visualisierungsmöglichkeiten:')
+							])),
+						A2(
 						$elm$html$Html$a,
 						_List_fromArray(
 							[
@@ -8501,7 +8509,7 @@ var $author$project$Baumvisualisierung$view = function (model) {
 						A2($elm$html$Html$br, _List_Nil, _List_Nil)
 					])),
 				A2(
-				$elm$html$Html$h1,
+				$elm$html$Html$h2,
 				_List_Nil,
 				_List_fromArray(
 					[
@@ -8554,7 +8562,39 @@ var $author$project$Baumvisualisierung$view = function (model) {
 								_List_Nil,
 								_List_fromArray(
 									[
-										$elm$html$Html$text('Durchschnittliche Colle Note: ACM')
+										$elm$html$Html$text('Durchschnittliche College Note: ACM')
+									])),
+								A2($elm$html$Html$br, _List_Nil, _List_Nil),
+								A2(
+								$elm$html$Html$li,
+								_List_Nil,
+								_List_fromArray(
+									[
+										$elm$html$Html$text('Beste ACM Male: 77')
+									])),
+								A2($elm$html$Html$br, _List_Nil, _List_Nil),
+								A2(
+								$elm$html$Html$li,
+								_List_Nil,
+								_List_fromArray(
+									[
+										$elm$html$Html$text('Beste ACM Female: 81')
+									])),
+								A2($elm$html$Html$br, _List_Nil, _List_Nil),
+								A2(
+								$elm$html$Html$li,
+								_List_Nil,
+								_List_fromArray(
+									[
+										$elm$html$Html$text('Schlechteste ACM Male: 64')
+									])),
+								A2($elm$html$Html$br, _List_Nil, _List_Nil),
+								A2(
+								$elm$html$Html$li,
+								_List_Nil,
+								_List_fromArray(
+									[
+										$elm$html$Html$text('Schlechteste ACM Female: 41')
 									])),
 								A5($author$project$Baumvisualisierung$treePlot, wide, height, rad, distance, converteTree)
 							]))
